@@ -1,0 +1,304 @@
+//Species Detail Function
+
+function OpenDetails(SpeciesID) {
+    //var timerStart = Date.now();
+    var tab = document.getElementById("SpeciesDetail");
+    tab.style.display = "block";
+    
+    const SpeciesData = JSON.parse(localStorage.getItem("Species"));
+    const Species = SpeciesData[SpeciesID-1];
+    
+    const UID = document.getElementById("UIDDetail");
+    const Num = document.getElementById("NumDetail");
+    const Sprite = document.getElementById("SpriteDetail");
+    const Type = document.getElementById("TypeDetail");
+    const Ability = document.getElementById("AbilityDetail");
+    const Location = document.getElementById("LocationDetail");
+    const HeldItem = document.getElementById("HeldItemDetail");
+    const EggGroup = document.getElementById("EggGroupDetail");
+    const Evolution = document.getElementById("EvoDetail");
+    
+    UID.innerText = Species.UID;
+    Num.innerText = "#" + Species.SID + " " + Species.Name;
+    Sprite.innerHTML = "<img src='data/Sprite/" + Species.SUID + ".png'>";
+    Type.innerHTML = "Type :" + TypeBox(Species.Type).innerHTML
+    Ability.innerHTML = "Ability :" + AbilityBox(Species.Ability, true).innerHTML;
+    
+    const statsTable = document.getElementById("statsTable").rows;
+    for (let x = 0; x < statsTable.length; x++) {
+        const StatsNumber = Object.values(Species)[6 + x];
+        const cell = statsTable[x].getElementsByTagName("td");
+        cell[0].innerText = StatsNumber;
+    }
+    
+    for (let x = 0; x < statsTable.length; x++) {
+        const cell = statsTable[x].getElementsByTagName("td");
+        const box = cell[1].getElementsByTagName("div")[0];
+        box.style.color = "transparent";
+        if (x == 0) {
+            box.style.width = (5 + cell[0].innerText/8) + "%";
+            box.style.backgroundColor = "hsl(" + cell[0].innerText/7 + ", 85%, 45%)";
+        } else {
+            box.style.width = (5 + cell[0].innerText/2) + "%";
+            box.style.backgroundColor = "hsl(" + cell[0].innerText/17*10 + ", 95%, 65%)";
+        }
+    }
+    
+    const SpeciesLocation = splitFunc(Species.Location);
+    Location.innerText = "Location : \n";
+    if (SpeciesLocation != "None") {
+        for (let x = 0; x < SpeciesLocation.length; x++) {
+            let LocIndex = SpeciesLocation[x] - 30001;
+            let LocationObj = LocationData[LocIndex];
+            Location.innerText += "• " + LocationObj.Loc + " " + LocationObj.Res + "\n";
+            let LocSUIDArr = splitFunc(LocationObj.SUID);
+            let LocERArr = splitFunc(LocationObj.ER);
+            let LocLvArr = splitFunc(LocationObj.Lv);
+            for (let x = 0; x < LocSUIDArr.length; x++) {
+                if (LocSUIDArr[x] == Species.SUID) {
+                    Location.innerText += "Lv : " + LocLvArr[x] + " " + LocERArr[x] + "\n";
+                }
+            }
+        }
+    } else {
+        Location.innerText = "Location : \n • Unknown";
+    }
+    
+    const SpeciesHeld = splitFunc(Species.Held);
+    const SpeciesChance = splitFunc(Species.Chance);
+    HeldItem.innerText = "Held Item : \n";
+    if (SpeciesHeld != "None") {
+        for (let x = 0; x < SpeciesHeld.length; x++) {
+            let HeldIndex = SpeciesHeld[x] - 60001;
+            let HeldObj = ItemsData[HeldIndex];
+            HeldItem.innerText += "• " + HeldObj.Name
+            + " " + SpeciesChance[x] + "\n";
+        }
+    } else {
+        HeldItem.innerText = "Held Item : \n • None";
+    }
+    
+    const SpeciesEggGroup = splitFunc(Species.Egg);
+    EggGroup.innerText = "Egg Group : \n";
+    for (let x = 0; x < SpeciesEggGroup.length; x++) {
+        EggGroup.innerText += "• " + SpeciesEggGroup[x] + "\n";
+    }
+    
+    Evolution.innerHTML = "";
+    const EvoLine = splitFunc(Species.EvoLine);
+    const EvoText = document.createElement("div");
+    EvoText.innerText = "Evolution Chart : \n";
+    EvoText.setAttribute("class", "EvoTextBox")
+    Evolution.appendChild(EvoText)
+    if (EvoLine.length > 1) {
+        for (let x = 0; x < EvoLine.length; x++) {
+            if (EvoLine[x] == "0") {
+                continue;
+            }
+            let EvoContainer = document.createElement("div");
+            const ArrowBox = document.createElement("div");
+            ArrowBox.innerText = "↓";
+            ArrowBox.setAttribute("class", "ArrowBox")
+            
+            let ConditionBox = document.createElement("div");
+            ConditionBox.setAttribute("class", "ConditionBox")
+            let SpeciesCondition = SpeciesData[EvoLine[x]-1].Condition;
+            if (Number.isInteger(Number(SpeciesCondition))) {
+                ConditionBox.innerText = "(Level " + SpeciesCondition + ")";
+            } else if (SpeciesCondition == "Mega" || SpeciesCondition == "Friendship") {
+                ConditionBox.innerText = "(" + SpeciesCondition + ")";
+            } else if (SpeciesCondition != "None") {
+                ConditionBox.innerText = "(Item " + SpeciesCondition + ")";
+            }
+            
+            if (x != 0) {
+                EvoContainer.appendChild(ArrowBox)
+                EvoContainer.appendChild(ConditionBox);
+            }
+            
+            let EvoBox = CreateEvoBox(EvoLine[x]);
+            EvoContainer.appendChild(EvoBox)
+            
+            EvoContainer.setAttribute("class", "EvoContainer");
+            if (EvoLine.length-1 > 3 && x > 2) {
+                EvoContainer.setAttribute("class", "EvoContainerS" + (x-2));
+                //Style split 3 evo
+            } else if (x == 5) {
+                EvoContainer.setAttribute("class", "EvoContainerS3");
+                //Style split 2 evo with evo
+            } else if (x > 2 && EvoLine.length > 5) {
+                EvoContainer.setAttribute("class", "EvoContainer" + (x+2));
+            }
+            
+            Evolution.appendChild(EvoContainer)
+        }
+    } else {
+        EvoText.innerText += Species.Name + " does not evolve.";
+    }
+    
+    RenderLearnsetTable(Species.UID, Species.Name);
+    location.href="#SpeciesDetail";
+    //console.log("Time until Detail Rendered: ", Date.now()-timerStart);
+}
+
+function CloseDetails(Ref) {
+    var tab = document.getElementById("SpeciesDetail");
+    tab.style.display = "none";
+    if (Ref) {
+        const UID = document.getElementById("UIDDetail").innerText;
+        location.href = "#" + UID
+    }
+}
+
+function PrevDetails() {
+    var CurrentNum = document.getElementById("UIDDetail").innerText;
+    var PrevNum = Number(CurrentNum) - 1;
+    try { OpenDetails(PrevNum) }
+    catch(err) {}
+}
+
+function NextDetails() {
+    var CurrentNum = document.getElementById("UIDDetail").innerText;
+    var NextNum = Number(CurrentNum) + 1;
+    try { OpenDetails(NextNum) }
+    catch(err) {}
+}
+
+function OpenMoveDetail(Id) {
+    console.log(Id)
+}
+
+function CreateEvoBox(Id) {
+    const SpeciesData = JSON.parse(localStorage.getItem("Species"));
+    const Species = SpeciesData[Id-1];
+    let Container = document.createElement("div");
+    let EvoBox = document.createElement("div");
+    let DetailBox = document.createElement("div");
+    let SpriteBox = document.createElement("div");
+    SpriteBox.setAttribute("class", "EvoSpriteBox")
+    let NameBox = document.createElement("div");
+    NameBox.setAttribute("class", "EvoNameBox")
+    
+    SpriteBox.innerHTML = "<img src='data/Sprite/" + Species.SUID + ".png'>"
+    NameBox.innerText = Species.Name;
+    let TypeCell = TypeBox(Species.Type);
+    TypeCell.setAttribute("class", "EvoTypeBox")
+    EvoBox.appendChild(SpriteBox);
+    DetailBox.appendChild(NameBox);
+    DetailBox.appendChild(TypeCell)
+    
+    EvoBox.setAttribute("class", "EvolutionBox")
+    DetailBox.setAttribute("class", "DetailedBox")
+    
+    Container.setAttribute("class", "WrapperBox")
+    Container.appendChild(EvoBox);
+    Container.appendChild(DetailBox);
+    Container.setAttribute("onclick", "OpenDetails(" + Id + ")")
+    return Container;
+}
+
+function RenderLearnsetTable(SpeciesID, Name) {
+    let MoveSet = LearnsetData[SpeciesID-1];
+    
+    let PreEvoTable = document.getElementById("PreEvoMoveBody");
+    let LevelupTable = document.getElementById("LvlMoveBody");
+    let TMTable = document.getElementById("TMMoveBody");
+    let TutorTable = document.getElementById("TutorMoveBody");
+    let EggTable = document.getElementById("EggMoveBody");
+    let EventTable = document.getElementById("EventMoveBody");
+    
+    let PreEvoMove = splitFunc(MoveSet.PrevoID)
+    let LevelupLv = splitFunc(MoveSet.Lv)
+    let LevelupMove = splitFunc(MoveSet.LMID)
+    let TMMove = splitFunc(MoveSet.HMID)
+    let TutorMove = splitFunc(MoveSet.TMID)
+    let EggMove = splitFunc(MoveSet.EggID)
+    let EventMove = splitFunc(MoveSet.EventID)
+    
+    PreEvoTable.innerHTML = "";
+    if (PreEvoMove[0] != "-") {
+        for (let i = 0; i < PreEvoMove.length; i++) {
+            let row = CreateMoveRow(false, MovesData[PreEvoMove[i] - 50001]);
+            PreEvoTable.appendChild(row)
+        }
+    } else {
+        PreEvoTable.innerText = Name + " does not learn any TM Move."
+    }
+    
+    LevelupTable.innerHTML = "";
+    if (LevelupLv[0] != "-") {
+        for (let i = 0; i < LevelupLv.length; i++) {
+            let row = CreateMoveRow(LevelupLv[i], MovesData[LevelupMove[i] - 50001]);
+            LevelupTable.appendChild(row)
+        }
+    } else {
+        LevelupTable.innerText = Name + " does not learn any Levelup Move."
+    }
+    
+    TMTable.innerHTML = "";
+    if (TMMove[0] != "-") {
+        for (let i = 0; i < TMMove.length; i++) {
+            let row = CreateMoveRow(false, MovesData[TMMove[i] - 50001]);
+            TMTable.appendChild(row)
+        }
+    } else {
+        TMTable.innerText = Name + " does not learn any TM Move."
+    }
+    
+    TutorTable.innerHTML = "";
+    if (TutorMove[0] != "-") {
+        for (let i = 0; i < TutorMove.length; i++) {
+            let row = CreateMoveRow(false, MovesData[TutorMove[i] - 50001]);
+            TutorTable.appendChild(row)
+        }
+    } else {
+        TutorTable.innerText = Name + " does not learn any Tutor Move."
+    }
+    
+    EggTable.innerHTML = "";
+    if (EggMove[0] != "-") {
+        for (let i = 0; i < EggMove.length; i++) {
+            let row = CreateMoveRow(false, MovesData[EggMove[i] - 50001]);
+            EggTable.appendChild(row)
+        }
+    } else {
+        EggTable.innerText = Name + " does not learn any Egg Move."
+    }
+    
+    EventTable.innerHTML = "";
+    if (EggMove[0] != "-") {
+        for (let i = 0; i < EventMove.length; i++) {
+            let row = CreateMoveRow(false, MovesData[EventMove[i] - 50001]);
+            EventTable.appendChild(row)
+        }
+    } else {
+        EventTable.innerText = Name + " does not learn any Egg Move."
+    }
+}
+
+function CreateMoveRow(Lv, Move) {
+    let Row = document.createElement("tr");
+    if (Lv) {
+        let cell = Row.insertCell(0);
+        cell.innerText = Lv;
+    }
+    
+    for (let j = 1; j < 7; j++) {
+        let cell = document.createElement("td");
+        let MoveValue = Object.values(Move)
+            
+        if (j == 2) {
+            cell.innerHTML = TypeBox(MoveValue[j]).innerHTML;
+        } else if (j == 3) {
+            cell.innerHTML = "<img src='data/ImgType/" + MoveValue[j] + ".png'>";
+        } else {
+            cell.innerText = MoveValue[j];
+        }
+        Row.appendChild(cell)
+    }
+    
+    Row.setAttribute("id", Move.UID)
+    Row.setAttribute("onclick", "OpenMoveDetail(" + Move.UID + ")")
+    
+    return Row
+}
