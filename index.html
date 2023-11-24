@@ -1,1 +1,313 @@
+<!DOCTYPE html>
 
+<html lang="en">
+
+<head>
+    <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/style.css" />
+    <script defer src="scripts/Main.js"></script>
+    <script defer src="scripts/DetailPage.js"></script>
+    <script defer src="scripts/Style.js"></script>
+    <script defer src="scripts/Utility.js"></script>
+    <script defer src="scripts/Validator.js"></script>
+    <title>Radical Red Dex</title>
+</head>
+
+<body>
+    
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="#">About</a>
+        <a href="#" onclick="DarkMode()">DM</a>
+        <a href="#">???</a>
+        <a href="#">Credit</a>
+    </div>
+    
+    <div class="openNav">
+        <span onclick="openNav()">≡</span>
+    </div>
+    
+    <div id="SpeciesDetail">
+        <div class="headDetailsContainer">
+            <div id="CloseDetail" onclick="CloseDetails(true)">
+                &times
+            </div>
+            <h1>
+                RR Dex - Details
+            </h1>
+            <div id="PrevDetail" onclick="PrevDetails()">
+                «
+            </div>
+            <div id="NextDetail" onclick="NextDetails()">
+                »
+            </div>
+        </div>
+        
+        <div class="generalDetailsContainer">
+            <div id="UIDDetail"></div>
+            <div id="NumDetail"></div>
+            <div id="TypeDetail"></div>
+            <div id="SpriteDetail"></div>
+            <div id="AbilityDetail"></div>
+        </div>
+        
+        <div class="statsDetailsContainer">
+            <table id="statsTable">
+            <tr>
+                <th>BST</th>
+                <td class="statsNum"></td>
+                <td><div id="graph0">BST</div></td>
+            </tr>
+            <tr>
+                <th>HP</th>
+                <td class="statsNum"></td>
+                <td><div id="graph1">HP</div></td>
+            </tr>
+            <tr>
+                <th>Atk</th>
+                <td class="statsNum"></td>
+                <td><div id="graph2">Atk</div></td>
+            </tr>
+            <tr>
+                <th>Def</th>
+                <td class="statsNum"></td>
+                <td><div id="graph3">Def</div></td>
+            </tr>
+            <tr>
+                <th>SpA</th>
+                <td class="statsNum"></td>
+                <td><div id="graph4">SpA</div></td>
+            </tr>
+            <tr>
+                <th>SpD</th>
+                <td class="statsNum"></td>
+                <td><div id="graph5">SpD</div></td>
+            </tr>
+            <tr>
+                <th>Spe</th>
+                <td class="statsNum"></td>
+                <td><div id="graph6">Spe</div></td>
+            </tr>
+            </table>
+        </div>
+        
+        <div class="othersDetailsContainer">
+            <div id="LocationDetail"></div>
+            <div id="HeldItemDetail"></div>
+            <div id="EggGroupDetail"></div>
+            <div id="EvoDetail"></div>
+        </div>
+        
+        <div>
+            <div id="PreEvoMoves">
+                <table id="LvlMoveTable">
+                    <caption>Pre-Evo Move</caption>
+                    <thead>
+                        <tr>
+                            <th id="PreEvoLearnName">Move</th>
+                            <th id="PreEvoLearnType">Type</th>
+                            <th id="PreEvoLearnCat">Cat.</th>
+                            <th id="PreEvoLearnPwr">Power</th>
+                            <th id="PreEvoLearnAcc">Acc</th>
+                            <th id="PreEvoLearnPP">PP</th>
+                        </tr>
+                    </thead>
+                    <tbody id="PreEvoMoveBody"></tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="LMoveDetailsContainer">
+            <div id="LvlMoves">
+                <table id="LvlMoveTable">
+                    <caption>Level-Up Moves</caption>
+                    <thead id="LvlMoveHead">
+                        <tr>
+                            <th id="LvLearn">Lv</th>
+                            <th id="LvLearnName">Move</th>
+                            <th id="LvLearnType">Type</th>
+                            <th id="LvLearnCat">Cat.</th>
+                            <th id="LvLearnPwr">Power</th>
+                            <th id="LvLearnAcc">Acc</th>
+                            <th id="LvLearnPP">PP</th>
+                        </tr>
+                    </thead>
+                    <tbody id="LvlMoveBody"></tbody>
+                </table>
+            </div>
+            
+            <div id="TMMoves">
+                <table id="TMMoveTable">
+                    <caption>TM/HM Moves</caption>
+                    <thead id="TMMoveHead">
+                        <tr>
+                            <th id="TMLearnName">Move</th>
+                            <th id="TMLearnType">Type</th>
+                            <th id="TMLearnCat">Cat.</th>
+                            <th id="TMLearnPwr">Power</th>
+                            <th id="TMLearnAcc">Acc</th>
+                            <th id="TMLearnPP">PP</th>
+                        </tr>
+                    </thead>
+                    <tbody id="TMMoveBody"></tbody>
+                </table>
+            </div>
+            
+            <div id="TutorMoves">
+                <table id="TutorMoveTable">
+                    <caption>Tutor Moves</caption>
+                    <thead id="TutorMoveHead">
+                        <tr>
+                            <th id="TutorLearnName">Move</th>
+                            <th id="TutorLearnType">Type</th>
+                            <th id="TutorLearnCat">Cat.</th>
+                            <th id="TutorLearnPwr">Power</th>
+                            <th id="TutorLearnAcc">Acc</th>
+                            <th id="TutorLearnPP">PP</th>
+                        </tr>
+                    </thead>
+                    <tbody id="TutorMoveBody"></tbody>
+                </table>
+            </div>
+            
+            <div id="EggMoves">
+                <table id="EggMoveTable">
+                    <caption>Egg Moves</caption>
+                    <thead id="EggMoveHead">
+                        <tr>
+                            <th id="EggLearnName">Move</th>
+                            <th id="EggLearnType">Type</th>
+                            <th id="EggLearnCat">Cat.</th>
+                            <th id="EggLearnPwr">Power</th>
+                            <th id="EggLearnAcc">Acc</th>
+                            <th id="EggLearnPP">PP</th>
+                        </tr>
+                    </thead>
+                    <tbody id="EggMoveBody"></tbody>
+                </table>
+            </div>
+            
+            <div>
+                <table>
+                    <caption>Event Move</caption>
+                    <thead>
+                        <tr></tr>
+                    </thead>
+                    <tbody id="EventMoveBody"></tbody>
+                </table>  
+            </div>
+            
+        </div>
+    </div>
+    
+    <div id="border"></div>
+    
+    <div class="main" id="Main">
+        
+        <h1>
+            Radical Red Dex
+        </h1>
+        
+        <div class="SearchBar">
+            <input type="text" placeholder="Search..." id="SearchBar" onkeyup="Search()">
+        </div>
+        
+        <div class="TabChoice">
+            <button class="ChoiceBtn">Abilities</button>
+            <button class="ChoiceBtn">Species</button>
+            <button class="ChoiceBtn">Location</button>
+            <button class="ChoiceBtn">Trainer</button>
+            <button class="ChoiceBtn">Moves</button>
+            <button class="ChoiceBtn">Items</button>
+        </div>
+        
+        <div id="Ability">
+            <table id="AbilityTable">
+                <thead id="AbilityTableHead">
+                    <tr>
+                        <th><button class="SortBtn">Ability</button></th>
+                        <th><button class="SortBtn">Description</button></th>
+                    </tr>
+                </thead>
+                <tbody class="tbody" id="AbilityTableBody"></tbody>
+            </table>
+        </div>
+        
+        <div id="Species">
+            <table id="SpeciesTable">
+                <thead>
+                    <tr>
+                        <th class="UIDHeader"><button class="SortBtn" onclick="SortTable(0)">UID</button></th>
+                        <th class="IDHeader"><button class="SortBtn" onclick="SortTable(1)">#</button></th>
+                        <th class="SpriteHeader"><button class="SortBtn"></button></th>
+                        <th class="NameHeader"><button class="SortBtn" onclick="SortTable(3)">Name</button></th>
+                        <th class="TypeHeader"><button class="SortBtn">Type</button></th>
+                        <th class="AbilityHeader"><button class="SortBtn">Ability</button></th>
+                        <th class="BSTHeader"><button class="SortBtn" onclick="SortTable(6)">BST</button></th>
+                        <th class="StatsHeader"><button class="SortBtn" onclick="SortTable(7)">HP</button></th>
+                        <th class="StatsHeader"><button class="SortBtn" onclick="SortTable(8)">Atk</button></th>
+                        <th class="StatsHeader"><button class="SortBtn" onclick="SortTable(9)">Def</button></th>
+                        <th class="StatsHeader"><button class="SortBtn" onclick="SortTable(10)">SpA</button></th>
+                        <th class="StatsHeader"><button class="SortBtn" onclick="SortTable(11)">SpD</button></th>
+                        <th class="StatsHeader"><button class="SortBtn" onclick="SortTable(12)">Spe</button></th>
+                    </tr>
+                </thead>
+                <tbody class="tbody active" id="SpeciesTableBody"></tbody>
+            </table>
+        </div>
+        
+        <div id="Location">
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Name</th>
+                        <th>Level</th>
+                        <th>ER</th>
+                    </tr>
+                </thead>
+                <tbody class="tbody" id="LocationTableBody"></tbody>
+            </table>
+        </div>
+        
+        <div id="Trainer">
+            <table>
+                
+            </table>
+        </div>
+        
+        <div id="Moves">
+            <table id="MoveTable">
+                <thead id="MoveTableHead">
+                    <tr>
+                        <th class="MNameHeader"><button class="SortBtn">Name</button></th>
+                        <th class="MTypeHeader"><button class="SortBtn">Type</button></th>
+                        <th class="MCatHeader"><button class="SortBtn">Cat.</button></th>
+                        <th class="MPowerHeader"><button class="SortBtn">Pwr</button></th>
+                        <th class="MAccHeader"><button class="SortBtn">Acc</button></th>
+                        <th class="MPPHeader"><button class="SortBtn">PP</button></th>
+                    </tr>
+                </thead>
+                <tbody class="tbody" id="MoveTableBody"></tbody>
+            </table>
+        </div>
+        
+        <div id="Items">
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+    
+    <div id="BackTop" onclick="BackTop()">
+        ↑
+    </div>
+    
+</body>
+
+</html>
