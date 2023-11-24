@@ -1,0 +1,667 @@
+body {
+  margin: 0px;
+  width: 100%;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.main td, th {
+  font-size: 15px;
+  text-align: center;
+  padding: 5px;
+  border-spacing: 0px;
+}
+
+.main tr {
+  border-bottom: 1px solid;
+  border-top: 1px solid;
+  background-color: rgba(150, 212, 212, 0.2);
+}
+
+.main tr:nth-child(even) {
+  background-color: rgba(150, 212, 212, 0.5);
+}
+
+.main tr:hover {
+  background-color: rgba(150, 200, 180, 0.8);
+}
+
+#Species {
+  height: auto;
+  width: 100%;
+}
+
+.SortBtn {
+  border: none;
+  background-color: transparent;
+  height: 30px;
+  font-size: 18px;
+}
+
+.SearchBar {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+
+.TypeBox {
+  display: block;
+  margin: 3px;
+  width: 100%;
+  height: 100%;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  border-radius: 4px;
+  text-shadow: rgba(54, 61, 61, 0.79) 1px 1px;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.UIDHeader {
+  display: none;
+}
+
+@media screen and (min-width: 481px) {
+  .IDHeader { width: 7%; }
+  
+  .SpriteHeader { width: 7%; }
+  
+  .NameHeader { width: 15%; }
+  
+  .TypeHeader { width: 10%; }
+  
+  .AbilityHeader { width: 17%; }
+  
+  .BSTHeader, .StatsHeader { width: 6% }
+  
+  #NumDetail {
+    position: absolute;
+    font-size: 20px;
+    width: 35%;
+    top: 1%;
+    left: 3%;
+  }
+  
+  #TypeDetail {
+    position: absolute;
+    width: 25%;
+    top: 1%;
+    right: 10%;
+  }
+  
+  #SpriteDetail {
+    position: absolute;
+    bottom: 1%;
+    left: 3%;
+    width: 30%;
+  }
+  
+  #AbilityDetail {
+    position: absolute;
+    width: 25%;
+    bottom: 1%;
+    right: 10%;
+  }
+  
+  .generalDetails {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 170px;
+  }
+  
+}
+
+/*Phone  Size*/
+/*@media screen and (max-width: 480px) {*/
+  .IDHeader { width: 12%; }
+  
+  .SpriteHeader { width: 11%; }
+  
+  .NameHeader { width: 25%; }
+  
+  .TypeHeader { width: 23%; }
+  
+  .AbilityHeader { width: 23%; }
+  
+  .BSTHeader { width: 14%; }
+  
+  .StatsHeader { display: none; }
+  
+  .generalDetailsContainer {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto auto;
+    width: 100%;
+  }
+  
+  #NumDetail {
+    padding-left: 2%;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    font-size: 20px;
+    width: 98%;
+  }
+  
+  #SpriteDetail {
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 1;
+    grid-row-end: 2;
+    width: 100%;
+    height: auto;
+  }
+  #SpriteDetail img {
+    width: 64px;
+    height: 64px;
+  }
+  
+  #TypeDetail {
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    width: 100%;
+    height: 12vh;
+  }
+  
+  #AbilityDetail {
+    padding-left: 2%;
+    grid-row-start: 3;
+    grid-row-end: 4;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    width: 98%;
+  }
+  
+  .MNameHeader {
+    width: 35%;
+  }
+  
+  .MTypeHeader {
+    width: 25%;
+  }
+  
+  .MTypeHeader > .TypeBox {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .MCatHeader {
+    width: 15%;
+  }
+  
+  .MPowerHeader {
+    width: 10%;
+  }
+  
+  .MAccHeader {
+    width: 10%;
+  }
+  
+  .MPPHeader {
+    width: 10%;
+  }
+  
+/*}*/
+
+.HABox {
+  font-weight: bold;
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 60px;
+  transition: 0.5s;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 45px;
+  margin-left: 50px;
+}
+
+.openNav {
+  z-index: 1;
+  position: fixed;
+  font-size: 40px;
+  background-color: red;
+  display: block;
+  margin-left: 10px;
+  padding: 1px 15px;
+  border-radius: 25px;
+}
+
+#SpeciesDetail {
+  position: relative;
+  width: 100%;
+  height: auto;
+  overflow-y: auto;
+  display: none;
+}
+
+.headDetailsContainer {
+  position: relative;
+  display: block;
+  height: 100px;
+}
+
+h1 {
+  text-align: center;
+}
+
+#CloseDetail {
+  position: absolute;
+  right: 5px;
+  font-size: 35px;
+  display: block;
+  padding: 1px 10px;
+  border-radius: 25px;
+  background-color: red;
+}
+
+#PrevDetail {
+  position: absolute;
+  left: 15px;
+  font-size: 25px;
+  display: inline-block;
+  padding: 1px 10px;
+  border-radius: 15px;
+  background-color: red;
+}
+
+#NextDetail {
+  position: absolute;
+  right: 15px;
+  font-size: 25px;
+  display: inline-block;
+  padding: 1px 10px;
+  border-radius: 15px;
+  background-color: red;
+}
+
+#UIDDetail {
+  display: none;
+}
+
+.statsDetailsContainer {
+  padding-top: 1%;
+  padding-bottom: 1%;
+  position: relative;
+  display: block;
+  
+}
+
+.othersDetailsContainer {
+  position: relative;
+  display: block;
+}
+
+#TypeDetail > Div {
+  width: 25vw;
+  height: auto
+}
+
+#statsTable {
+  width: 85%;
+  margin-left: 2%;
+}
+
+#statsTable tr {
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+}
+
+#statsTable th {
+  text-align: left;
+  width: 10%;
+}
+
+#statsTable .statsNum {
+  text-align: right;
+  width: 15%;
+  padding: 3%;
+}
+
+#LocationDetail {
+  width: 60%;
+  margin: 1%;
+  padding: 2%;
+}
+
+#LocationDetail::first-line {
+  font-weight: bold;
+}
+
+#HeldItemDetail {
+  width: 60%;
+  margin: 1%;
+  padding: 2%;
+}
+
+#HeldItemDetail::first-line {
+  font-weight: bold;
+}
+
+#EggGroupDetail {
+  width: 60%;
+  margin: 1%;
+  padding: 2%;
+}
+
+#EggGroupDetail::first-line {
+  font-weight: bold;
+}
+
+#EvoDetail {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 5% 30% 30% 30% 5%;
+  grid-template-rows: auto auto auto auto auto;
+  text-align: center;
+}
+
+#EvoDetail::first-line {
+  font-weight: bold;
+}
+
+.ArrowBox {
+  font-size: 30px;
+  font-weight: bold;
+  height: auto;
+}
+
+.EvoSpriteBox img {
+  width: 64px;
+  height: 64px;
+  margin: auto;
+  display: block;
+  padding: 2px;
+}
+
+.EvoTypeBox {
+  width: 100%;
+  margin: auto;
+  display: block;
+}
+
+.EvoTypeBox > Div {
+  height: auto
+}
+
+.EvoTextBox {
+  margin: 1%;
+  padding: 2%;
+  text-align: left;
+  grid-column-start: 1;
+  grid-column-end: 6;
+}
+
+.EvoTextBox::first-line {
+  font-weight: bold;
+}
+
+.EvolutionBox {
+  width: 100%;
+  display: block;
+  align-self: center;
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+
+.DetailedBox {
+  width: 100%;
+  height: auto;
+  display: block;
+  align-self: center;
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+.WrapperBox {
+  width: 100%;
+  display: grid;
+  height: auto;
+  grid-template-columns: auto auto;
+}
+
+.EvoContainer {
+  grid-column-start: 3;
+  grid-column-end: 4;
+}
+
+.EvoContainerS1 {
+  grid-row-start: 5;
+  grid-row-end: 6;
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+.EvoContainerS2 {
+  grid-row-start: 5;
+  grid-row-end: 6;
+  grid-column-start: 4;
+  grid-column-end: 5;
+}
+
+.EvoContainerS3 {
+  grid-row-start: 5;
+  grid-row-end: 6;
+  grid-column-start: 3;
+  grid-column-end: 4;
+}
+
+.EvoContainerS1 > .WrapperBox,
+.EvoContainerS2 > .WrapperBox,
+.EvoContainerS3 > .WrapperBox {
+  display: block;
+}
+
+#Ability, #Location, #Trainer,
+#Moves, #Items  {
+  display: none;
+}
+
+.TabChoice {
+  width: 80%;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto auto;
+  margin: auto;
+}
+
+.ChoiceBtn {
+  border: 1px solid black;
+  background-color: transparent;
+  margin: 3px;
+  padding: 3px;
+}
+
+.ChoiceBtn:nth-child(2) {
+  background-color: red;
+}
+
+caption {
+  font-weight: bold
+}
+
+.LMoveDetailsContainer {
+  width: 100%;
+  display: block;
+  height: auto;
+  text-align: center;
+  margin-top: 2%;
+}
+
+#LvlMoves {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+#TMMoves {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+#TutorMoves {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+#EggMoves {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+#LvLearn {
+  width: 7%;
+}
+
+#LvLearnName {
+  width: 26%;
+}
+
+#LvLearnType {
+  width: 21%;
+}
+
+#LvLearnCat {
+  width: 12%;
+}
+
+#LvLearnPwr {
+  width: 12%;
+}
+
+#LvLearnAcc {
+  width: 12%;
+}
+
+#LvLearnPP {
+  width: 10%;
+}
+
+.dark-mode {
+  background-color: black;
+  color: white;
+}
+
+.LMoveDetailsContainer td, th {
+  font-size: 15px;
+  text-align: center;
+  padding: 5px;
+  border-spacing: 0px;
+}
+
+.LMoveDetailsContainer tr {
+  border-bottom: 1px solid;
+  border-top: 1px solid;
+  background-color: rgba(150, 212, 212, 0.2);
+}
+
+.LMoveDetailsContainer tr:nth-child(even) {
+  background-color: rgba(150, 212, 212, 0.5);
+}
+
+.LMoveDetailsContainer tr:hover {
+  background-color: rgba(150, 200, 180, 0.8);
+}
+
+#BackTop {
+  display: none;
+  position: fixed;
+  bottom: 30px;
+  right: 15px;
+  font-size: 35px;
+  padding: 5px 20px;
+  background-color: red;
+  border-radius: 30px;
+}
+
+.GrassBox { background-color: rgb(98, 161, 61); }
+
+.FireBox { background-color: rgb(238, 129, 48); }
+
+.WaterBox { background-color: rgb(99, 144, 240); }
+
+.BugBox { background-color: rgb(128, 143, 19); }
+
+.PoisonBox { background-color: rgb(163, 62, 161); }
+
+.NormalBox { background-color: rgb(168, 167, 122); }
+
+.FlyingBox { background-color: rgb(133, 113, 190); }
+
+.DarkBox { background-color: rgb(112, 87, 70); }
+
+.ElectricBox { background-color: rgb(207, 154, 9); }
+
+.GroundBox { background-color: rgb(177, 149, 79); }
+
+.FairyBox { background-color: rgb(214, 133, 173); }
+
+.PsychicBox { background-color: rgb(249, 85, 135); }
+
+.FightingBox { background-color: rgb(194, 46, 40); }
+
+.RockBox { background-color: rgb(182, 161, 54); }
+
+.SteelBox { background-color: rgb(140, 140, 158); }
+
+.IceBox { background-color: rgb(101, 161, 158); }
+
+.GhostBox { background-color: rgb(115, 87, 151); }
+
+.DragonBox { background-color: rgb(111, 53, 252); }
+
+.undefinedBox { display: none; }
+
+.LocationRow {
+  width: 100%;
+  background-color: transparent !important;
+  border-top: 0px !important;
+  border-bottom: 0px !important;
+}
+
+.LocationTables {
+  column-span: 3;
+  width: 100%;
+  background-color: blue;
+  margin-top: 40px;
+}
