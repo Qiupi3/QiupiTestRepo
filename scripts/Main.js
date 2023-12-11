@@ -15,26 +15,34 @@ window.onload = function() {
         ReqSpeciesData();
         ReqLocationData();
         //ReqTrainerData();
-        ReqMoveData();
-        ReqItemsData();
-        ReqLearnsetData();
+        //ReqMoveData();
+        //ReqItemsData();
+        //ReqLearnsetData();
     }
 }
 
-function ReqAbilityData() {
-    const ReqData = new XMLHttpRequest();
+async function ReqAbilityData() {
+    const resp = await fetch("data/Ability.json");
+    const content = await resp.json();
+    window.localStorage.setItem("Ability", JSON.stringify(content));
+    /*const ReqData = new XMLHttpRequest();
     ReqData.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var AbilityData = this.responseText;
             window.localStorage.setItem("Ability", AbilityData);
         }
     };
-    ReqData.open("POST", "data/newability.json", true);
+    ReqData.open("POST", "data/Ability.json", true);
     ReqData.send();
+    */
 }
 
-function ReqSpeciesData() {
-    const ReqData = new XMLHttpRequest();
+async function ReqSpeciesData() {
+    const resp = await fetch("data/Species.json");
+    const content = await resp.json();
+    window.localStorage.setItem("Species", JSON.stringify(content));
+    SpeciesFunction();
+    /*const ReqData = new XMLHttpRequest();
     ReqData.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var SpeciesData = this.responseText;
@@ -42,23 +50,25 @@ function ReqSpeciesData() {
             SpeciesFunction();
         }
     };
-    ReqData.open("POST", "data/newspecies.json", true);
+    ReqData.open("POST", "data/Species.json", true);
     ReqData.send();
+    */
 }
 
-function ReqLocationData() {
-    const ReqData = new XMLHttpRequest();
+async function ReqLocationData() {
+    /*const ReqData = new XMLHttpRequest();
     ReqData.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var LocationData = this.responseText;
             window.localStorage.setItem("Location", LocationData);
         }
     };
-    ReqData.open("POST", "data/newlocation.json", true);
+    ReqData.open("POST", "data/Location.json", true);
     ReqData.send();
+    */
 }
 
-function ReqMoveData() {
+/*function ReqMoveData() {
     const ReqData = new XMLHttpRequest();
     ReqData.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -66,7 +76,7 @@ function ReqMoveData() {
             window.localStorage.setItem("Move", MoveData);
         }
     };
-    ReqData.open("POST", "data/newmove.json", true);
+    ReqData.open("POST", "data/Move.json", true);
     ReqData.send();
 }
 
@@ -78,7 +88,7 @@ function ReqItemsData() {
             window.localStorage.setItem("Item", ItemData);
         }
     };
-    ReqData.open("POST", "data/newitems.json", true);
+    ReqData.open("POST", "data/Items.json", true);
     ReqData.send();
 }
 
@@ -90,10 +100,9 @@ function ReqLearnsetData() {
             window.localStorage.setItem("Learnset", LearnsetData);
         }
     };
-    ReqData.open("POST", "data/newlearnset.json", true);
+    ReqData.open("POST", "data/Learnset.json", true);
     ReqData.send();
-}
-
+}*/
 function RenderAbilityTable(Ability) {
     const AbilityTable = document.getElementById("AbilityTableBody");
     const Row = document.createElement("tr");
