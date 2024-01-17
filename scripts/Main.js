@@ -203,7 +203,7 @@ function RenderLocationTable(Loc) {
         let NameCell = document.createElement("td");
         let LvCell = document.createElement("td");
         let ERCell = document.createElement("td");
-        SUIDCell.innerHTML = '<img src="data/Sprite/' + LocationSpeciesArr[x] + '.png">';
+        SUIDCell.innerHTML = '<img src="sprite/spr' + LocationSpeciesArr[x] + '.png">';
         NameCell.innerText = LocationSpeciesArr[x];
         LvCell.innerText = LocationLvArr[x];
         ERCell.innerText = LocationERArr[x];
