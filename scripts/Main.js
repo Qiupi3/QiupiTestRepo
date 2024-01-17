@@ -140,7 +140,7 @@ function RenderSpeciesTable(Species) {
     const SpeCell = document.createElement("td");
     
     IDCell.innerText = Species.SID;
-    SpriteCell.innerHTML = "<img src='sprite/spr" + Species.SUID + ".png'>";
+    SpriteCell.innerHTML = "<img src='sprite/spr/" + Species.SUID + ".png'>";
     NameCell.innerText = Species.Name;
     TypeCell.innerHTML = TypeBox(Species.Type).innerHTML
     AbilityCell.innerHTML = AbilityBox(Species.Ability, false).innerHTML
@@ -203,7 +203,7 @@ function RenderLocationTable(Loc) {
         let NameCell = document.createElement("td");
         let LvCell = document.createElement("td");
         let ERCell = document.createElement("td");
-        SUIDCell.innerHTML = '<img src="sprite/spr' + LocationSpeciesArr[x] + '.png">';
+        SUIDCell.innerHTML = '<img src="sprite/spr/' + LocationSpeciesArr[x] + '.png">';
         NameCell.innerText = LocationSpeciesArr[x];
         LvCell.innerText = LocationLvArr[x];
         ERCell.innerText = LocationERArr[x];
