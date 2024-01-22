@@ -4,6 +4,7 @@
 
 window.onload = function() {
     localStorage.clear();
+    console.log(1)
     var Status = localStorage.getItem("Status");
     if (Status) {
         var timerStart = Date.now();
