@@ -81,7 +81,7 @@ function RenderAbilityTable(Ability) {
 function RenderSpeciesTable(Species) {
     const SpeciesTable = document.getElementById("SpeciesTableBody");
     const Row = document.createElement("tr");
-    
+    const Sprite = new Image();
     const IDCell = document.createElement("td");
     const SpriteCell = document.createElement("td");
     const NameCell = document.createElement("td");
@@ -94,9 +94,13 @@ function RenderSpeciesTable(Species) {
     const SpACell = document.createElement("td");
     const SpDCell = document.createElement("td");
     const SpeCell = document.createElement("td");
-    
+
+    let src = Promise.resolve(removeBg("Assets/Sprite/" + Species.SUID + ".png"));
+    src.then((value) => {
+        Sprite.src = value;
+    });
     IDCell.innerText = Species.SID;
-    SpriteCell.innerHTML = "<img src=" + removeBg("Assets/Sprite/" + Species.SUID + ".png") + ">";
+    SpriteCell.innerHTML = Sprite.innerHTML;
     NameCell.innerText = Species.Name;
     TypeCell.innerHTML = TypeBox(Species.Type).innerHTML
     AbilityCell.innerHTML = AbilityBox(Species.Ability, false).innerHTML
