@@ -96,7 +96,7 @@ function RenderSpeciesTable(Species) {
     const SpeCell = document.createElement("td");
     
     IDCell.innerText = Species.SID;
-    SpriteCell.innerHTML = removeBg("Assets/Sprite/" + Species.SUID + ".png");
+    SpriteCell.innerHTML = "<img src=" + removeBg("Assets/Sprite/" + Species.SUID + ".png") + ">";
     NameCell.innerText = Species.Name;
     TypeCell.innerHTML = TypeBox(Species.Type).innerHTML
     AbilityCell.innerHTML = AbilityBox(Species.Ability, false).innerHTML
