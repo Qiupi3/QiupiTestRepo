@@ -96,7 +96,7 @@ function RenderSpeciesTable(Species) {
     const SpeCell = document.createElement("td");
     
     IDCell.innerText = Species.SID;
-    SpriteCell.innerHTML = "<img src='Assets/Sprite/" + Species.SUID + ".png'>";
+    SpriteCell.innerHTML = removeBg("Assets/Sprite/" + Species.SUID + ".png");
     NameCell.innerText = Species.Name;
     TypeCell.innerHTML = TypeBox(Species.Type).innerHTML
     AbilityCell.innerHTML = AbilityBox(Species.Ability, false).innerHTML
@@ -310,4 +310,33 @@ function TypeBox(Type) {
         TypeCell.appendChild(TypeBox);
     }
     return TypeCell;
+}
+
+function removeBg(sprite) {
+    let img = new Image()
+    img.src = sprite
+    let canvas = document.createElement("canvas");
+    canvas.width = 64
+    canvas.height = 64
+    
+    const context = canvas.getContext('2d')
+    context.clearRect(0, 0, canvas.width, canvas.height)
+    context.drawImage(img, 0, 0)
+    const imageData = context.getImageData(0, 0, canvas.width, canvas.height)
+    const backgroundColor = []
+    for (let i = 0; i < 4; i++) {
+        backgroundColor.push(imageData.data[i])
+    }
+    
+    for (let i = 0; i < imageData.data.length; i += 4) {
+        if (
+        imageData.data[i] === backgroundColor[0] &&
+        imageData.data[i + 1] === backgroundColor[1] &&
+        imageData.data[i + 2] === backgroundColor[2]
+        )
+            imageData.data[i + 3] = 0
+    }
+    
+    context.putImageData(imageData, 0, 0)
+    return canvas.toDataURL("image/png")
 }
