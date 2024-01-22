@@ -22,87 +22,42 @@ window.onload = function() {
 }
 
 async function ReqAbilityData() {
-    const resp = await fetch("data/Ability.json");
+    const resp = await fetch("Data/Ability.json");
     const content = await resp.json();
     window.localStorage.setItem("Ability", JSON.stringify(content));
-    /*const ReqData = new XMLHttpRequest();
-    ReqData.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            var AbilityData = this.responseText;
-            window.localStorage.setItem("Ability", AbilityData);
-        }
-    };
-    ReqData.open("POST", "data/Ability.json", true);
-    ReqData.send();
-    */
 }
 
 async function ReqSpeciesData() {
-    const resp = await fetch("data/Species.json");
+    const resp = await fetch("Data/Species.json");
     const content = await resp.json();
     window.localStorage.setItem("Species", JSON.stringify(content));
     SpeciesFunction();
-    /*const ReqData = new XMLHttpRequest();
-    ReqData.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            var SpeciesData = this.responseText;
-            window.localStorage.setItem("Species", SpeciesData);
-            SpeciesFunction();
-        }
-    };
-    ReqData.open("POST", "data/Species.json", true);
-    ReqData.send();
-    */
 }
 
 async function ReqLocationData() {
-    /*const ReqData = new XMLHttpRequest();
-    ReqData.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            var LocationData = this.responseText;
-            window.localStorage.setItem("Location", LocationData);
-        }
-    };
-    ReqData.open("POST", "data/Location.json", true);
-    ReqData.send();
-    */
+    const resp = await fetch("Data/Location.json");
+    const content = await resp.json();
+    window.localStorage.setItem("Location", JSON.stringify(content));
 }
 
-/*function ReqMoveData() {
-    const ReqData = new XMLHttpRequest();
-    ReqData.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            var MoveData = this.responseText;
-            window.localStorage.setItem("Move", MoveData);
-        }
-    };
-    ReqData.open("POST", "data/Move.json", true);
-    ReqData.send();
+async function ReqMoveData() {
+    const resp = await fetch("Data/Move.json");
+    const content = await resp.json();
+    window.localStorage.setItem("Move", JSON.stringify(content));    
 }
 
-function ReqItemsData() {
-    const ReqData = new XMLHttpRequest();
-    ReqData.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            var ItemData = this.responseText;
-            window.localStorage.setItem("Item", ItemData);
-        }
-    };
-    ReqData.open("POST", "data/Items.json", true);
-    ReqData.send();
+async function ReqItemsData() {
+    const resp = await fetch("Data/Items.json");
+    const content = await resp.json();
+    window.localStorage.setItem("Items", JSON.stringify(content));    
 }
 
-function ReqLearnsetData() {
-    const ReqData = new XMLHttpRequest();
-    ReqData.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            var LearnsetData = this.responseText;
-            window.localStorage.setItem("Learnset", LearnsetData);
-        }
-    };
-    ReqData.open("POST", "data/Learnset.json", true);
-    ReqData.send();
-}*/
+async function ReqLearnsetData() {
+    const resp = await fetch("Data/Learnset.json");
+    const content = await resp.json();
+    window.localStorage.setItem("Learnset", JSON.stringify(content));    
+}
+
 function RenderAbilityTable(Ability) {
     const AbilityTable = document.getElementById("AbilityTableBody");
     const Row = document.createElement("tr");
@@ -116,6 +71,7 @@ function RenderAbilityTable(Ability) {
         
     Row.setAttribute("id", Ability.UID);
     if (Ability.Replacement != "0") {
+        Row.className += "RestrictedAbility"
         NameBox.style.color = "red";
         DescBox.style.color = "red";
     }
@@ -140,7 +96,7 @@ function RenderSpeciesTable(Species) {
     const SpeCell = document.createElement("td");
     
     IDCell.innerText = Species.SID;
-    SpriteCell.innerHTML = "<img src='sprite/spr/" + Species.SUID + ".png'>";
+    SpriteCell.innerHTML = "<img src='Assets/Sprite/" + Species.SUID + ".png'>";
     NameCell.innerText = Species.Name;
     TypeCell.innerHTML = TypeBox(Species.Type).innerHTML
     AbilityCell.innerHTML = AbilityBox(Species.Ability, false).innerHTML
@@ -203,7 +159,7 @@ function RenderLocationTable(Loc) {
         let NameCell = document.createElement("td");
         let LvCell = document.createElement("td");
         let ERCell = document.createElement("td");
-        SUIDCell.innerHTML = '<img src="sprite/spr/' + LocationSpeciesArr[x] + '.png">';
+        SUIDCell.innerHTML = '<img src="Assets/Sprite/' + LocationSpeciesArr[x] + '.png">';
         NameCell.innerText = LocationSpeciesArr[x];
         LvCell.innerText = LocationLvArr[x];
         ERCell.innerText = LocationERArr[x];
