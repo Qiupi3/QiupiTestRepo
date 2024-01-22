@@ -114,6 +114,7 @@ function mediaSize(Id) {
     const PortraitMobile = window.matchMedia("(max-width: 480px)");
     const Desktop = window.matchMedia("(min-width: 481px)");
     var row = document.getElementById(Id);
+    console.log(1)
     //Check which design is used
     if (PortraitMobile.matches) {
         //Portrait Mobile device, shorter table data
