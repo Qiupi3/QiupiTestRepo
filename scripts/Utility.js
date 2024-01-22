@@ -123,6 +123,7 @@ function mediaSize(Id) {
         }
     } else if (Desktop.matches) {
         //Desktop or Landscape mobile, larger table
+        console.log("desktop");
         var td = row.getElementsByTagName("td");
         for (let j = 12; j < td.length; j++) {
             td[j].style.display = "none";
