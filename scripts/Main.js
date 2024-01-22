@@ -327,16 +327,13 @@ function removeBg(sprite) {
     for (let i = 0; i < 4; i++) {
         backgroundColor.push(imageData.data[i])
     }
-    
-    for (let i = 0; i < imageData.data.length; i += 4) {
-        if (
-        imageData.data[i] === backgroundColor[0] &&
-        imageData.data[i + 1] === backgroundColor[1] &&
-        imageData.data[i + 2] === backgroundColor[2]
-        )
-            imageData.data[i + 3] = 0
-    }
-    
-    context.putImageData(imageData, 0, 0)
-    return canvas.toDataURL("image/png")
+        for (let i = 0; i < imageData.data.length; i += 4) {
+            if (
+            imageData.data[i] === backgroundColor[0] &&
+            imageData.data[i + 1] === backgroundColor[1] &&
+            imageData.data[i + 2] === backgroundColor[2]
+            ) imageData.data[i + 3] = 0
+        }
+            context.putImageData(imageData, 0, 0)
+            return canvas.toDataURL("image/png")
 }
