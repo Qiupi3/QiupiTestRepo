@@ -22,38 +22,38 @@ window.onload = function() {
 }
 
 async function ReqAbilityData() {
-    const resp = await fetch("Data/Ability.json");
+    const resp = await fetch("data/Ability.json");
     const content = await resp.json();
     window.localStorage.setItem("Ability", JSON.stringify(content));
 }
 
 async function ReqSpeciesData() {
-    const resp = await fetch("Data/Species.json");
+    const resp = await fetch("data/Species.json");
     const content = await resp.json();
     window.localStorage.setItem("Species", JSON.stringify(content));
     SpeciesFunction();
 }
 
 async function ReqLocationData() {
-    const resp = await fetch("Data/Location.json");
+    const resp = await fetch("data/Location.json");
     const content = await resp.json();
     window.localStorage.setItem("Location", JSON.stringify(content));
 }
 
 async function ReqMoveData() {
-    const resp = await fetch("Data/Move.json");
+    const resp = await fetch("data/Move.json");
     const content = await resp.json();
     window.localStorage.setItem("Move", JSON.stringify(content));    
 }
 
 async function ReqItemsData() {
-    const resp = await fetch("Data/Items.json");
+    const resp = await fetch("data/Items.json");
     const content = await resp.json();
     window.localStorage.setItem("Items", JSON.stringify(content));    
 }
 
 async function ReqLearnsetData() {
-    const resp = await fetch("Data/Learnset.json");
+    const resp = await fetch("data/Learnset.json");
     const content = await resp.json();
     window.localStorage.setItem("Learnset", JSON.stringify(content));    
 }
