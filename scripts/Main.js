@@ -4,7 +4,6 @@
 
 window.onload = function() {
     localStorage.clear();
-    console.log("aaa")
     var Status = localStorage.getItem("Status");
     if (Status) {
         var timerStart = Date.now();
@@ -125,7 +124,6 @@ function RenderSpeciesTable(Species) {
     Row.setAttribute("id", Species.UID);
     Row.setAttribute("onclick", "OpenDetails(" + Species.UID + ")");
     SpeciesTable.appendChild(Row);
-    console.log(1)
     mediaSize(Species.UID);
 }
 

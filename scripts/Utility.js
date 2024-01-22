@@ -114,7 +114,6 @@ function mediaSize(Id) {
     const PortraitMobile = window.matchMedia("(max-width: 480px)");
     const Desktop = window.matchMedia("(min-width: 481px)");
     var row = document.getElementById(Id);
-    console.log(1)
     //Check which design is used
     if (PortraitMobile.matches) {
         //Portrait Mobile device, shorter table data
@@ -124,7 +123,6 @@ function mediaSize(Id) {
         }
     } else if (Desktop.matches) {
         //Desktop or Landscape mobile, larger table
-        console.log("desktop");
         var td = row.getElementsByTagName("td");
         for (let j = 12; j < td.length; j++) {
             td[j].style.display = "none";
