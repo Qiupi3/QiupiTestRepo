@@ -100,7 +100,7 @@ function RenderSpeciesTable(Species) {
         Sprite.src = value;
     });
     IDCell.innerText = Species.SID;
-    SpriteCell.innerHTML = Sprite.innerHTML;
+    SpriteCell.appendChild(Sprite);
     NameCell.innerText = Species.Name;
     TypeCell.innerHTML = TypeBox(Species.Type).innerHTML
     AbilityCell.innerHTML = AbilityBox(Species.Ability, false).innerHTML
