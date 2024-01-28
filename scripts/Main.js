@@ -3,7 +3,7 @@
 //Fetching all Species Data when page is loaded then render them into Table by Function
 
 window.onload = function() {
-    localStorage.clear();
+    //localStorage.clear();
     var Status = localStorage.getItem("Status");
     if (Status) {
         var timerStart = Date.now();
@@ -11,6 +11,7 @@ window.onload = function() {
         console.log("Time until Table Rendered: ", Date.now()-timerStart);
     } else {
         window.localStorage.setItem("Status", "OK")
+        ReqSpriteData();
         ReqAbilityData();
         ReqSpeciesData();
         ReqLocationData();
@@ -18,7 +19,15 @@ window.onload = function() {
         //ReqMoveData();
         //ReqItemsData();
         //ReqLearnsetData();
+        
     }
+}
+
+async function ReqSpriteData() {
+    const resp = await fetch("data/Sprite.json");
+    const content = await resp.json();
+    window.localStorage.setItem("Sprite", JSON.stringify(content));
+    window.location = window.location;
 }
 
 async function ReqAbilityData() {
@@ -31,7 +40,6 @@ async function ReqSpeciesData() {
     const resp = await fetch("data/Species.json");
     const content = await resp.json();
     window.localStorage.setItem("Species", JSON.stringify(content));
-    SpeciesFunction();
 }
 
 async function ReqLocationData() {
@@ -81,7 +89,6 @@ function RenderAbilityTable(Ability) {
 function RenderSpeciesTable(Species) {
     const SpeciesTable = document.getElementById("SpeciesTableBody");
     const Row = document.createElement("tr");
-    const Sprite = new Image();
     const IDCell = document.createElement("td");
     const SpriteCell = document.createElement("td");
     const NameCell = document.createElement("td");
@@ -95,10 +102,7 @@ function RenderSpeciesTable(Species) {
     const SpDCell = document.createElement("td");
     const SpeCell = document.createElement("td");
 
-    let src = Promise.resolve(removeBg("Assets/Sprite/" + Species.SUID + ".png"));
-    src.then((value) => {
-        Sprite.src = value;
-    });
+    let Sprite = SpriteImg(Species.UID)
     IDCell.innerText = Species.SID;
     SpriteCell.appendChild(Sprite);
     NameCell.innerText = Species.Name;
@@ -316,28 +320,10 @@ function TypeBox(Type) {
     return TypeCell;
 }
 
-function removeBg(sprite) {
-    let img = new Image()
-    img.src = sprite
-    let canvas = document.createElement("canvas");
-    canvas.width = 64
-    canvas.height = 64
-    
-    const context = canvas.getContext('2d')
-    context.clearRect(0, 0, canvas.width, canvas.height)
-    context.drawImage(img, 0, 0)
-    const imageData = context.getImageData(0, 0, canvas.width, canvas.height)
-    const backgroundColor = []
-    for (let i = 0; i < 4; i++) {
-        backgroundColor.push(imageData.data[i])
-    }
-        for (let i = 0; i < imageData.data.length; i += 4) {
-            if (
-            imageData.data[i] === backgroundColor[0] &&
-            imageData.data[i + 1] === backgroundColor[1] &&
-            imageData.data[i + 2] === backgroundColor[2]
-            ) imageData.data[i + 3] = 0
-        }
-            context.putImageData(imageData, 0, 0)
-            return canvas.toDataURL("image/png")
+function SpriteImg(UID) {
+    let Img = new Image();
+    let Base64 = SpriteData[UID - 1].Base;
+    //console.log(Base64)
+    Img.src = Base64;
+    return Img;
 }

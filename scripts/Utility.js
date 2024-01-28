@@ -184,6 +184,7 @@ var TrainerData = JSON.parse(localStorage.getItem("Trainer"));
 var MovesData = JSON.parse(localStorage.getItem("Move"));
 var ItemsData = JSON.parse(localStorage.getItem("Item"));
 var LearnsetData = JSON.parse(localStorage.getItem("Learnset"));
+var SpriteData = JSON.parse(localStorage.getItem("Sprite"));
 
 function AbilityFunction() {
     LazyLoad(Ability, true);
