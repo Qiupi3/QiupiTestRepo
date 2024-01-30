@@ -122,8 +122,8 @@ img {
   
 }
 
-/*Small Phone  Size*/
-@media screen and (max-width: 400px) {
+/*Phone  Size*/
+@media screen and (max-width: 480px) {
   .IDHeader { width: 10%; }
   
   .SpriteHeader { width: 15%; }
