@@ -182,7 +182,7 @@ var SpeciesData = JSON.parse(localStorage.getItem("Species"));
 var LocationData = JSON.parse(localStorage.getItem("Location"));
 var TrainerData = JSON.parse(localStorage.getItem("Trainer"));
 var MovesData = JSON.parse(localStorage.getItem("Move"));
-var ItemsData = JSON.parse(localStorage.getItem("Item"));
+var ItemsData = JSON.parse(localStorage.getItem("Items"));
 var LearnsetData = JSON.parse(localStorage.getItem("Learnset"));
 var SpriteData = JSON.parse(localStorage.getItem("Sprite"));
 

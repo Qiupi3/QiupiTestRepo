@@ -18,9 +18,12 @@ function OpenDetails(SpeciesID) {
     const EggGroup = document.getElementById("EggGroupDetail");
     const Evolution = document.getElementById("EvoDetail");
     
+    let SpriteImage = SpriteImg(Species.UID)
+
     UID.innerText = Species.UID;
     Num.innerText = "#" + Species.SID + " " + Species.Name;
-    Sprite.innerHTML = "<img src='data/Sprite/" + Species.SUID + ".png'>";
+    Sprite.innerHTML = "";
+    Sprite.appendChild(SpriteImage);
     Type.innerHTML = "Type :" + TypeBox(Species.Type).innerHTML
     Ability.innerHTML = "Ability :" + AbilityBox(Species.Ability, true).innerHTML;
     
@@ -67,10 +70,11 @@ function OpenDetails(SpeciesID) {
     const SpeciesHeld = splitFunc(Species.Held);
     const SpeciesChance = splitFunc(Species.Chance);
     HeldItem.innerText = "Held Item : \n";
-    if (SpeciesHeld != "None") {
+    if (SpeciesHeld != "-") {
         for (let x = 0; x < SpeciesHeld.length; x++) {
             let HeldIndex = SpeciesHeld[x] - 60001;
             let HeldObj = ItemsData[HeldIndex];
+            console.log(HeldObj)
             HeldItem.innerText += "• " + HeldObj.Name
             + " " + SpeciesChance[x] + "\n";
         }
@@ -137,7 +141,7 @@ function OpenDetails(SpeciesID) {
     }
     
     RenderLearnsetTable(Species.UID, Species.Name);
-    location.href="#SpeciesDetail";
+    //location.href="#SpeciesDetail";
     //console.log("Time until Detail Rendered: ", Date.now()-timerStart);
 }
 
@@ -179,7 +183,8 @@ function CreateEvoBox(Id) {
     let NameBox = document.createElement("div");
     NameBox.setAttribute("class", "EvoNameBox")
     
-    SpriteBox.innerHTML = "<img src='data/Sprite/" + Species.SUID + ".png'>"
+    let Sprite = SpriteImg(Id)
+    SpriteBox.appendChild(Sprite)
     NameBox.innerText = Species.Name;
     let TypeCell = TypeBox(Species.Type);
     TypeCell.setAttribute("class", "EvoTypeBox")
@@ -290,7 +295,7 @@ function CreateMoveRow(Lv, Move) {
         if (j == 2) {
             cell.innerHTML = TypeBox(MoveValue[j]).innerHTML;
         } else if (j == 3) {
-            cell.innerHTML = "<img src='data/ImgType/" + MoveValue[j] + ".png'>";
+            cell.innerHTML = "<img src='Assets/" + MoveValue[j] + ".png'>";
         } else {
             cell.innerText = MoveValue[j];
         }

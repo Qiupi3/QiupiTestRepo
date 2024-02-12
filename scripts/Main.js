@@ -16,10 +16,9 @@ window.onload = function() {
         ReqSpeciesData();
         ReqLocationData();
         //ReqTrainerData();
-        //ReqMoveData();
-        //ReqItemsData();
-        //ReqLearnsetData();
-        
+        ReqMoveData();
+        ReqItemsData();
+        ReqLearnsetData();
     }
 }
 
