@@ -227,7 +227,7 @@ function RenderLearnsetTable(SpeciesID, Name) {
             PreEvoTable.appendChild(row)
         }
     } else {
-        PreEvoTable.innerText = Name + " does not learn any TM Move."
+        PreEvoTable.appendChild(CreateText(Name, "Pre-Evo"));
     }
     
     LevelupTable.innerHTML = "";
@@ -237,7 +237,7 @@ function RenderLearnsetTable(SpeciesID, Name) {
             LevelupTable.appendChild(row)
         }
     } else {
-        LevelupTable.innerText = Name + " does not learn any Levelup Move."
+        LevelupTable.appendChild(CreateText(Name, "Level-Up"))
     }
     
     TMTable.innerHTML = "";
@@ -247,7 +247,7 @@ function RenderLearnsetTable(SpeciesID, Name) {
             TMTable.appendChild(row)
         }
     } else {
-        TMTable.innerText = Name + " does not learn any TM Move."
+        TMTable.appendChild(CreateText(Name, "TM"))
     }
     
     TutorTable.innerHTML = "";
@@ -257,7 +257,7 @@ function RenderLearnsetTable(SpeciesID, Name) {
             TutorTable.appendChild(row)
         }
     } else {
-        TutorTable.innerText = Name + " does not learn any Tutor Move."
+        TutorTable.appendChild(CreateText(Name, "Tutor"))
     }
     
     EggTable.innerHTML = "";
@@ -267,7 +267,7 @@ function RenderLearnsetTable(SpeciesID, Name) {
             EggTable.appendChild(row)
         }
     } else {
-        EggTable.innerText = Name + " does not learn any Egg Move."
+        EggTable.appendChild(CreateText(Name, "Egg"))
     }
     
     EventTable.innerHTML = "";
@@ -277,7 +277,7 @@ function RenderLearnsetTable(SpeciesID, Name) {
             EventTable.appendChild(row)
         }
     } else {
-        EventTable.innerText = Name + " does not learn any Egg Move."
+        EventTable.appendChild(CreateText(Name, "Event"))
     }
 }
 
@@ -306,4 +306,12 @@ function CreateMoveRow(Lv, Move) {
     Row.setAttribute("onclick", "OpenMoveDetail(" + Move.UID + ")")
     
     return Row
+}
+
+function CreateText(Name, Type) {
+    let Box = document.createElement("div");
+    let Text = Name + " does not learn any " + Type + " move."
+    Box.innerText = Text;
+    Box.setAttribute("class", "LearnSetBody");
+    return Box;
 }

@@ -586,7 +586,7 @@ caption {
 }
 
 .LMoveDetailsContainer td, .LMoveDetailsContainer th {
-  font-size: 15px;
+  font-size: 70%;
   text-align: center;
   padding: 5px;
   border-spacing: 0px;
@@ -667,4 +667,8 @@ caption {
   width: 100%;
   background-color: blue;
   margin-top: 40px;
+}
+
+.LearnSetBody {
+  width: 100vw;
 }
