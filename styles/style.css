@@ -10,7 +10,7 @@ table {
 }
 
 .main td, th {
-  font-size: 70%;
+  font-size: 60%;
   text-align: center;
   padding: 1%;
   border-spacing: 0px;
@@ -72,18 +72,22 @@ img {
 }
 
 @media screen and (min-width: 481px) {
-  .IDHeader { width: 7%; }
+  .IDHeader { width: 5%; }
   
-  .SpriteHeader { width: 7%; }
+  .SpriteHeader { width: 10%; }
   
-  .NameHeader { width: 15%; }
+  .NameHeader { width: 10%; }
   
   .TypeHeader { width: 10%; }
   
-  .AbilityHeader { width: 17%; }
+  .AbilityHeader { width: 20%; }
   
-  .BSTHeader, .StatsHeader { width: 6% }
-  
+  .BSTHeader, .StatsHeader { width: 5%; }
+
+  .SortBtn {
+    padding: 0px;
+  }
+
   #NumDetail {
     position: absolute;
     font-size: 20px;
@@ -123,7 +127,7 @@ img {
 }
 
 /*Small Phone  Size*/
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 480px) {
   .IDHeader { width: 10%; }
   
   .SpriteHeader { width: 15%; }
@@ -581,7 +585,7 @@ caption {
   color: white;
 }
 
-.LMoveDetailsContainer td, th {
+.LMoveDetailsContainer td, .LMoveDetailsContainer th {
   font-size: 15px;
   text-align: center;
   padding: 5px;
