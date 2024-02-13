@@ -165,7 +165,9 @@ function RenderLocationTable(Loc) {
         let NameCell = document.createElement("td");
         let LvCell = document.createElement("td");
         let ERCell = document.createElement("td");
-        SUIDCell.innerHTML = '<img src="Assets/Sprite/' + LocationSpeciesArr[x] + '.png">';
+        let Sprite = SpriteImg(LocationSpeciesArr[x])
+        SUIDCell.appendChild(Sprite);
+        //SUIDCell.innerHTML = '<img src="Assets/Sprite/' + LocationSpeciesArr[x] + '.png">';
         NameCell.innerText = LocationSpeciesArr[x];
         LvCell.innerText = LocationLvArr[x];
         ERCell.innerText = LocationERArr[x];
@@ -321,9 +323,10 @@ function TypeBox(Type) {
 }
 
 function SpriteImg(UID) {
+    console.log(SpriteData)
     let Img = new Image();
     let Base64 = SpriteData[UID - 1].Base;
-    //console.log(Base64)
+    
     Img.src = Base64;
     return Img;
 }

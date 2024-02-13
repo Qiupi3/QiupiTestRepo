@@ -496,52 +496,36 @@ caption {
   margin-top: 2%;
 }
 
-#LvlMoves {
-  margin-top: 40px;
-  margin-bottom: 40px;
+.LearnSetContainer {
+  margin-top: 20px;
 }
 
-#TMMoves {
-  margin-top: 40px;
-  margin-bottom: 40px;
-}
-
-#TutorMoves {
-  margin-top: 40px;
-  margin-bottom: 40px;
-}
-
-#EggMoves {
-  margin-top: 40px;
-  margin-bottom: 40px;
-}
-
-#LvLearn {
+.LvLearn {
   width: 7%;
 }
 
-#LvLearnName {
+.LearnName {
   width: 26%;
 }
 
-#LvLearnType {
+.LearnType {
   width: 21%;
 }
 
-#LvLearnCat {
-  width: 12%;
-}
-
-#LvLearnPwr {
-  width: 12%;
-}
-
-#LvLearnAcc {
-  width: 12%;
-}
-
-#LvLearnPP {
+.LearnCat {
   width: 10%;
+}
+
+.LearnPwr {
+  width: 12%;
+}
+
+.LearnAcc {
+  width: 12%;
+}
+
+.LearnPP {
+  width: 12%;
 }
 
 .dark-mode {
