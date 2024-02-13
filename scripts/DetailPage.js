@@ -2,7 +2,7 @@
 
 function OpenDetails(SpeciesID) {
     //var timerStart = Date.now();
-    var tab = document.getElementById("SpeciesDetail");
+    let tab = document.getElementById("SpeciesDetail");
     tab.style.display = "block";
     
     const SpeciesData = JSON.parse(localStorage.getItem("Species"));
@@ -49,7 +49,7 @@ function OpenDetails(SpeciesID) {
     
     const SpeciesLocation = splitFunc(Species.Location);
     Location.innerText = "Location : \n";
-    if (SpeciesLocation != "None") {
+    if (SpeciesLocation != "-") {
         for (let x = 0; x < SpeciesLocation.length; x++) {
             let LocIndex = SpeciesLocation[x] - 30001;
             let LocationObj = LocationData[LocIndex];
@@ -74,7 +74,6 @@ function OpenDetails(SpeciesID) {
         for (let x = 0; x < SpeciesHeld.length; x++) {
             let HeldIndex = SpeciesHeld[x] - 60001;
             let HeldObj = ItemsData[HeldIndex];
-            console.log(HeldObj)
             HeldItem.innerText += "• " + HeldObj.Name
             + " " + SpeciesChance[x] + "\n";
         }
@@ -141,12 +140,12 @@ function OpenDetails(SpeciesID) {
     }
     
     RenderLearnsetTable(Species.UID, Species.Name);
-    //location.href="#SpeciesDetail";
+    location.href = "#SpeciesDetail"
     //console.log("Time until Detail Rendered: ", Date.now()-timerStart);
 }
 
-function CloseDetails(Ref) {
-    var tab = document.getElementById("SpeciesDetail");
+function CloseDetails(Ref) { 
+    let tab = document.getElementById("SpeciesDetail");
     tab.style.display = "none";
     if (Ref) {
         const UID = document.getElementById("UIDDetail").innerText;
@@ -271,7 +270,7 @@ function RenderLearnsetTable(SpeciesID, Name) {
     }
     
     EventTable.innerHTML = "";
-    if (EggMove[0] != "-") {
+    if (EventMove[0] != "-") {
         for (let i = 0; i < EventMove.length; i++) {
             let row = CreateMoveRow(false, MovesData[EventMove[i] - 50001]);
             EventTable.appendChild(row)

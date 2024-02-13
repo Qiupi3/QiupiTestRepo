@@ -88,42 +88,84 @@ img {
     padding: 0px;
   }
 
-  #NumDetail {
-    position: absolute;
-    font-size: 20px;
-    width: 35%;
-    top: 1%;
-    left: 3%;
-  }
-  
-  #TypeDetail {
-    position: absolute;
-    width: 25%;
-    top: 1%;
-    right: 10%;
-  }
-  
-  #SpriteDetail {
-    position: absolute;
-    bottom: 1%;
-    left: 3%;
-    width: 30%;
-  }
-  
-  #AbilityDetail {
-    position: absolute;
-    width: 25%;
-    bottom: 1%;
-    right: 10%;
-  }
-  
-  .generalDetails {
-    position: relative;
-    display: block;
-    width: 100%;
-    height: 170px;
-  }
-  
+}
+
+.generalDetailsContainer {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto auto;
+  width: 100%;
+}
+
+#NumDetail {
+  padding-left: 2%;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  font-size: 20px;
+  width: 98%;
+}
+
+#SpriteDetail {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 1;
+  grid-row-end: 2;
+  width: 100%;
+  height: auto;
+}
+#SpriteDetail img {
+  width: 64px;
+  height: 64px;
+}
+
+#TypeDetail {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  width: 100%;
+  height: 12vh;
+}
+
+#AbilityDetail {
+  padding-left: 2%;
+  grid-row-start: 3;
+  grid-row-end: 4;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  width: 98%;
+}
+
+.MNameHeader {
+  width: 35%;
+}
+
+.MTypeHeader {
+  width: 25%;
+}
+
+.MTypeHeader > .TypeBox {
+  width: 100%;
+  height: 100%;
+}
+
+.MCatHeader {
+  width: 15%;
+}
+
+.MPowerHeader {
+  width: 10%;
+}
+
+.MAccHeader {
+  width: 10%;
+}
+
+.MPPHeader {
+  width: 10%;
 }
 
 /*Small Phone  Size*/
@@ -141,84 +183,6 @@ img {
   .BSTHeader { width: 15%; }
   
   .StatsHeader { display: none; }
-  
-  .generalDetailsContainer {
-    position: relative;
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-template-rows: auto auto auto;
-    width: 100%;
-  }
-  
-  #NumDetail {
-    padding-left: 2%;
-    grid-row-start: 1;
-    grid-row-end: 2;
-    grid-column-start: 1;
-    grid-column-end: 3;
-    font-size: 20px;
-    width: 98%;
-  }
-  
-  #SpriteDetail {
-    grid-row-start: 2;
-    grid-row-end: 3;
-    grid-column-start: 1;
-    grid-row-end: 2;
-    width: 100%;
-    height: auto;
-  }
-  #SpriteDetail img {
-    width: 64px;
-    height: 64px;
-  }
-  
-  #TypeDetail {
-    grid-row-start: 2;
-    grid-row-end: 3;
-    grid-column-start: 2;
-    grid-column-end: 3;
-    width: 100%;
-    height: 12vh;
-  }
-  
-  #AbilityDetail {
-    padding-left: 2%;
-    grid-row-start: 3;
-    grid-row-end: 4;
-    grid-column-start: 1;
-    grid-column-end: 3;
-    width: 98%;
-  }
-  
-  .MNameHeader {
-    width: 35%;
-  }
-  
-  .MTypeHeader {
-    width: 25%;
-  }
-  
-  .MTypeHeader > .TypeBox {
-    width: 100%;
-    height: 100%;
-  }
-  
-  .MCatHeader {
-    width: 15%;
-  }
-  
-  .MPowerHeader {
-    width: 10%;
-  }
-  
-  .MAccHeader {
-    width: 10%;
-  }
-  
-  .MPPHeader {
-    width: 10%;
-  }
   
 }
 
@@ -671,4 +635,5 @@ caption {
 
 .LearnSetBody {
   width: 100vw;
+  border-bottom: solid 1px black;
 }

@@ -261,12 +261,13 @@ function LazyLoad(Tab, reset) {
     //console.timeEnd("Loader")
 }
 
-window.onscroll = function(){
+window.onscroll = function() {
     var Dex = document.querySelector("#border");
     var Detail = document.getElementById("SpeciesDetail").style.display;
     if (Detail == "block") {
         if(Dex.getBoundingClientRect().bottom <= 0) {
             CloseDetails(false);
+            location.href = "#1";
         }
     }
     var BackTop = document.getElementById("BackTop");
