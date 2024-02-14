@@ -323,7 +323,7 @@ function TypeBox(Type) {
 }
 
 function SpriteImg(UID) {
-    console.log(SpriteData)
+    //console.log(SpriteData)
     let Img = new Image();
     let Base64 = SpriteData[UID - 1].Base;
     

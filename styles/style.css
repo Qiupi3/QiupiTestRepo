@@ -140,32 +140,15 @@ img {
 }
 
 .MNameHeader {
-  width: 35%;
+  width: 17%;
 }
 
 .MTypeHeader {
-  width: 25%;
-}
-
-.MTypeHeader > .TypeBox {
-  width: 100%;
-  height: 100%;
-}
-
-.MCatHeader {
   width: 15%;
 }
 
-.MPowerHeader {
-  width: 10%;
-}
-
-.MAccHeader {
-  width: 10%;
-}
-
-.MPPHeader {
-  width: 10%;
+.MHeader {
+  width: 7%;
 }
 
 /*Small Phone  Size*/
