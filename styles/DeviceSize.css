@@ -1,0 +1,38 @@
+/*Small Phone  Size*/
+@media screen and (max-width: 480px) {
+    .IDHeader { width: 10%; }
+    
+    .SpriteHeader { width: 15%; }
+    
+    .NameHeader { width: 25%; }
+    
+    .TypeHeader { width: 20%; }
+    
+    .AbilityHeader { width: 35%; }
+    
+    .BSTHeader { width: 15%; }
+    
+    .StatsHeader { display: none; }
+
+}
+
+@media screen and (min-width: 481px) {
+    .IDHeader { width: 5%; }
+    
+    .SpriteHeader { width: 10%; }
+    
+    .NameHeader { width: 10%; }
+    
+    .TypeHeader { width: 10%; }
+    
+    .AbilityHeader { width: 20%; }
+    
+    .BSTHeader, .StatsHeader { width: 5%; }
+  
+    .SortBtn { padding: 0px; }
+  
+}
+
+@media screen and (min-width: 600px) {
+    
+}

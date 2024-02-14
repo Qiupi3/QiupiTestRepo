@@ -6,6 +6,8 @@
     <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/DeviceSize.css" />
+    <link rel="stylesheet" href="styles/Type.css" />
     <script defer src="scripts/Main.js"></script>
     <script defer src="scripts/DetailPage.js"></script>
     <script defer src="scripts/Style.js"></script>
@@ -29,7 +31,7 @@
     </div>
     
     <div id="SpeciesDetail">
-        <div class="headDetailsContainer">
+        <div class="SpeciesDetailHeadContainer">
             <div id="CloseDetail" onclick="CloseDetails(true)">
                 &times
             </div>
@@ -44,7 +46,7 @@
             </div>
         </div>
         
-        <div class="generalDetailsContainer">
+        <div class="SpeciesDetailGeneralContainer">
             <div id="UIDDetail"></div>
             <div id="NumDetail"></div>
             <div id="TypeDetail"></div>
@@ -52,7 +54,7 @@
             <div id="AbilityDetail"></div>
         </div>
         
-        <div class="statsDetailsContainer">
+        <div class="SpeciesDetailStatsContainer">
             <table id="statsTable">
             <tr>
                 <th>BST</th>
@@ -92,14 +94,14 @@
             </table>
         </div>
         
-        <div class="othersDetailsContainer">
+        <div class="SpeciesDetailOtherContainer">
             <div id="LocationDetail"></div>
             <div id="HeldItemDetail"></div>
             <div id="EggGroupDetail"></div>
             <div id="EvoDetail"></div>
         </div>
 
-        <div class="LMoveDetailsContainer">
+        <div class="SpeciesDetailLearnSetContainer">
             <div class="LearnSetContainer">
                 <table>
                     <caption>Pre-Evo Move</caption>
@@ -214,7 +216,7 @@
             Radical Red Dex
         </h1>
         
-        <div class="SearchBar">
+        <div class="SearchBarContainer">
             <input type="text" placeholder="Search..." id="SearchBar" onkeyup="Search()">
         </div>
         
@@ -231,8 +233,8 @@
             <table id="AbilityTable">
                 <thead id="AbilityTableHead">
                     <tr>
-                        <th><button class="SortBtn">Ability</button></th>
-                        <th><button class="SortBtn">Description</button></th>
+                        <th><button class="SortButton">Ability</button></th>
+                        <th><button class="SortButton">Description</button></th>
                     </tr>
                 </thead>
                 <tbody class="tbody" id="AbilityTableBody"></tbody>
@@ -243,18 +245,18 @@
             <table id="SpeciesTable">
                 <thead>
                     <tr>
-                        <th class="IDHeader"><button class="SortBtn" onclick="SortTable(1)">#</button></th>
-                        <th class="SpriteHeader"><button class="SortBtn"></button></th>
-                        <th class="NameHeader"><button class="SortBtn" onclick="SortTable(3)">Name</button></th>
-                        <th class="TypeHeader"><button class="SortBtn">Type</button></th>
-                        <th class="AbilityHeader"><button class="SortBtn">Ability</button></th>
-                        <th class="BSTHeader"><button class="SortBtn" onclick="SortTable(6)">BST</button></th>
-                        <th class="StatsHeader"><button class="SortBtn" onclick="SortTable(7)">HP</button></th>
-                        <th class="StatsHeader"><button class="SortBtn" onclick="SortTable(8)">Atk</button></th>
-                        <th class="StatsHeader"><button class="SortBtn" onclick="SortTable(9)">Def</button></th>
-                        <th class="StatsHeader"><button class="SortBtn" onclick="SortTable(10)">SpA</button></th>
-                        <th class="StatsHeader"><button class="SortBtn" onclick="SortTable(11)">SpD</button></th>
-                        <th class="StatsHeader"><button class="SortBtn" onclick="SortTable(12)">Spe</button></th>
+                        <th class="IDHeader"><button class="SortButton" onclick="SortTable(1)">#</button></th>
+                        <th class="SpriteHeader"><button class="SortButton"></button></th>
+                        <th class="NameHeader"><button class="SortButton" onclick="SortTable(3)">Name</button></th>
+                        <th class="TypeHeader"><button class="SortButton">Type</button></th>
+                        <th class="AbilityHeader"><button class="SortButton">Ability</button></th>
+                        <th class="BSTHeader"><button class="SortButton" onclick="SortTable(6)">BST</button></th>
+                        <th class="StatsHeader"><button class="SortButton" onclick="SortTable(7)">HP</button></th>
+                        <th class="StatsHeader"><button class="SortButton" onclick="SortTable(8)">Atk</button></th>
+                        <th class="StatsHeader"><button class="SortButton" onclick="SortTable(9)">Def</button></th>
+                        <th class="StatsHeader"><button class="SortButton" onclick="SortTable(10)">SpA</button></th>
+                        <th class="StatsHeader"><button class="SortButton" onclick="SortTable(11)">SpD</button></th>
+                        <th class="StatsHeader"><button class="SortButton" onclick="SortTable(12)">Spe</button></th>
                     </tr>
                 </thead>
                 <tbody class="tbody active" id="SpeciesTableBody"></tbody>
@@ -285,13 +287,13 @@
             <table id="MoveTable">
                 <thead id="MoveTableHead">
                     <tr>
-                        <th class="MNameHeader"><button class="SortBtn">Name</button></th>
-                        <th class="MTypeHeader"><button class="SortBtn">Type</button></th>
-                        <th class="MHeader"><button class="SortBtn">Cat.</button></th>
-                        <th class="MHeader"><button class="SortBtn">Pwr</button></th>
-                        <th class="MHeader"><button class="SortBtn">Acc</button></th>
-                        <th class="MHeader"><button class="SortBtn">PP</button></th>
-                        <th class="MDescHeader"><button class="SortBtn">Desc</button></th>
+                        <th class="MNameHeader"><button class="SortButton">Name</button></th>
+                        <th class="MTypeHeader"><button class="SortButton">Type</button></th>
+                        <th class="MHeader"><button class="SortButton">Cat.</button></th>
+                        <th class="MHeader"><button class="SortButton">Pwr</button></th>
+                        <th class="MHeader"><button class="SortButton">Acc</button></th>
+                        <th class="MHeader"><button class="SortButton">PP</button></th>
+                        <th class="MDescHeader"><button class="SortButton">Desc</button></th>
                     </tr>
                 </thead>
                 <tbody class="tbody" id="MoveTableBody"></tbody>
