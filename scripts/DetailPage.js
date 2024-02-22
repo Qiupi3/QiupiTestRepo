@@ -140,7 +140,8 @@ function OpenDetails(SpeciesID) {
     }
     
     RenderLearnsetTable(Species.UID, Species.Name);
-    location.href = "#SpeciesDetail"
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
     //console.log("Time until Detail Rendered: ", Date.now()-timerStart);
 }
 
