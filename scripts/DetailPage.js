@@ -114,7 +114,7 @@ function OpenDetails(SpeciesID) {
                 ConditionBox.innerText = "(Item " + SpeciesCondition + ")";
             }
             
-            if (x != 0) {
+            if (x != 0 && EvoLine[x - 1] != 0) {
                 EvoContainer.appendChild(ArrowBox)
                 EvoContainer.appendChild(ConditionBox);
             }
