@@ -106,12 +106,32 @@ function OpenDetails(SpeciesID) {
             let ConditionBox = document.createElement("div");
             ConditionBox.setAttribute("class", "ConditionBox")
             let SpeciesCondition = SpeciesData[EvoLine[x]-1].Condition;
-            if (Number.isInteger(Number(SpeciesCondition))) {
+            if (+SpeciesCondition) {
                 ConditionBox.innerText = "(Level " + SpeciesCondition + ")";
-            } else if (SpeciesCondition == "Mega" || SpeciesCondition == "Friendship") {
-                ConditionBox.innerText = "(" + SpeciesCondition + ")";
-            } else if (SpeciesCondition != "None") {
-                ConditionBox.innerText = "(Item " + SpeciesCondition + ")";
+            } else if (SpeciesCondition == "Friendship") {
+                ConditionBox.innerText = "(Lv-Up with high Friendship)";
+            } else if (SpeciesCondition != "-") {
+                let Condition = splitFunc(SpeciesCondition)[0];
+                let Requirement = splitFunc(SpeciesCondition)[1];
+                //console.log(Condition)
+                if (Condition == "Mega") {
+                    ConditionBox.innerText = "(Mega evolve with " + Requirement + ")";
+                } else if (Condition == "Item") {
+                    ConditionBox.innerText = "(Use " + Requirement + ")";
+                } else if (Condition == "Move") {
+                    ConditionBox.innerText = "(Lv-Up while knowing move " + Requirement + ")";
+                } else if (Condition == "Friendship") {
+                    ConditionBox.innerText = "(Lv-Up with high Friendship during " + Requirement + " time)";
+                } else if (+Condition) {
+                    if (Requirement == "Day" || Requirement == "Night"
+                    || Requirement == "Dusk") {
+                        ConditionBox.innerText = "(Level " + Condition + " during " + Requirement + " time)";
+                    } else if (Requirement == "Male" || Requirement == "Female") {
+                        ConditionBox.innerText = "(Level " + Condition + " " + Requirement + " only)";
+                    } else {
+                        ConditionBox.innerText = "(Level " + Condition + " with " + Requirement + ")";
+                    }
+                }
             }
             
             if (x != 0 && EvoLine[x - 1] != 0) {
