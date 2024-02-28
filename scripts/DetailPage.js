@@ -105,33 +105,50 @@ function OpenDetails(SpeciesID) {
             
             let ConditionBox = document.createElement("div");
             ConditionBox.setAttribute("class", "ConditionBox")
-            let SpeciesCondition = SpeciesData[EvoLine[x]-1].Condition;
-            if (+SpeciesCondition) {
-                ConditionBox.innerText = "(Level " + SpeciesCondition + ")";
-            } else if (SpeciesCondition == "Friendship") {
-                ConditionBox.innerText = "(Lv-Up with high Friendship)";
-            } else if (SpeciesCondition != "-") {
-                let Condition = splitFunc(SpeciesCondition)[0];
-                let Requirement = splitFunc(SpeciesCondition)[1];
-                //console.log(Condition)
-                if (Condition == "Mega") {
-                    ConditionBox.innerText = "(Mega evolve with " + Requirement + ")";
-                } else if (Condition == "Item") {
-                    ConditionBox.innerText = "(Use " + Requirement + ")";
-                } else if (Condition == "Move") {
-                    ConditionBox.innerText = "(Lv-Up while knowing move " + Requirement + ")";
-                } else if (Condition == "Friendship") {
-                    ConditionBox.innerText = "(Lv-Up with high Friendship during " + Requirement + " time)";
-                } else if (+Condition) {
-                    if (Requirement == "Day" || Requirement == "Night"
-                    || Requirement == "Dusk") {
-                        ConditionBox.innerText = "(Level " + Condition + " during " + Requirement + " time)";
-                    } else if (Requirement == "Male" || Requirement == "Female") {
-                        ConditionBox.innerText = "(Level " + Condition + " " + Requirement + " only)";
-                    } else {
-                        ConditionBox.innerText = "(Level " + Condition + " with " + Requirement + ")";
-                    }
+            let Condition = SpeciesData[EvoLine[x]-1].Condition
+            let SpeciesCondition = splitFunc(Condition);
+            
+            if (SpeciesCondition.length == 1) {
+                if (+SpeciesCondition[0]) {
+                    ConditionBox.innerText = "(Level " + SpeciesCondition + ")";
+                } else {
+                    ConditionBox.innerText = "(Lv-Up with high Friendship)";
                 }
+            } else if (splitAbility(Condition)) {
+                let x = Condition.split("; ");
+                let y = splitFunc(x[1]);
+                ConditionBox.innerText = "(Level " + x[0] + " or ";
+                if (y.length == 1) {
+                    ConditionBox.innerText += "Lv-Up with " + x[1] + ")";
+                } else {
+                    ConditionBox.innerText += "Lv-Up while knowing move " + y[1] + ")";
+                }
+            } else if (SpeciesCondition.length == 2) {
+                if (SpeciesCondition[0] == "Mega") {
+                    ConditionBox.innerText = "(Mega evolve with " + SpeciesCondition[1] + ")";
+                } else if (SpeciesCondition[0] == "Item") {
+                    ConditionBox.innerText = "(Use " + SpeciesCondition[1] + ")";
+                } else if (SpeciesCondition[0] == "Move") {
+                    ConditionBox.innerText = "(Lv-Up while knowing move " + SpeciesCondition[1] + ")";
+                } else if (SpeciesCondition[0] == "Friendship") {
+                    if (SpeciesCondition[1] == "Fairy Type") {
+                        ConditionBox.innerText = "(Lv-Up with high Friendship while knowing any " + SpeciesCondition[1] + " move)";
+                    } else {
+                        ConditionBox.innerText = "(Lv-Up with high Friendship during " + SpeciesCondition[1] + " time)";
+                    }
+                } else if (+SpeciesCondition[0]) {
+                    if (SpeciesCondition[1] == "Day" || SpeciesCondition[1] == "Night"
+                    || SpeciesCondition[1] == "Dusk") {
+                        ConditionBox.innerText = "(Level " + SpeciesCondition[0] + " during " + SpeciesCondition[1] + " time)";
+                    } else if (SpeciesCondition[1] == "Male" || SpeciesCondition[1] == "Female") {
+                        ConditionBox.innerText = "(Level " + SpeciesCondition[0] + " " + SpeciesCondition[1] + " only)";
+                    } else {
+                        ConditionBox.innerText = "(Level " + SpeciesCondition[0] + " with " + SpeciesCondition[1] + ")";
+                    }
+                    //Missing N1N2 for Toxtricity & Necromizer for Necrozma
+                }
+            } else if (SpeciesCondition.length == 3) {
+                ConditionBox.innerText = "(Use " + SpeciesCondition[2] + " " + SpeciesCondition[1] + " only)";
             }
             
             if (x != 0 && EvoLine[x - 1] != 0) {
