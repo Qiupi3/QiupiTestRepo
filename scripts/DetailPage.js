@@ -1,5 +1,9 @@
 //Species Detail Function
 
+
+const N1 = "Adamant, Brave, Docile, Hardy, Hasty, Impish, Jolly, Lax, Naive, Naughty, Rash, Quirky, or Sassy nature.)";
+const N2 = "Bashful, Bold, Calm, Careful, Gentle, Lonely, Mild, Modest, Quiet, Relaxed, Serious, or Timid nature.)";
+
 function OpenDetails(SpeciesID) {
     //var timerStart = Date.now();
     let tab = document.getElementById("SpeciesDetail");
@@ -128,6 +132,9 @@ function OpenDetails(SpeciesID) {
                     ConditionBox.innerText = "(Mega evolve with " + SpeciesCondition[1] + ")";
                 } else if (SpeciesCondition[0] == "Item") {
                     ConditionBox.innerText = "(Use " + SpeciesCondition[1] + ")";
+                    if (SpeciesCondition[1] == "Necrozium Z") {
+                        ConditionBox.innerText = "(Beastification with Necrozium Z)"
+                    }
                 } else if (SpeciesCondition[0] == "Move") {
                     ConditionBox.innerText = "(Lv-Up while knowing move " + SpeciesCondition[1] + ")";
                 } else if (SpeciesCondition[0] == "Friendship") {
@@ -142,10 +149,15 @@ function OpenDetails(SpeciesID) {
                         ConditionBox.innerText = "(Level " + SpeciesCondition[0] + " during " + SpeciesCondition[1] + " time)";
                     } else if (SpeciesCondition[1] == "Male" || SpeciesCondition[1] == "Female") {
                         ConditionBox.innerText = "(Level " + SpeciesCondition[0] + " " + SpeciesCondition[1] + " only)";
+                    } else if (SpeciesCondition[1] == "N1") {
+                        ConditionBox.innerText = "(Level " + SpeciesCondition[0] + "with " + N1;
+                    } else if (SpeciesCondition[1] == "N2") {
+                        ConditionBox.innerText = "(Level " + SpeciesCondition[0] + "with " + N2;
                     } else {
                         ConditionBox.innerText = "(Level " + SpeciesCondition[0] + " with " + SpeciesCondition[1] + ")";
                     }
-                    //Missing N1N2 for Toxtricity & Necromizer for Necrozma
+                } else if (SpeciesCondition[0] == "Necrozmizer") {
+                    ConditionBox.innerText = "(Use Necrozmizer on Necrozma and " + SpeciesCondition[1] + ")";
                 }
             } else if (SpeciesCondition.length == 3) {
                 ConditionBox.innerText = "(Use " + SpeciesCondition[2] + " " + SpeciesCondition[1] + " only)";
