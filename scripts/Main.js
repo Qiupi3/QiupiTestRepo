@@ -1,24 +1,25 @@
 //The Main(Parent) Script
 
 //Fetching all Species Data when page is loaded then render them into Table by Function
+document.onreadystatechange = () => {
+    if (document.readyState === 'complete') {
+        if (!(AbilityData && SpeciesData && LocationData && ItemsData && LearnsetData && MovesData && SpriteData)) {
+            ReqSpriteData();
+            ReqAbilityData();
+            ReqSpeciesData();
+            ReqLocationData();
+            //ReqTrainerData();
+            ReqMoveData();
+            ReqItemsData();
+            ReqLearnsetData();
+        }
+    }
+}
 
-window.onload = function() {
-    //localStorage.clear();
-    var Status = localStorage.getItem("Status");
-    if (Status) {
-        var timerStart = Date.now();
+
+window.onload = () => { 
+    if (SpriteData) {
         SpeciesFunction();
-        console.log("Time until Table Rendered: ", Date.now()-timerStart);
-    } else {
-        window.localStorage.setItem("Status", "OK")
-        ReqSpriteData();
-        ReqAbilityData();
-        ReqSpeciesData();
-        ReqLocationData();
-        //ReqTrainerData();
-        ReqMoveData();
-        ReqItemsData();
-        ReqLearnsetData();
     }
 }
 
@@ -167,7 +168,6 @@ function RenderLocationTable(Loc) {
         let ERCell = document.createElement("td");
         let Sprite = SpriteImg(LocationSpeciesArr[x])
         SUIDCell.appendChild(Sprite);
-        //SUIDCell.innerHTML = '<img src="Assets/Sprite/' + LocationSpeciesArr[x] + '.png">';
         NameCell.innerText = LocationSpeciesArr[x];
         LvCell.innerText = LocationLvArr[x];
         ERCell.innerText = LocationERArr[x];
@@ -195,9 +195,6 @@ function RenderMoveTable(Move) {
 }
 
 function LazyLoad(Tab, reset) {
-    //var timerStart = Date.now();
-    //console.time("Loader")
-    
     let Data, TabId;
     switch (Tab) {
         case Ability:
@@ -223,6 +220,10 @@ function LazyLoad(Tab, reset) {
         case Items:
         Data = ItemsData
         TabId = "Items"
+        break;
+        case Search:
+        Data = SearchedData
+        TabId = "Species"
         break;
     }
     
@@ -253,14 +254,14 @@ function LazyLoad(Tab, reset) {
                 y.remove('SObs');
             }
             eval(renderer)(TData)
-            let x = document.getElementById(TData.UID);
-            x.classList.add('SObs');
+            if (Tab != Search) {
+                let x = document.getElementById(TData.UID);
+                x.classList.add('SObs');
+            }
         }
         
         
     }
-    //console.log("Time until Table Rendered: ", Date.now()-timerStart);
-    //console.timeEnd("Loader")
 }
 
 window.onscroll = function() {
@@ -323,7 +324,6 @@ function TypeBox(Type) {
 }
 
 function SpriteImg(UID) {
-    //console.log(SpriteData)
     let Img = new Image();
     let Base64 = SpriteData[UID - 1].Base;
     

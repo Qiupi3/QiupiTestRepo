@@ -20,6 +20,30 @@ function splitAbility(x) {
         return false
     }
 }
+
+const AbilityTabBtn = document.getElementsByClassName('ChoiceBtn')[0];
+const SpeciesTabBtn = document.getElementsByClassName('ChoiceBtn')[1];
+const LocationTabBtn = document.getElementsByClassName('ChoiceBtn')[2];
+const TrainerTabBtn = document.getElementsByClassName('ChoiceBtn')[3];
+const MovesTabBtn = document.getElementsByClassName('ChoiceBtn')[4];
+const ItemsTabBtn = document.getElementsByClassName('ChoiceBtn')[5];
+
+AbilityTabBtn.addEventListener('click', AbilityFunction);
+SpeciesTabBtn.addEventListener('click', SpeciesFunction);
+LocationTabBtn.addEventListener('click', LocationFunction);
+TrainerTabBtn.addEventListener('click', TrainerFunction);
+MovesTabBtn.addEventListener('click', MovesFunction);
+ItemsTabBtn.addEventListener('click', ItemsFunction);
+
+var AbilityData = JSON.parse(localStorage.getItem("Ability"));
+var SpeciesData = JSON.parse(localStorage.getItem("Species"));
+var LocationData = JSON.parse(localStorage.getItem("Location"));
+var TrainerData = JSON.parse(localStorage.getItem("Trainer"));
+var MovesData = JSON.parse(localStorage.getItem("Move"));
+var ItemsData = JSON.parse(localStorage.getItem("Items"));
+var LearnsetData = JSON.parse(localStorage.getItem("Learnset"));
+var SpriteData = JSON.parse(localStorage.getItem("Sprite"));
+
 //Function to Sort Table Data
 function SortTable(n) {
     let table = document.getElementById("DexTable");
@@ -79,32 +103,15 @@ function SortTable(n) {
 
 //Function to search Value from Search Bar
 function Search() {
-    var SearchBar, SearchValue, table, rows, DataValue;
-    SearchBar = document.getElementById("SearchBar");
-    SearchValue = SearchBar.value.toLowerCase();
-    table = document.getElementById("DexTable");
-    rows = table.getElementsByTagName("tr");
-    
-    for (let i = 1; i < rows.length; i++) {
-        //Get Species Name
-        td1 = rows[i].getElementsByTagName("td")[3];
-        DataValue1 = td1.innerText.toLowerCase();
-        //Get Ability Name
-        td2 = rows[i].getElementsByTagName("td")[5];
-        DataValue2 = td2.innerText.toLowerCase();
-        //Get Location Data
-        td3 = rows[i].getElementsByTagName("td")[13];
-        DataValue3 = td3.innerText.toLowerCase();
-        //Check if searched value is available in table data
-        //Then display matched data
-        if (DataValue1.indexOf(SearchValue) > -1
-        || DataValue2.indexOf(SearchValue) > -1
-        || DataValue3.indexOf(SearchValue) > -1) {
-            rows[i].style.display = "";
-        } else {
-            //No data matched, clear all table
-            rows[i].style.display = "none";
-        }
+    let SearchBar = document.getElementById("SearchBar");
+    let SearchValue = SearchBar.value.toLowerCase();
+    if (SearchValue.length > 2) {
+        observer.disconnect();
+        SearchedData = SpeciesData.filter(item => item.Name.toLowerCase().indexOf(SearchValue) > -1);
+        LazyLoad(Search, true)
+    } else {
+        observer.observe(targetSpecies, config);
+        LazyLoad(Species, true);
     }
 }
 
@@ -162,29 +169,6 @@ function TransparentChoiceTab() {
     document.getElementById("Moves").style.display = "none";
     document.getElementById("Items").style.display = "none";
 }
-
-const AbilityTabBtn = document.getElementsByClassName('ChoiceBtn')[0];
-const SpeciesTabBtn = document.getElementsByClassName('ChoiceBtn')[1];
-const LocationTabBtn = document.getElementsByClassName('ChoiceBtn')[2];
-const TrainerTabBtn = document.getElementsByClassName('ChoiceBtn')[3];
-const MovesTabBtn = document.getElementsByClassName('ChoiceBtn')[4];
-const ItemsTabBtn = document.getElementsByClassName('ChoiceBtn')[5];
-
-AbilityTabBtn.addEventListener('click', AbilityFunction);
-SpeciesTabBtn.addEventListener('click', SpeciesFunction);
-LocationTabBtn.addEventListener('click', LocationFunction);
-TrainerTabBtn.addEventListener('click', TrainerFunction);
-MovesTabBtn.addEventListener('click', MovesFunction);
-ItemsTabBtn.addEventListener('click', ItemsFunction);
-
-var AbilityData = JSON.parse(localStorage.getItem("Ability"));
-var SpeciesData = JSON.parse(localStorage.getItem("Species"));
-var LocationData = JSON.parse(localStorage.getItem("Location"));
-var TrainerData = JSON.parse(localStorage.getItem("Trainer"));
-var MovesData = JSON.parse(localStorage.getItem("Move"));
-var ItemsData = JSON.parse(localStorage.getItem("Items"));
-var LearnsetData = JSON.parse(localStorage.getItem("Learnset"));
-var SpriteData = JSON.parse(localStorage.getItem("Sprite"));
 
 function AbilityFunction() {
     LazyLoad(Ability, true);
