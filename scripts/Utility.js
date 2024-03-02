@@ -107,7 +107,7 @@ function Search() {
     let SearchValue = SearchBar.value.toLowerCase();
     if (SearchValue.length > 2) {
         observer.disconnect();
-        SearchedData = SpeciesData.filter(item => item.Name.toLowerCase().indexOf(SearchValue) > -1);
+        SearchedData = SpeciesData.filter(item => Object.values(item).some(val => String(val).toLowerCase().indexOf(SearchValue) > -1));
         LazyLoad(Search, true)
     } else {
         observer.observe(targetSpecies, config);
