@@ -1,6 +1,5 @@
 //Species Detail Function
 
-
 const N1 = "Adamant, Brave, Docile, Hardy, Hasty, Impish, Jolly, Lax, Naive, Naughty, Rash, Quirky, or Sassy nature.)";
 const N2 = "Bashful, Bold, Calm, Careful, Gentle, Lonely, Mild, Modest, Quiet, Relaxed, Serious, or Timid nature.)";
 
