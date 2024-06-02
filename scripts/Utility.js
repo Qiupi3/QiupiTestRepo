@@ -255,7 +255,6 @@ let callback = (mutationList) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const targetId = document.getElementsByClassName('active')[0].id;
-                //console.log(targetId)
                 if (targetId[0] == 'A') {
                     LazyLoad(Ability, false);
                 } else if(targetId[0] == 'S') {

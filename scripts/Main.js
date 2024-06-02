@@ -78,7 +78,7 @@ function RenderAbilityTable(Ability) {
     Row.appendChild(DescBox);
         
     Row.setAttribute("id", Ability.UID);
-    if (Ability.Replacement != "0") {
+    if (Ability.Replacement !== "0") {
         Row.className += "RestrictedAbility"
         NameBox.style.color = "red";
         DescBox.style.color = "red";
