@@ -9,45 +9,39 @@ var SpriteData = JSON.parse(localStorage.getItem("Sprite"));
 
 async function ReqSpriteData() {
     fetch("data/Sprite.json")
-//.then(resp => resp.json())
 .then(resp => window.localStorage.setItem("Sprite", resp))
 .then(() => {SpeciesFunction();});
 }
 
 async function ReqAbilityData() {
-    const resp = await fetch("data/Ability.json");
-    const content = await resp.json();
-    window.localStorage.setItem("Ability", JSON.stringify(content));
+    fetch("data/Ability.json")
+.then(resp => window.localStorage.setItem("Ability", resp));
 }
 
 async function ReqSpeciesData() {
-    const resp = await fetch("data/Species.json");
-    const content = await resp.json();
-    window.localStorage.setItem("Species", JSON.stringify(content));
+    fetch("data/Species.json")
+.then(resp => window.localStorage.setItem("Species", resp));
 }
 
 async function ReqLocationData() {
-    const resp = await fetch("data/Location.json");
-    const content = await resp.json();
-    window.localStorage.setItem("Location", JSON.stringify(content));
+    fetch("data/Location.json")
+.then(resp => window.localStorage.setItem("Location", resp));
 }
 
 async function ReqMoveData() {
-    const resp = await fetch("data/Move.json");
-    const content = await resp.json();
-    window.localStorage.setItem("Move", JSON.stringify(content));    
+    fetch("data/Move.json")
+.then(resp => window.localStorage.setItem("Move", resp));    
 }
 
 async function ReqItemsData() {
-    const resp = await fetch("data/Items.json");
-    const content = await resp.json();
-    window.localStorage.setItem("Items", JSON.stringify(content));    
+    fetch("data/Items.json")
+.then(resp =>
+window.localStorage.setItem("Items", resp));    
 }
 
 async function ReqLearnsetData() {
-    const resp = await fetch("data/Learnset.json");
-    const content = await resp.json();
-    window.localStorage.setItem("Learnset", JSON.stringify(content));    
+    fetch("data/Learnset.json")
+.then(resp => window.localStorage.setItem("Learnset", resp));    
 }
 
 if (!(AbilityData && SpeciesData && LocationData && ItemsData && LearnsetData && MovesData && SpriteData)) {
