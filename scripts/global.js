@@ -52,11 +52,28 @@ async function ReqLearnsetData() {
 
 if (!(AbilityData && SpeciesData && LocationData && ItemsData && LearnsetData && MovesData && SpriteData)) {
     ReqSpriteData();
-    ReqAbilityData();
     ReqSpeciesData();
+    ReqAbilityData();
     ReqLocationData();
     //ReqTrainerData();
     ReqMoveData();
     ReqItemsData();
     ReqLearnsetData();
 }
+
+/*async function ReqData() {
+    const resp = await fetch("data/data.json");
+    const content = await resp.json();
+    console.log(content)
+    window.localStorage.setItem("Ability", JSON.stringify(content[0]));
+    window.localStorage.setItem("Species", JSON.stringify(content[1]));
+    window.localStorage.setItem("Location", JSON.stringify(content[2]));
+    window.localStorage.setItem("Move", JSON.stringify(content[3]));
+    window.localStorage.setItem("Items", JSON.stringify(content[4]));
+    window.localStorage.setItem("Learnset", JSON.stringify(content[5]));
+    window.localStorage.setItem("Sprite", JSON.stringify(content[6]));
+}
+
+if (!(AbilityData && SpeciesData && LocationData && ItemsData && LearnsetData && MovesData && SpriteData)) {
+    ReqData();
+}*/
