@@ -8,10 +8,11 @@ var LearnsetData = JSON.parse(localStorage.getItem("Learnset"));
 var SpriteData = JSON.parse(localStorage.getItem("Sprite"));
 
 async function ReqSpriteData() {
-    const resp = await fetch("data/Sprite.json");
-    const content = await resp.json();
-    window.localStorage.setItem("Sprite", JSON.stringify(content));
-    window.location = window.location;
+    //const resp = await
+    fetch("data/Sprite.json").then(resp => resp.json()).then(resp => window.localStorage.setItem("Sprite", JSON.stringify(resp)).then(() => { SpeciesFunction();});
+    //const content = await resp.json();
+    //window.localStorage.setItem("Sprite", JSON.stringify(content));
+    //window.location = window.location;
 }
 
 async function ReqAbilityData() {
