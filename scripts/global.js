@@ -50,17 +50,13 @@ async function ReqLearnsetData() {
     window.localStorage.setItem("Learnset", JSON.stringify(content));    
 }
 
-document.onreadystatechange = () => {
-    if (document.readyState === 'complete') {
-        if (!(AbilityData && SpeciesData && LocationData && ItemsData && LearnsetData && MovesData && SpriteData)) {
-            ReqSpriteData();
-            ReqAbilityData();
-            ReqSpeciesData();
-            ReqLocationData();
-            //ReqTrainerData();
-            ReqMoveData();
-            ReqItemsData();
-            ReqLearnsetData();
-        }
-    }
+if (!(AbilityData && SpeciesData && LocationData && ItemsData && LearnsetData && MovesData && SpriteData)) {
+    ReqSpriteData();
+    ReqAbilityData();
+    ReqSpeciesData();
+    ReqLocationData();
+    //ReqTrainerData();
+    ReqMoveData();
+    ReqItemsData();
+    ReqLearnsetData();
 }
