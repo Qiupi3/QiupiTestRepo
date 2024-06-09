@@ -11,8 +11,7 @@ async function ReqSpriteData() {
     const resp = await fetch("data/Sprite.json");
     const content = await resp.json();
     window.localStorage.setItem("Sprite", JSON.stringify(content));
-    SpeciesFunction();
-    //window.location = window.location;
+    window.location = window.location;
 }
 
 async function ReqAbilityData() {
