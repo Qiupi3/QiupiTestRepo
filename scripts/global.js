@@ -9,39 +9,45 @@ var SpriteData = JSON.parse(localStorage.getItem("Sprite"));
 
 async function ReqSpriteData() {
     fetch("data/Sprite.json")
-.then(resp => window.localStorage.setItem("Sprite", resp.json()))
+.then(resp => resp.text())
+.then(resp => window.localStorage.setItem("Sprite", resp))
 .then(() => {SpeciesFunction();});
 }
 
 async function ReqAbilityData() {
     fetch("data/Ability.json")
-.then(resp => window.localStorage.setItem("Ability", resp.json()));
+.then(resp => resp.text())
+.then(resp => window.localStorage.setItem("Ability", resp));
 }
 
 async function ReqSpeciesData() {
     fetch("data/Species.json")
-.then(resp => window.localStorage.setItem("Species", resp.json()));
+.then(resp => resp.text())
+.then(resp => window.localStorage.setItem("Species", resp));
 }
 
 async function ReqLocationData() {
     fetch("data/Location.json")
-.then(resp => window.localStorage.setItem("Location", resp.json()));
+.then(resp => resp.text())
+.then(resp => window.localStorage.setItem("Location", resp));
 }
 
 async function ReqMoveData() {
     fetch("data/Move.json")
-.then(resp => window.localStorage.setItem("Move", resp.json()));    
+.then(resp => resp.text())
+.then(resp => window.localStorage.setItem("Move", resp));    
 }
 
 async function ReqItemsData() {
     fetch("data/Items.json")
-.then(resp =>
-window.localStorage.setItem("Items", resp.json()));    
+.then(resp => resp.text())
+.then(resp => window.localStorage.setItem("Items", resp));    
 }
 
 async function ReqLearnsetData() {
     fetch("data/Learnset.json")
-.then(resp => window.localStorage.setItem("Learnset", resp.json()));    
+.then(resp => resp.text())
+.then(resp => window.localStorage.setItem("Learnset", resp));    
 }
 
 if (!(AbilityData && SpeciesData && LocationData && ItemsData && LearnsetData && MovesData && SpriteData)) {
