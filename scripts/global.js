@@ -5,13 +5,13 @@ var TrainerData = JSON.parse(localStorage.getItem("Trainer"));
 var MovesData = JSON.parse(localStorage.getItem("Move"));
 var ItemsData = JSON.parse(localStorage.getItem("Items"));
 var LearnsetData = JSON.parse(localStorage.getItem("Learnset"));
-var SpriteData = JSON.parse(localStorage.getItem("Sprite"));
+//var SpriteData = JSON.parse(localStorage.getItem("Sprite"));
 
 async function ReqSpriteData() {
     const resp = await fetch("data/Sprite.json");
     const content = await resp.json();
     window.localStorage.setItem("Sprite", JSON.stringify(content));
-    window.location = window.location;
+    //window.location = window.location;
 }
 
 async function ReqAbilityData() {
@@ -24,6 +24,7 @@ async function ReqSpeciesData() {
     const resp = await fetch("data/Species.json");
     const content = await resp.json();
     window.localStorage.setItem("Species", JSON.stringify(content));
+    window.location = window.location;
 }
 
 async function ReqLocationData() {
@@ -52,7 +53,7 @@ async function ReqLearnsetData() {
 
 
 if (!(AbilityData && SpeciesData && LocationData && ItemsData && LearnsetData && MovesData && SpriteData)) {
-    ReqSpriteData();
+    //ReqSpriteData();
     ReqSpeciesData();
     ReqAbilityData();
     ReqLocationData();
