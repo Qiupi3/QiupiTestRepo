@@ -40,7 +40,7 @@ function RenderSpeciesTable(Species) {
     const SpDCell = document.createElement("td");
     const SpeCell = document.createElement("td");
 
-    let Sprite = SpriteImg(Species.UID)
+    let Sprite = SpriteImg(Species.SUID)
     IDCell.innerText = Species.SID;
     SpriteCell.appendChild(Sprite);
     NameCell.innerText = Species.Name;
