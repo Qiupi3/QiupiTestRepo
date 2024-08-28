@@ -52,7 +52,7 @@ async function ReqLearnsetData() {
 }
 
 
-if (!(AbilityData && SpeciesData && LocationData && ItemsData && LearnsetData && MovesData && SpriteData)) {
+if (!(AbilityData && SpeciesData && LocationData && ItemsData && LearnsetData && MovesData)) {
     //ReqSpriteData();
     ReqSpeciesData();
     ReqAbilityData();

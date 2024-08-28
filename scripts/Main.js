@@ -40,7 +40,7 @@ function RenderSpeciesTable(Species) {
     const SpDCell = document.createElement("td");
     const SpeCell = document.createElement("td");
 
-    let Sprite = SpriteImg(Species.UID)
+    let Sprite = SpriteImg(Species.SUID)
     IDCell.innerText = Species.SID;
     SpriteCell.appendChild(Sprite);
     NameCell.innerText = Species.Name;
@@ -263,7 +263,7 @@ function TypeBox(Type) {
 
 function SpriteImg(UID) {
     let Img = new Image();
-    let Base64 = SpriteData[UID - 1].Base;
+    //let Base64 = SpriteData[UID - 1].Base;
     
     Img.src = 'Assets/Transparent/'+UID+'.png'; //Base64;
     return Img;
