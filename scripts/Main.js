@@ -1,11 +1,6 @@
-async function test() {
-    const data = await fetch("https://community.chocolatey.org/packages/GoogleChrome")
-    return data.text()
-}
-console.log(test())
 window.onload = () => { 
     if (SpeciesData) {
-        //SpeciesFunction();
+        SpeciesFunction();
     }
 }
 
