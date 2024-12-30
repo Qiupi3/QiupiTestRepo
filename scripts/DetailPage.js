@@ -231,7 +231,7 @@ function CreateEvoBox(Id) {
     let NameBox = document.createElement("div");
     NameBox.setAttribute("class", "EvoNameBox")
     
-    let Sprite = SpriteImg(Id)
+    let Sprite = SpriteImg(Species.SUID)
     SpriteBox.appendChild(Sprite)
     NameBox.innerText = Species.Name;
     let TypeCell = TypeBox(Species.Type);
