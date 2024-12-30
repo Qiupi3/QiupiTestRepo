@@ -21,7 +21,7 @@ function OpenDetails(SpeciesID) {
     const EggGroup = document.getElementById("EggGroupDetail");
     const Evolution = document.getElementById("EvoDetail");
     
-    let SpriteImage = SpriteImg(Species.UID)
+    let SpriteImage = SpriteImg(Species.SUID)
 
     UID.innerText = Species.UID;
     Num.innerText = "#" + Species.SID + " " + Species.Name;
