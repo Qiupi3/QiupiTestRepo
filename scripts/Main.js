@@ -220,7 +220,7 @@ window.onscroll = function() {
 }
 
 function BackTop() {
-    location.href = "#Main"
+    window.scrollTo(0,0);
 }
 
 function AbilityBox(Ability, Desc) {
