@@ -263,8 +263,6 @@ function TypeBox(Type) {
 
 function SpriteImg(UID) {
     let Img = new Image();
-    //let Base64 = SpriteData[UID - 1].Base;
-    
-    Img.src = 'Assets/Transparent/'+UID+'.png'; //Base64;
+    Img.src = 'Assets/Transparent/'+UID+'.png';
     return Img;
 }
