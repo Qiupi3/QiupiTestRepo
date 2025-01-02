@@ -63,17 +63,3 @@ function HiddenAbility() {
         }
     }
 }
-
-function SplitCat() {
-    const SplitBox = document.getElementsByClassName("SplitBox");
-    for (let i = 0; i < SplitBox.length; i++) {
-        var CatValue = SplitBox[i].innerText;
-        if (CatValue == "P") {
-            var src = "data/ImgType/Physical.png"
-            SplitBox[i].innerHTML = "<img src=" + src + ">";
-        } else {
-            var src = "data/ImgType/Special.png"
-            SplitBox[i].innerHTML = "<img src=" + src + ">";
-        }
-    }
-}
