@@ -263,6 +263,6 @@ function TypeBox(Type) {
 
 function SpriteImg(UID) {
     let Img = new Image();
-    Img.src = 'Assets/Transparent/'+UID+'.png';
+    Img.src = `Assets/Transparent/${UID}.png`;
     return Img;
 }
