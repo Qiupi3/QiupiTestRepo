@@ -24,7 +24,7 @@ function OpenDetails(SpeciesID) {
     let SpriteImage = SpriteImg(Species.SUID)
 
     UID.innerText = Species.UID;
-    Num.innerText = "#" + Species.SID + " " + Species.Name;
+    Num.innerText = `#${Species.SID} ${Species.Name}`;
     Sprite.innerHTML = "";
     Sprite.appendChild(SpriteImage);
     Type.innerHTML = "Type :" + TypeBox(Species.Type).innerHTML
@@ -358,7 +358,7 @@ function CreateMoveRow(Lv, Move) {
 
 function CreateText(Name, Type) {
     let Box = document.createElement("div");
-    let Text = Name + " does not learn any " + Type + " move."
+    let Text = `${Name} does not learn any ${Type} move.`;
     Box.innerText = Text;
     Box.setAttribute("class", "LearnSetBody");
     return Box;
