@@ -219,23 +219,17 @@ window.onscroll = function() {
     }
 }
 
-function BackTop(pos, time) {
-    var currentPos = window.pageYOffset;
-    var start = null;
-    if(time == null) time = 500;
-    pos = +pos, time = +time;
-    window.requestAnimationFrame(function step(currentTime) {
-        start = !start ? currentTime : start;
-        var progress = currentTime - start;
-        if (currentPos < pos) {
-            window.scrollTo(0, ((pos - currentPos) * progress / time) + currentPos);
+function BackTop() {
+    var currentPos = scrollY;
+    window.requestAnimationFrame(function step() {
+        currentPos -= 500;
+        if (currentPos >= 0) {
+            scrollTo(0, currentPos);
+            requestAnimationFrame(step);
         } else {
-            window.scrollTo(0, currentPos - ((currentPos - pos) * progress / time));
-        }
-        if (progress < time) {
-            window.requestAnimationFrame(step);
-        } else {
-            window.scrollTo(0, pos);
+            currentPos = 0;
+            scrollTo(0, 0);
+            cancelAnimationFrame(step);
         }
     });
 }
