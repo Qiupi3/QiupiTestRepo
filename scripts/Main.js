@@ -212,7 +212,7 @@ window.onscroll = function() {
         }
     }
     var BackTop = document.getElementById("BackTop");
-    if (Dex.getBoundingClientRect().top < -20000) {
+    if (Dex.getBoundingClientRect().top < -10000) {
         BackTop.style.display = "block";
     } else {
         BackTop.style.display = "none";
