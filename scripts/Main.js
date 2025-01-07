@@ -220,6 +220,8 @@ window.onscroll = function() {
     var nav = document.getElementById("Nav");
     if (Dex.getBoundingClientRect().bottom <= 0) {
         nav.style.display = "none";
+    } else {
+        nav.style.display = "block";
     }
 }
 
