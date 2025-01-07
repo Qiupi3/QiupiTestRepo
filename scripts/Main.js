@@ -217,6 +217,10 @@ window.onscroll = function() {
     } else {
         BackTop.style.display = "none";
     }
+    var nav = document.getElementById("Nav");
+    if (Dex.getBoundingClientRect().bottom <= 0) {
+        nav.style.display = "none";
+    }
 }
 
 function BackTop() {
