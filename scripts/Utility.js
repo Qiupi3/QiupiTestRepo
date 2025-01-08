@@ -35,72 +35,6 @@ TrainerTabBtn.addEventListener('click', TrainerFunction);
 MovesTabBtn.addEventListener('click', MovesFunction);
 ItemsTabBtn.addEventListener('click', ItemsFunction);
 
-//var AbilityData = JSON.parse(localStorage.getItem("Ability"));
-//var SpeciesData = JSON.parse(localStorage.getItem("Species"));
-//var LocationData = JSON.parse(localStorage.getItem("Location"));
-//var TrainerData = JSON.parse(localStorage.getItem("Trainer"));
-//var MovesData = JSON.parse(localStorage.getItem("Move"));
-//var ItemsData = JSON.parse(localStorage.getItem("Items"));
-//var LearnsetData = JSON.parse(localStorage.getItem("Learnset"));
-//var SpriteData = JSON.parse(localStorage.getItem("Sprite"));
-
-//Function to Sort Table Data
-function SortTable(n) {
-    let table = document.getElementById("DexTable");
-    var rows, i, x, y, count = 0;
-    var switching = true;
-    var direction = "ascending";
-    // Run loop until no switching is needed
-    while (switching) {
-        switching = false;
-        var rows = table.rows;
-        //Loop to go through all rows
-        for (i = 1; i < (rows.length - 1); i++) {
-            var Switch = false;
-            //Get 2 elements that need to be compared
-            x = rows[i].getElementsByTagName("td")[n];
-            y = rows[i + 1].getElementsByTagName("td")[n];
-            //Check Data Type to be sorted
-            if (Number.isInteger(Number(x.innerHTML)) == false) { //String value
-                //Check the direction of order
-                if (direction == "ascending") {
-                    // Check if 2 rows need to be switched
-                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-                        Switch = true;
-                    }
-                } else if (direction == "descending") {
-                    if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-                        Switch = true;
-                    }
-                }
-            } else if (Number.isInteger(Number(x.innerHTML)) == true) { //Integer value
-                if (direction == "ascending") {
-                    //Check if 2 rows need to be switched
-                    if (Number(x.innerHTML) > Number(y.innerHTML)) {
-                        Switch = true;
-                    }
-                } else if (direction == "descending") {
-                    if (Number(x.innerHTML) < Number(y.innerHTML)) {
-                        Switch = true;
-                    }
-                }
-            }
-        if (Switch == true) {
-            //Function to switch the row and mark switch as completed
-            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-            switching = true;
-            count++;
-        } else if (Switch == false){
-            //Run while loop again for descending order
-            if (count == 0 && direction == "ascending") {
-                direction = "descending";
-                switching = true;
-            }
-        }
-        }
-    }
-}
-
 //Function to search Value from Search Bar
 function Search() {
     let SearchBar = document.getElementById("SearchBar");
@@ -142,7 +76,7 @@ window.onorientationchange = function() {
     window.location.reload();
 };
 
-/* Set the width of the side navigation to 250px */
+/* Set the width of the side navigation to 200px */
 function openNav() {
   document.getElementById("mySidenav").style.width = "200px";
 }
