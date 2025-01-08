@@ -185,9 +185,11 @@ let callback = (mutationList) => {
         rootMargin: "0px",
         threshold: 0.1,
     }
-    let TesObserver = new IntersectionObserver(function(entries, self) {
+    
+    let TesObserver = new IntersectionObserver(function (entries, self) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
+                TesObserver.disconnect()
                 const targetId = document.getElementsByClassName('active')[0].id;
                 if (targetId[0] == 'A') {
                     LazyLoad(Ability, false);
