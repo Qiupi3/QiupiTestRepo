@@ -183,7 +183,7 @@ let callback = (mutationList) => {
     let options = {
         root: null,
         rootMargin: "0px",
-        threshold: 0,
+        threshold: 0.1,
     }
     let TesObserver = new IntersectionObserver(function(entries, self) {
         entries.forEach(entry => {
