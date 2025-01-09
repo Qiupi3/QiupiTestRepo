@@ -22,7 +22,7 @@ function IsAbility(value) {
     
     //Filter value from number(stats)
     if (typeof(value) == 'string') {
-        TesAbility = splitFunc(value);
+        let TesAbility = splitFunc(value);
         //Check if value is Type from Type Array
         for (let x = 0; x < (Ability.length + 1); x++) {
             if (Ability.includes(TesAbility[x])) {

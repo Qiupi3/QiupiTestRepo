@@ -175,7 +175,7 @@ function LazyLoad(Tab, reset) {
         });
     }
     
-    let Max = 20;
+    let Max = 40;
     let renderer = "Render" + TabId + "Table";
     while (Max) {
         Max--;
@@ -203,22 +203,24 @@ function LazyLoad(Tab, reset) {
 }
 
 window.onscroll = function() {
-    var Dex = document.querySelector("#border");
+    var Dex = document.querySelector("#SearchBar").getBoundingClientRect();
     var Detail = document.getElementById("SpeciesDetail").style.display;
     if (Detail == "block") {
-        if(Dex.getBoundingClientRect().bottom <= 0) {
+        if(Dex.bottom <= 20) {
             CloseDetails(false);
             location.href = "#1";
         }
     }
+
     var BackTop = document.getElementById("BackTop");
-    if (Dex.getBoundingClientRect().top < -10000) {
+    if (Dex.top < -10000) {
         BackTop.style.display = "block";
     } else {
         BackTop.style.display = "none";
     }
+
     var nav = document.getElementById("Nav");
-    if (Dex.getBoundingClientRect().bottom <= 0) {
+    if (Dex.bottom < -5 || Dex.top > 100) {
         nav.style.display = "none";
     } else {
         nav.style.display = "block";
