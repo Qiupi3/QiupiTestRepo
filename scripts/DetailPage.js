@@ -343,7 +343,7 @@ function CreateMoveRow(Lv, Move) {
         if (j == 2) {
             cell.innerHTML = TypeBox(MoveValue[j]).innerHTML;
         } else if (j == 3) {
-            cell.innerHTML = "<img style='width: 60px; height: 40px' src='Assets/" + MoveValue[j] + ".png'>";
+            cell.innerHTML = "<img src='Assets/" + MoveValue[j] + ".png'>";
         } else {
             cell.innerText = MoveValue[j];
         }
