@@ -245,7 +245,7 @@ function CreateEvoBox(Id) {
     Container.setAttribute("class", "WrapperBox")
     Container.appendChild(EvoBox);
     Container.appendChild(DetailBox);
-    Container.setAttribute("onclick", "OpenDetails(" + Id + ")")
+    Container.setAttribute("onclick", `OpenDetails(${Id})`)
     return Container;
 }
 
@@ -342,7 +342,7 @@ function CreateMoveRow(Lv, Move) {
         if (j == 2) {
             cell.innerHTML = TypeBox(MoveValue[j]).innerHTML;
         } else if (j == 3) {
-            cell.innerHTML = "<img src='Assets/" + MoveValue[j] + ".png'>";
+            cell.innerHTML = `<img src='Assets/${MoveValue[j]}.png'>`;
         } else {
             cell.innerText = MoveValue[j];
         }
@@ -350,9 +350,9 @@ function CreateMoveRow(Lv, Move) {
     }
     
     Row.setAttribute("id", Move.UID)
-    Row.setAttribute("onclick", "OpenMoveDetail(" + Move.UID + ")")
+    Row.setAttribute("onclick", `OpenMoveDetail(${Move.UID})`)
     
-    return Row
+    return Row;
 }
 
 function CreateText(Name, Type) {
