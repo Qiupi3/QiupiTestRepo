@@ -67,7 +67,7 @@ function OpenDetails(SpeciesID) {
             }
         }
     } else {
-        Location.innerText = "Location : \n • Unknown";
+        Location.innerText += `• Unknown`;
     }
     
     const SpeciesHeld = splitFunc(Species.Held);
@@ -81,7 +81,7 @@ function OpenDetails(SpeciesID) {
             + " " + SpeciesChance[x] + "\n";
         }
     } else {
-        HeldItem.innerText = "Held Item : \n • None";
+        HeldItem.innerText += `• None`;
     }
     
     const SpeciesEggGroup = splitFunc(Species.Egg);
@@ -188,8 +188,7 @@ function OpenDetails(SpeciesID) {
     }
     
     RenderLearnsetTable(Species.UID, Species.Name);
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
+    scrollTo(0, 0);
     //console.log("Time until Detail Rendered: ", Date.now()-timerStart);
 }
 
