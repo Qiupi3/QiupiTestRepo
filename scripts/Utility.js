@@ -217,3 +217,28 @@ function DarkMode() {
     var element = document.body;
     element.classList.toggle("dark-mode");
 }
+
+window.onscroll = function() {
+    var Dex = document.querySelector("#SearchBar").getBoundingClientRect();
+    var Detail = document.getElementById("SpeciesDetail").style.display;
+    if (Detail == "block") {
+        if(Dex.bottom <= 20) {
+            CloseDetails(false);
+            location.href = "#1";
+        }
+    }
+
+    var BackTop = document.getElementById("BackTop");
+    if (Dex.top < -10000) {
+        BackTop.style.display = "block";
+    } else {
+        BackTop.style.display = "none";
+    }
+
+    var nav = document.getElementById("Nav");
+    if (Dex.bottom < -5 || Dex.top > 100) {
+        nav.style.display = "none";
+    } else {
+        nav.style.display = "block";
+    }
+}
