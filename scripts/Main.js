@@ -260,3 +260,10 @@ function SpriteImg(UID) {
     Img.src = `Assets/Transparent/${UID}.png`;
     return Img;
 }
+
+function* infinite() {
+    let index = 0;
+    while (true) {
+        yield index++;
+    }
+}
