@@ -216,7 +216,7 @@ function TypeBox(Type) {
     for (let x = 0; x < Type.length; x++) {
         let TypeBox = document.createElement("div");
         TypeBox.innerText = Type[x];
-        TypeBox.setAttribute('class', Type[x] + 'Box TypeBox');
+        TypeBox.setAttribute('class', `${Type[x]}Box TypeBox`);
         TypeCell.appendChild(TypeBox);
     }
     return TypeCell;
