@@ -174,22 +174,23 @@ let config = {
 let callback = (mutationList) => {
     for (const mutation of mutationList) {
         if (mutation.type === "attributes") {
-            observer.disconnect();
+            tableObserver.disconnect();
             let target = document.querySelectorAll('.active')[0];
-            observer.observe(target, config);
+            tableObserver.observe(target, config);
         }
     }
-    var TesObs = document.getElementsByClassName('SObs')[0];
+
+    var llTarget = document.getElementsByClassName('SObs')[0];
     let options = {
         root: null,
         rootMargin: "0px",
         threshold: 0.1,
     }
     
-    let TesObserver = new IntersectionObserver(function (entries, self) {
+    let llObserver = new IntersectionObserver(function (entries, self) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                TesObserver.disconnect()
+                llObserver.disconnect()
                 const targetId = document.getElementsByClassName('active')[0].id;
                 if (targetId[0] == 'A') {
                     LazyLoad(Ability, false);
@@ -207,11 +208,11 @@ let callback = (mutationList) => {
             }
         })
     }, options);
-    TesObserver.observe(TesObs)
+    llObserver.observe(llTarget)
 }
 
-const observer = new MutationObserver(callback);
-observer.observe(targetSpecies, config);
+const tableObserver = new MutationObserver(callback);
+tableObserver.observe(targetSpecies, config);
 
 function DarkMode() {
     var element = document.body;
