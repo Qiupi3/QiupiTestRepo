@@ -7,20 +7,11 @@ window.onload = () => {
 function RenderAbilityTable(Ability) {
     const AbilityTable = document.getElementById("AbilityTableBody");
     const Row = document.createElement("tr");
-    const NameBox = document.createElement("td");
-    const DescBox = document.createElement("td");
-        
-    NameBox.innerText = Ability.Name;
-    DescBox.innerText = Ability.Description;
-    Row.appendChild(NameBox);
-    Row.appendChild(DescBox);
-        
     Row.setAttribute("id", Ability.UID);
-    if (Ability.Replacement !== "0") {
-        Row.className += "RestrictedAbility"
-        NameBox.style.color = "red";
-        DescBox.style.color = "red";
-    }
+    // if (Ability.Replacement !== "0") {
+    //     Row.className += "RestrictedAbility";
+    // }
+    Row.innerHTML += `<td>${Ability.Name}</td><td>${Ability.Description}</td>`
     AbilityTable.appendChild(Row);
 }
 
