@@ -18,48 +18,24 @@ function RenderAbilityTable(Ability) {
 function RenderSpeciesTable(Species) {
     const SpeciesTable = document.getElementById("SpeciesTableBody");
     const Row = document.createElement("tr");
-    const IDCell = document.createElement("td");
-    const SpriteCell = document.createElement("td");
-    const NameCell = document.createElement("td");
-    const TypeCell = document.createElement("td");
-    const AbilityCell = document.createElement("td");
-    const BSTCell = document.createElement("td");
-    const HPCell = document.createElement("td");
-    const AtkCell = document.createElement("td");
-    const DefCell = document.createElement("td");
-    const SpACell = document.createElement("td");
-    const SpDCell = document.createElement("td");
-    const SpeCell = document.createElement("td");
-
-    let Sprite = SpriteImg(Species.SUID)
-    IDCell.innerText = Species.SID;
-    SpriteCell.appendChild(Sprite);
-    NameCell.innerText = Species.Name;
-    TypeCell.innerHTML = TypeBox(Species.Type).innerHTML
-    AbilityCell.innerHTML = AbilityBox(Species.Ability, false).innerHTML
-    BSTCell.innerText = Species.BST;
-    HPCell.innerText = Species.HP;
-    AtkCell.innerText = Species.Atk;
-    DefCell.innerText = Species.Def;
-    SpACell.innerText = Species.SpA;
-    SpDCell.innerText = Species.SpD;
-    SpeCell.innerText = Species.Spe;
-    
-    Row.appendChild(IDCell);
-    Row.appendChild(SpriteCell);
-    Row.appendChild(NameCell);
-    Row.appendChild(TypeCell);
-    Row.appendChild(AbilityCell);
-    Row.appendChild(BSTCell);
-    Row.appendChild(HPCell);
-    Row.appendChild(AtkCell);
-    Row.appendChild(DefCell);
-    Row.appendChild(SpACell);
-    Row.appendChild(SpDCell);
-    Row.appendChild(SpeCell);
+    Row.innerHTML += 
+    `
+    <td>${Species.SUID}</td>
+    <td><img src="Assets/Transparent/${Species.SUID}.png"></td>
+    <td>${Species.Name}</td>
+    <td>${TypeBox(Species.Type).innerHTML}</td>
+    <td>${AbilityBox(Species.Ability, false).innerHTML}</td>
+    <td>${Species.BST}</td>
+    <td>${Species.HP}</td>
+    <td>${Species.Atk}</td>
+    <td>${Species.Def}</td>
+    <td>${Species.SpA}</td>
+    <td>${Species.SpD}</td>
+    <td>${Species.Spe}</td>
+    `
     
     Row.setAttribute("id", Species.UID);
-    Row.setAttribute("onclick", "OpenDetails(" + Species.UID + ")");
+    Row.setAttribute("onclick", `OpenDetails(${Species.UID})`);
     SpeciesTable.appendChild(Row);
     mediaSize(Species.UID);
 }
