@@ -21,12 +21,12 @@ function OpenDetails(SpeciesID) {
     const EggGroup = document.getElementById("EggGroupDetail");
     const Evolution = document.getElementById("EvoDetail");
     
-    let SpriteImage = SpriteImg(Species.SUID)
+    let SpriteImage = `<img src="Assets/Transparent/${Species.SUID}.png">`
 
     UID.innerText = Species.UID;
     Num.innerText = `#${Species.SID} ${Species.Name}`;
     Sprite.innerHTML = "";
-    Sprite.appendChild(SpriteImage);
+    Sprite.innerHTML += SpriteImage;
     Type.innerHTML = "Type :" + TypeBox(Species.Type).innerHTML
     Ability.innerHTML = "Ability :" + AbilityBox(Species.Ability, true).innerHTML;
     
@@ -230,8 +230,8 @@ function CreateEvoBox(Id) {
     let NameBox = document.createElement("div");
     NameBox.setAttribute("class", "EvoNameBox")
     
-    let Sprite = SpriteImg(Species.SUID)
-    SpriteBox.appendChild(Sprite)
+    let Sprite = `<img src="Assets/Transparent/${Species.SUID}.png">`;
+    SpriteBox.innerHTML += Sprite;
     NameBox.innerText = Species.Name;
     let TypeCell = TypeBox(Species.Type);
     TypeCell.setAttribute("class", "EvoTypeBox")

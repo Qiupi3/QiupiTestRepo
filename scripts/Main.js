@@ -8,7 +8,7 @@ function RenderAbilityTable(Ability) {
     const AbilityTable = document.getElementById("AbilityTableBody");
     const Row = document.createElement("tr");
     Row.setAttribute("id", Ability.UID);
-    // if (Ability.Replacement !== "0") {
+    // if (Ability.Replacement != "0") {
     //     Row.className += "RestrictedAbility";
     // }
     Row.innerHTML += `<td>${Ability.Name}</td><td>${Ability.Description}</td>`
@@ -71,8 +71,8 @@ function RenderLocationTable(Loc) {
         let NameCell = document.createElement("td");
         let LvCell = document.createElement("td");
         let ERCell = document.createElement("td");
-        let Sprite = SpriteImg(LocationSpeciesArr[x])
-        SUIDCell.appendChild(Sprite);
+        let Sprite = `<img src="Assets/Transparent/${LocationSpeciesArr[x]}.png">`;
+        SUIDCell.innerHTML += Sprite;
         NameCell.innerText = LocationSpeciesArr[x];
         LvCell.innerText = LocationLvArr[x];
         ERCell.innerText = LocationERArr[x];
@@ -220,12 +220,6 @@ function TypeBox(Type) {
         TypeCell.appendChild(TypeBox);
     }
     return TypeCell;
-}
-
-function SpriteImg(UID) {
-    let Img = new Image();
-    Img.src = `Assets/Transparent/${UID}.png`;
-    return Img;
 }
 
 const gen = function* (data) {
