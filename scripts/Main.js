@@ -252,7 +252,7 @@ function SpriteImg(UID) {
     return Img;
 }
 
-function* gen(data) {
+const gen = function* (data) {
     let index = 0;
     while (index < data.length) {
         let reset = yield data[index++];
