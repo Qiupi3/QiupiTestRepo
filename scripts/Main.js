@@ -231,3 +231,11 @@ const gen = function* (data) {
         }
     }
 }
+
+const gAbility = gen(AbilityData);
+const gLocation = gen(LocationData);
+const gTrainer = gen(TrainerData);
+const gSpecies = gen(SpeciesData);
+const gMoves = gen(MovesData);
+const gItems = gen(ItemsData);
+const gLearnset = gen(LearnsetData);
