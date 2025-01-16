@@ -226,7 +226,7 @@ const gen = function* (data) {
     let index = 0;
     while (index < data.length) {
         let reset = yield data[index++];
-        if (reset) {
+        if (reset || index == data.length) {
             index = 0;
         }
     }
