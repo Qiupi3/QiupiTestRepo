@@ -35,6 +35,11 @@ TrainerTabBtn.addEventListener('click', TrainerFunction);
 MovesTabBtn.addEventListener('click', MovesFunction);
 ItemsTabBtn.addEventListener('click', ItemsFunction);
 
+// const tabBtn = document.querySelectorAll('.ChoiceBtn')
+// for (let x = 0; x < tabBtn.length; x++) {
+//     console.log(tabBtn[x].value);
+// }
+
 //Function to search Value from Search Bar
 function Search() {
     let SearchBar = document.getElementById("SearchBar");

@@ -197,7 +197,7 @@ function CloseDetails(Ref) {
     tab.style.display = "none";
     if (Ref) {
         const UID = document.getElementById("UIDDetail").innerText;
-        location.href = "#" + UID
+        //location.href = "#" + UID
     }
 }
 

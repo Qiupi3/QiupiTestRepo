@@ -54,5 +54,3 @@ if (!(AbilityData && SpeciesData && LocationData && ItemsData && LearnsetData &&
     ReqLearnsetData();
 }
 
-href = new URL(window.location.href);
-console.log(href + "Species")
