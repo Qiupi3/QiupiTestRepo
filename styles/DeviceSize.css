@@ -1,6 +1,6 @@
 /*Small Phone  Size*/
-/* @media screen and (max-width: 480px) {
-    .IDHeader { width: 10%; }
+@media screen and (max-width: 480px) {
+    /* .IDHeader { width: 10%; }
     
     .SpriteHeader { width: 15%; }
     
@@ -12,7 +12,11 @@
     
     .BSTHeader { width: 15%; }
     
-    .StatsHeader { display: none; }
+    .StatsHeader { display: none; } */
+
+    .main th {
+        font-size: 0.8rem;
+    }
 
 }
 
@@ -35,4 +39,4 @@
 
 @media screen and (min-width: 600px) {
     
-} */
+}
