@@ -20,7 +20,7 @@ function RenderSpeciesTable(Species) {
     const Row = document.createElement("tr");
     Row.innerHTML += 
     `
-    <td>${Species.SUID}</td>
+    <td>${Species.UID}</td>
     <td><img src="Assets/Transparent/${Species.SUID}.png"></td>
     <td>${Species.Name}</td>
     <td>${TypeBox(Species.Type).innerHTML}</td>
@@ -37,7 +37,7 @@ function RenderSpeciesTable(Species) {
     Row.setAttribute("id", Species.UID);
     Row.setAttribute("onclick", `OpenDetails(${Species.UID})`);
     SpeciesTable.appendChild(Row);
-    mediaSize(Species.UID);
+    //mediaSize(Species.UID);
 }
 
 function RenderLocationTable(Loc) {

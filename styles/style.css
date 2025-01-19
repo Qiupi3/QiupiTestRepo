@@ -1,3 +1,7 @@
+*, ::after, ::before {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0px;
   width: 100%;
@@ -7,6 +11,7 @@ table {
   border-collapse: collapse;
   width: 100%;
   table-layout: fixed;
+  display: block;
 }
 
 .main td, th {
@@ -14,6 +19,24 @@ table {
   text-align: center;
   padding: 1%;
   border-spacing: 0px;
+  display: inline-block;
+}
+
+.main td {
+  width: 25%;
+}
+
+.main td:nth-child(5) {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.main th {
+  width: 20%;
+}
+.main td:nth-child(n+6), .main th:nth-child(n+6) {
+  width: 12.5%;
 }
 
 .main tr {
