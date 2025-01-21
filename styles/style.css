@@ -31,11 +31,11 @@ table {
 }
 
 .main th:nth-child(n+3) {
-  width: 16.6%;
+  width: calc(50%/3);
 }
 
 .main td:nth-child(n+6), .main th:nth-child(n+6) {
-  width: 12.5%;
+  width: calc(100%/7);
 }
 
 .main tr {
