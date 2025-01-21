@@ -1,14 +1,9 @@
-*, ::after, ::before {
-  box-sizing: border-box;
-}
-
 body {
-  margin: 0px;
+  display: block;
   width: 100%;
 }
 
 table {
-  border-collapse: collapse;
   width: 100%;
   table-layout: fixed;
 }
