@@ -169,7 +169,7 @@ function ItemsFunction() {
     ItemsBody.classList.add('active')
 }
 
-var targetSpecies = document.querySelectorAll('.active')[0];
+var targetSpecies = document.querySelector('.active');
 
 let config = {
     childList: true,
@@ -180,7 +180,7 @@ let callback = (mutationList) => {
     for (const mutation of mutationList) {
         if (mutation.type === "attributes") {
             tableObserver.disconnect();
-            let target = document.querySelectorAll('.active')[0];
+            let target = document.querySelector('.active');
             tableObserver.observe(target, config);
         }
     }

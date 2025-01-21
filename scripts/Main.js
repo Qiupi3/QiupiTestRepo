@@ -1,7 +1,23 @@
-window.onload = () => { 
-    if (SpeciesData) {
-        SpeciesFunction();
+const gen = function* (data) {
+    let index = 0;
+    while (index < data.length) {
+        let reset = yield data[index++];
+        if (reset || index == data.length) {
+            index = 0;
+        }
     }
+}
+
+const gAbility = gen(AbilityData);
+const gLocation = gen(LocationData);
+const gTrainer = gen(TrainerData);
+const gSpecies = gen(SpeciesData);
+const gMoves = gen(MovesData);
+const gItems = gen(ItemsData);
+const gLearnset = gen(LearnsetData);
+
+const updateHistoryURL = function (param) {
+    const activeTable = document.getElementById('table').classList;
 }
 
 function RenderAbilityTable(Ability) {
@@ -222,20 +238,3 @@ function TypeBox(Type) {
     return TypeCell;
 }
 
-const gen = function* (data) {
-    let index = 0;
-    while (index < data.length) {
-        let reset = yield data[index++];
-        if (reset || index == data.length) {
-            index = 0;
-        }
-    }
-}
-
-const gAbility = gen(AbilityData);
-const gLocation = gen(LocationData);
-const gTrainer = gen(TrainerData);
-const gSpecies = gen(SpeciesData);
-const gMoves = gen(MovesData);
-const gItems = gen(ItemsData);
-const gLearnset = gen(LearnsetData);

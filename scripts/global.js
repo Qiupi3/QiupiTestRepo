@@ -1,10 +1,10 @@
-var AbilityData = JSON.parse(localStorage.getItem("Ability"));
-var SpeciesData = JSON.parse(localStorage.getItem("Species"));
-var LocationData = JSON.parse(localStorage.getItem("Location"));
-var TrainerData = JSON.parse(localStorage.getItem("Trainer"));
-var MovesData = JSON.parse(localStorage.getItem("Move"));
-var ItemsData = JSON.parse(localStorage.getItem("Items"));
-var LearnsetData = JSON.parse(localStorage.getItem("Learnset"));
+const AbilityData = JSON.parse(localStorage.getItem("Ability"));
+const SpeciesData = JSON.parse(localStorage.getItem("Species"));
+const LocationData = JSON.parse(localStorage.getItem("Location"));
+const TrainerData = JSON.parse(localStorage.getItem("Trainer"));
+const MovesData = JSON.parse(localStorage.getItem("Move"));
+const ItemsData = JSON.parse(localStorage.getItem("Items"));
+const LearnsetData = JSON.parse(localStorage.getItem("Learnset"));
 
 async function ReqAbilityData() {
     const resp = await fetch("data/Ability.json");
@@ -16,7 +16,6 @@ async function ReqSpeciesData() {
     const resp = await fetch("data/Species.json");
     const content = await resp.json();
     window.localStorage.setItem("Species", JSON.stringify(content));
-    window.location = window.location;
 }
 
 async function ReqLocationData() {
@@ -43,14 +42,38 @@ async function ReqLearnsetData() {
     window.localStorage.setItem("Learnset", JSON.stringify(content));    
 }
 
+const url = window.location.href;
+const activeTable = document.getElementById('table').classList;
+const currentTab = url.split(/\?tab=/)[1].split('&')[0];
 
-if (!(AbilityData && SpeciesData && LocationData && ItemsData && LearnsetData && MovesData)) {
-    ReqSpeciesData();
-    ReqAbilityData();
-    ReqLocationData();
-    //ReqTrainerData();
-    ReqMoveData();
-    ReqItemsData();
-    ReqLearnsetData();
+if (!url.includes('?')) {
+    history.pushState(null, '', window.location + '?tab=Species')
 }
 
+(() => {
+    if (activeTable != currentTab) {
+        activeTable.replace(activeTable[0], currentTab);
+    }
+})();
+
+switch (currentTab) {
+    case 'Species':
+        !AbilityData ? ReqAbilityData() : AbilityData;
+        !SpeciesData ? ReqSpeciesData() : SpeciesData;
+        break;
+    case 'Ability':
+        !AbilityData ? ReqAbilityData() : AbilityData;
+        break;
+    case 'Location':
+        !LocationData ? ReqLocationData() : LocationData;
+        break;
+    //case 'Trainer':
+    //    !TrainerData ? ReqTrainerData() : TrainerData;
+    //    break;
+    case 'Moves':
+        !MovesData ? ReqMoveData() : MovesData;
+        break;
+    case 'Items':
+        !ItemsData ? ReqItemsData() : ItemsData;
+        break;
+}
