@@ -42,13 +42,13 @@ async function ReqLearnsetData() {
     window.localStorage.setItem("Learnset", JSON.stringify(content));    
 }
 
+if (!window.location.href.includes('?')) {
+    history.pushState(null, '', window.location + '?tab=Species');
+}
+
 const url = window.location.href;
 const activeTable = document.getElementById('table').classList;
 const currentTab = url.split(/\?tab=/)[1].split('&')[0];
-
-if (!url.includes('?')) {
-    history.pushState(null, '', window.location + '?tab=Species')
-}
 
 (() => {
     if (activeTable != currentTab) {

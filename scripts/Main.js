@@ -17,7 +17,7 @@ const gItems = gen(ItemsData);
 const gLearnset = gen(LearnsetData);
 
 const updateHistoryURL = function (param) {
-    const activeTable = document.getElementById('table').classList;
+    
 }
 
 function RenderAbilityTable(Ability) {
