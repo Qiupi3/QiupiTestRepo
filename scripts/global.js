@@ -1,49 +1,12 @@
-const AbilityData = JSON.parse(localStorage.getItem("Ability"));
-const SpeciesData = JSON.parse(localStorage.getItem("Species"));
-const LocationData = JSON.parse(localStorage.getItem("Location"));
-const TrainerData = JSON.parse(localStorage.getItem("Trainer"));
-const MovesData = JSON.parse(localStorage.getItem("Move"));
-const ItemsData = JSON.parse(localStorage.getItem("Items"));
-const LearnsetData = JSON.parse(localStorage.getItem("Learnset"));
-
-async function ReqAbilityData() {
-    const resp = await fetch("data/Ability.json");
+const requestData = async (name) => {
+    loadingScreen.innerHTML += `Fetching ${name} data...\n`
+    const resp = await fetch(`data/${name}.json`);
     const content = await resp.json();
-    window.localStorage.setItem("Ability", JSON.stringify(content));
-}
-
-async function ReqSpeciesData() {
-    const resp = await fetch("data/Species.json");
-    const content = await resp.json();
-    window.localStorage.setItem("Species", JSON.stringify(content));
-}
-
-async function ReqLocationData() {
-    const resp = await fetch("data/Location.json");
-    const content = await resp.json();
-    window.localStorage.setItem("Location", JSON.stringify(content));
-}
-
-async function ReqMoveData() {
-    const resp = await fetch("data/Move.json");
-    const content = await resp.json();
-    window.localStorage.setItem("Move", JSON.stringify(content));    
-}
-
-async function ReqItemsData() {
-    const resp = await fetch("data/Items.json");
-    const content = await resp.json();
-    window.localStorage.setItem("Items", JSON.stringify(content));    
-}
-
-async function ReqLearnsetData() {
-    const resp = await fetch("data/Learnset.json");
-    const content = await resp.json();
-    window.localStorage.setItem("Learnset", JSON.stringify(content));    
+    window.localStorage.setItem(name, JSON.stringify(content));
 }
 
 if (!window.location.href.includes('?')) {
-    history.pushState(null, '', window.location + '?tab=Species');
+    history.pushState(null, '', window.location.origin + '/?tab=Species');
 }
 
 const url = window.location.href;
@@ -56,24 +19,16 @@ const currentTab = url.split(/\?tab=/)[1].split('&')[0];
     }
 })();
 
-switch (currentTab) {
-    case 'Species':
-        !AbilityData ? ReqAbilityData() : AbilityData;
-        !SpeciesData ? ReqSpeciesData() : SpeciesData;
-        break;
-    case 'Ability':
-        !AbilityData ? ReqAbilityData() : AbilityData;
-        break;
-    case 'Location':
-        !LocationData ? ReqLocationData() : LocationData;
-        break;
-    //case 'Trainer':
-    //    !TrainerData ? ReqTrainerData() : TrainerData;
-    //    break;
-    case 'Moves':
-        !MovesData ? ReqMoveData() : MovesData;
-        break;
-    case 'Items':
-        !ItemsData ? ReqItemsData() : ItemsData;
-        break;
+const start = () => {
+    JSON.parse(localStorage.getItem("Ability")) ?? requestData('Ability');
+    JSON.parse(localStorage.getItem("Species")) ?? requestData('Species');
+    JSON.parse(localStorage.getItem("Location")) ?? requestData('Location');
+    JSON.parse(localStorage.getItem("Trainer"));
+    JSON.parse(localStorage.getItem("Move")) ?? requestData('Move');
+    JSON.parse(localStorage.getItem("Items")) ?? requestData('Items');
+    JSON.parse(localStorage.getItem("Learnset")) ?? requestData('Learnset');
+    JSON.parse(localStorage.getItem("Ability")) ? loadingScreen.className = 'hide' : window.location;
+    // main.classList.remove('hide');
 }
+
+start();

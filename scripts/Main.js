@@ -1,3 +1,11 @@
+const AbilityData = JSON.parse(localStorage.getItem("Ability"));
+const SpeciesData = JSON.parse(localStorage.getItem("Species"));
+const LocationData = JSON.parse(localStorage.getItem("Location"));
+const TrainerData = JSON.parse(localStorage.getItem("Trainer"));
+const MovesData = JSON.parse(localStorage.getItem("Move"));
+const ItemsData = JSON.parse(localStorage.getItem("Items"));
+const LearnsetData = JSON.parse(localStorage.getItem("Learnset"));
+
 const gen = function* (data) {
     let index = 0;
     while (index < data.length) {
@@ -20,6 +28,21 @@ const updateHistoryURL = function (param) {
     
 }
 
+window.onload = () => {
+    lazyLoad(currentTab);
+}
+
+const lazyLoad = (tab) => {
+    const table = document.querySelector(`.${tab}`);
+    const data = eval(`g${tab}`);
+    //renderTableHeader(table);
+    let max = 40;
+    while (max) {
+        RenderSpeciesTable(table, data.next().value);
+        max--;
+    }
+}
+
 function RenderAbilityTable(Ability) {
     const AbilityTable = document.getElementById("AbilityTableBody");
     const Row = document.createElement("tr");
@@ -31,8 +54,8 @@ function RenderAbilityTable(Ability) {
     AbilityTable.appendChild(Row);
 }
 
-function RenderSpeciesTable(Species) {
-    const SpeciesTable = document.getElementById("SpeciesTableBody");
+function RenderSpeciesTable(table, Species) {
+    //const SpeciesTable = document.getElementById("SpeciesTableBody");
     const Row = document.createElement("tr");
     Row.innerHTML += 
     `
@@ -52,7 +75,8 @@ function RenderSpeciesTable(Species) {
     
     Row.setAttribute("id", Species.UID);
     Row.setAttribute("onclick", `OpenDetails(${Species.UID})`);
-    SpeciesTable.appendChild(Row);
+    table.appendChild(Row);
+    //SpeciesTable.appendChild(Row);
     //mediaSize(Species.UID);
 }
 
@@ -115,75 +139,75 @@ function RenderMoveTable(Move) {
     MoveTable.appendChild(MoveRow)
 }
 
-function LazyLoad(Tab, reset) {
-    let Data, TabId;
-    switch (Tab) {
-        case Ability:
-        Data = AbilityData;
-        TabId = "Ability"
-        break;
-        case Species:
-        Data = SpeciesData;
-        TabId = "Species"
-        break;
-        case Location:
-        Data = LocationData;
-        TabId = "Location"
-        break;
-        case Trainer:
-        Data = TrainerData;
-        TabId = "Trainer"
-        break;
-        case Moves:
-        Data = MovesData
-        TabId = "Move"
-        break;
-        case Items:
-        Data = ItemsData
-        TabId = "Items"
-        break;
-        case Search:
-        Data = SearchedData
-        TabId = "Species"
-        break;
-    }
+// function LazyLoad(Tab, reset) {
+//     let Data, TabId;
+//     switch (Tab) {
+//         case Ability:
+//         Data = AbilityData;
+//         TabId = "Ability"
+//         break;
+//         case Species:
+//         Data = SpeciesData;
+//         TabId = "Species"
+//         break;
+//         case Location:
+//         Data = LocationData;
+//         TabId = "Location"
+//         break;
+//         case Trainer:
+//         Data = TrainerData;
+//         TabId = "Trainer"
+//         break;
+//         case Moves:
+//         Data = MovesData
+//         TabId = "Move"
+//         break;
+//         case Items:
+//         Data = ItemsData
+//         TabId = "Items"
+//         break;
+//         case Search:
+//         Data = SearchedData
+//         TabId = "Species"
+//         break;
+//     }
     
-    let table = document.querySelectorAll('.active');
-    if (reset) {
-        while (table[0].rows[0]) {
-            table[0].removeChild(table[0].rows[0])
-        }
-        Data = Data.sort((a, b) => {
-            return a.UID - b.UID;
-        });
-    }
+//     let table = document.querySelectorAll('.active');
+//     if (reset) {
+//         while (table[0].rows[0]) {
+//             table[0].removeChild(table[0].rows[0])
+//         }
+//         Data = Data.sort((a, b) => {
+//             return a.UID - b.UID;
+//         });
+//     }
     
-    let Max = 40;
-    let renderer = "Render" + TabId + "Table";
-    while (Max) {
-        Max--;
-        let tlen = document.getElementById(TabId + "TableBody").rows.length
-        if (tlen > Data.length-1) {
-            break;
-        }
-        let TData = Data.shift();
-        Data.push(TData);
-        if (TData) {
-            let y = document.getElementsByClassName('SObs');
-            if (y.length > 0) {
-                y = y[0].classList;
-                y.remove('SObs');
-            }
-            eval(renderer)(TData)
-            if (Tab != Search) {
-                let x = document.getElementById(TData.UID);
-                x.classList.add('SObs');
-            }
-        }
+//     let Max = 40;
+//     let renderer = "Render" + TabId + "Table";
+//     while (Max) {
+//         Max--;
+//         let tlen = document.getElementById(TabId + "TableBody").rows.length
+//         if (tlen > Data.length-1) {
+//             break;
+//         }
+//         let TData = Data.shift();
+//         Data.push(TData);
+//         if (TData) {
+//             let y = document.getElementsByClassName('SObs');
+//             if (y.length > 0) {
+//                 y = y[0].classList;
+//                 y.remove('SObs');
+//             }
+//             eval(renderer)(TData)
+//             if (Tab != Search) {
+//                 let x = document.getElementById(TData.UID);
+//                 x.classList.add('SObs');
+//             }
+//         }
         
         
-    }
-}
+//     }
+// }
 
 function BackTop() {
     var currentPos = scrollY;

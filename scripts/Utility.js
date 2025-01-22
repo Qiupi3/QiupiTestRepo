@@ -213,7 +213,7 @@ let callback = (mutationList) => {
             }
         })
     }, options);
-    llObserver.observe(llTarget)
+    //llObserver.observe(llTarget)
 }
 
 const tableObserver = new MutationObserver(callback);
