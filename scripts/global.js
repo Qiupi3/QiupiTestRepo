@@ -3,6 +3,9 @@ const requestData = async (name) => {
     const resp = await fetch(`data/${name}.json`);
     const content = await resp.json();
     window.localStorage.setItem(name, JSON.stringify(content));
+    if (name === "Learnset") {
+        window.location = window.location;
+    }
 }
 
 if (!window.location.href.includes('?')) {
@@ -27,8 +30,8 @@ const start = () => {
     JSON.parse(localStorage.getItem("Move")) ?? requestData('Move');
     JSON.parse(localStorage.getItem("Items")) ?? requestData('Items');
     JSON.parse(localStorage.getItem("Learnset")) ?? requestData('Learnset');
-    JSON.parse(localStorage.getItem("Ability")) ? loadingScreen.className = 'hide' : window.location;
-    // main.classList.remove('hide');
+    JSON.parse(localStorage.getItem("Ability")) ? loadingScreen.className = 'hide' : null;
+    main.classList.remove('hide');
 }
 
 start();

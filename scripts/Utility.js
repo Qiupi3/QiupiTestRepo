@@ -21,24 +21,28 @@ function splitAbility(x) {
     }
 }
 
-const AbilityTabBtn = document.getElementsByClassName('ChoiceBtn')[0];
-const SpeciesTabBtn = document.getElementsByClassName('ChoiceBtn')[1];
-const LocationTabBtn = document.getElementsByClassName('ChoiceBtn')[2];
-const TrainerTabBtn = document.getElementsByClassName('ChoiceBtn')[3];
-const MovesTabBtn = document.getElementsByClassName('ChoiceBtn')[4];
-const ItemsTabBtn = document.getElementsByClassName('ChoiceBtn')[5];
+// const AbilityTabBtn = document.getElementsByClassName('ChoiceBtn')[0];
+// const SpeciesTabBtn = document.getElementsByClassName('ChoiceBtn')[1];
+// const LocationTabBtn = document.getElementsByClassName('ChoiceBtn')[2];
+// const TrainerTabBtn = document.getElementsByClassName('ChoiceBtn')[3];
+// const MovesTabBtn = document.getElementsByClassName('ChoiceBtn')[4];
+// const ItemsTabBtn = document.getElementsByClassName('ChoiceBtn')[5];
 
-AbilityTabBtn.addEventListener('click', AbilityFunction);
-SpeciesTabBtn.addEventListener('click', SpeciesFunction);
-LocationTabBtn.addEventListener('click', LocationFunction);
-TrainerTabBtn.addEventListener('click', TrainerFunction);
-MovesTabBtn.addEventListener('click', MovesFunction);
-ItemsTabBtn.addEventListener('click', ItemsFunction);
+// AbilityTabBtn.addEventListener('click', AbilityFunction);
+// SpeciesTabBtn.addEventListener('click', SpeciesFunction);
+// LocationTabBtn.addEventListener('click', LocationFunction);
+// TrainerTabBtn.addEventListener('click', TrainerFunction);
+// MovesTabBtn.addEventListener('click', MovesFunction);
+// ItemsTabBtn.addEventListener('click', ItemsFunction);
 
-// const tabBtn = document.querySelectorAll('.ChoiceBtn')
-// for (let x = 0; x < tabBtn.length; x++) {
-//     console.log(tabBtn[x].value);
-// }
+const tabBtn = document.querySelectorAll('.ChoiceBtn')
+for (let x = 0; x < tabBtn.length; x++) {
+    console.log(tabBtn[x].value);
+    const value = tabBtn[x].value;
+    tabBtn[x].addEventListener('click', () => {
+        lazyLoad(value);
+    });
+}
 
 //Function to search Value from Search Bar
 function Search() {
@@ -195,25 +199,12 @@ let callback = (mutationList) => {
     let llObserver = new IntersectionObserver(function (entries, self) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                llObserver.disconnect()
-                const targetId = document.getElementsByClassName('active')[0].id;
-                if (targetId[0] == 'A') {
-                    LazyLoad(Ability, false);
-                } else if(targetId[0] == 'S') {
-                    LazyLoad(Species, false);
-                } else if (targetId[0] == 'L') {
-                    LazyLoad(Location, false);
-                } else if (targetId[0] == 'T') {
-                    LazyLoad(Trainer, false);
-                } else if (targetId[0] == 'M') {
-                    LazyLoad(Moves, false);
-                } else if (targetId[0] == 'I') {
-                    LazyLoad(Items, false);
-                }
+                llObserver.disconnect();
+                lazyLoad(currentTab);
             }
         })
     }, options);
-    //llObserver.observe(llTarget)
+    llObserver.observe(llTarget);
 }
 
 const tableObserver = new MutationObserver(callback);

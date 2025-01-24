@@ -32,15 +32,23 @@ window.onload = () => {
     lazyLoad(currentTab);
 }
 
-const lazyLoad = (tab) => {
+const lazyLoad = (tab, clearTable=false) => {
     const table = document.querySelector(`.${tab}`);
     const data = eval(`g${tab}`);
-    //renderTableHeader(table);
+    //renderTableHeader(tab);
+    const SObs = document.querySelector('.SObs');
+    SObs ? SObs.classList.remove('SObs') : null;
     let max = 40;
+    if (clearTable) {
+        while (table.firstChild) {
+            table.removeChild(table.firstChild);
+        }
+    }
     while (max) {
         RenderSpeciesTable(table, data.next().value);
         max--;
     }
+    table.lastChild.classList = 'SObs';
 }
 
 function RenderAbilityTable(Ability) {
