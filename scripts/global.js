@@ -8,8 +8,8 @@ const requestData = async (name) => {
     }
 }
 
-if (!window.location.href.includes('?')) {
-    history.pushState(null, '', window.location.origin + '/?tab=Species');
+if (!window.location.href.includes('?tab=')) {
+    history.pushState(null, '', window.location.origin + '/QiupiTestRepo/?tab=Species');
 }
 
 const url = window.location.href;
