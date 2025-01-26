@@ -56,10 +56,10 @@ table {
   background-color: rgba(150, 200, 180, 0.8);
 }
 
-#Species {
+/* #Species {
   height: auto;
   width: 100%;
-}
+} */
 
 .SortButton {
   border: none;
@@ -422,10 +422,10 @@ h1 {
   display: block;
 }
 
-#Ability, #Location, #Trainer,
+/* #Ability, #Location, #Trainer,
 #Moves, #Items  {
   display: none;
-}
+} */
 
 .TabChoice {
   width: 80%;
@@ -442,7 +442,11 @@ h1 {
   padding: 3px;
 }
 
-.ChoiceBtn:nth-child(2) {
+/* .ChoiceBtn:nth-child(2) {
+  background-color: red;
+} */
+
+.activeChoice {
   background-color: red;
 }
 

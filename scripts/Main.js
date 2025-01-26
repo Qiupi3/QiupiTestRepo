@@ -2,15 +2,15 @@ const AbilityData = JSON.parse(localStorage.getItem("Ability"));
 const SpeciesData = JSON.parse(localStorage.getItem("Species"));
 const LocationData = JSON.parse(localStorage.getItem("Location"));
 const TrainerData = JSON.parse(localStorage.getItem("Trainer"));
-const MovesData = JSON.parse(localStorage.getItem("Move"));
-const ItemsData = JSON.parse(localStorage.getItem("Items"));
+const MoveData = JSON.parse(localStorage.getItem("Move"));
+const ItemData = JSON.parse(localStorage.getItem("Item"));
 const LearnsetData = JSON.parse(localStorage.getItem("Learnset"));
 
 const gen = function* (data) {
     let index = 0;
     while (index < data.length) {
         let reset = yield data[index++];
-        if (reset || index == data.length) {
+        if (reset == true || index == data.length) {
             index = 0;
         }
     }
@@ -20,52 +20,60 @@ const gAbility = gen(AbilityData);
 const gLocation = gen(LocationData);
 const gTrainer = gen(TrainerData);
 const gSpecies = gen(SpeciesData);
-const gMoves = gen(MovesData);
-const gItems = gen(ItemsData);
+const gMove = gen(MoveData);
+const gItem = gen(ItemData);
 const gLearnset = gen(LearnsetData);
 
-const updateHistoryURL = function (param) {
-    
+const table = document.querySelector(`.active`);
+
+const updateHistoryURL = function (tab) {
+    history.pushState(null, '', window.location.origin + `/?tab=${tab}`);
 }
 
 window.onload = () => {
+    // renderTableHeader(currentTab);
     lazyLoad(currentTab);
 }
 
 const lazyLoad = (tab, clearTable=false) => {
-    const table = document.querySelector(`.${tab}`);
-    const data = eval(`g${tab}`);
-    //renderTableHeader(tab);
-    const SObs = document.querySelector('.SObs');
-    SObs ? SObs.classList.remove('SObs') : null;
-    let max = 40;
     if (clearTable) {
         while (table.firstChild) {
             table.removeChild(table.firstChild);
         }
     }
-    while (max) {
-        RenderSpeciesTable(table, data.next().value);
+
+    const data = eval(`g${tab}`);
+    const callFunction = eval(`render${tab}Table`);
+    const SObs = document.querySelector('.SObs');
+    const activeData = eval(`${tab}Data`).length;
+    const loaded = table.children.length;
+    SObs ? SObs.classList = '' : null;
+
+    let max = 40;
+    while (max && loaded != activeData) {
+        callFunction(data.next(clearTable && max == 40).value);
         max--;
     }
-    table.lastChild.classList = 'SObs';
+    table.lastChild.classList = `SObs ${tab}`;
 }
 
-function RenderAbilityTable(Ability) {
-    const AbilityTable = document.getElementById("AbilityTableBody");
-    const Row = document.createElement("tr");
-    Row.setAttribute("id", Ability.UID);
+function renderAbilityTable(Ability) {
+    const row = document.createElement("tr");
     // if (Ability.Replacement != "0") {
     //     Row.className += "RestrictedAbility";
     // }
-    Row.innerHTML += `<td>${Ability.Name}</td><td>${Ability.Description}</td>`
-    AbilityTable.appendChild(Row);
+    row.innerHTML += 
+    `
+    <td>${Ability.Name}</td>
+    <td>${Ability.Description}</td>
+    `
+    row.setAttribute("id", Ability.UID);
+    table.appendChild(row);
 }
 
-function RenderSpeciesTable(table, Species) {
-    //const SpeciesTable = document.getElementById("SpeciesTableBody");
-    const Row = document.createElement("tr");
-    Row.innerHTML += 
+function renderSpeciesTable(Species) {
+    const row = document.createElement("tr");
+    row.innerHTML += 
     `
     <td>${Species.UID}</td>
     <td><img src="Assets/Transparent/${Species.SUID}.png"></td>
@@ -81,14 +89,12 @@ function RenderSpeciesTable(table, Species) {
     <td>${Species.Spe}</td>
     `
     
-    Row.setAttribute("id", Species.UID);
-    Row.setAttribute("onclick", `OpenDetails(${Species.UID})`);
-    table.appendChild(Row);
-    //SpeciesTable.appendChild(Row);
-    //mediaSize(Species.UID);
+    row.setAttribute("id", Species.UID);
+    row.setAttribute("onclick", `OpenDetails(${Species.UID})`);
+    table.appendChild(row);
 }
 
-function RenderLocationTable(Loc) {
+function renderLocationTable(Loc) {
     const LocationTable = document.getElementById("LocationTableBody");
     const LocationRow = document.createElement("tr");
     const LocationCell = document.createElement("td");
@@ -140,11 +146,9 @@ function RenderLocationTable(Loc) {
     LocationTable.appendChild(LocationRow);
 }
 
-function RenderMoveTable(Move) {
-    const MoveTable = document.getElementById("MoveTableBody");
+function renderMoveTable(Move) {
     let MoveRow = CreateMoveRow(false, Move);
-    
-    MoveTable.appendChild(MoveRow)
+    table.appendChild(MoveRow);
 }
 
 // function LazyLoad(Tab, reset) {
