@@ -50,7 +50,7 @@ const lazyLoad = (tab, clearTable=false) => {
     SObs ? SObs.classList = '' : null;
 
     let max = 40;
-    while (max && loaded != activeData) {
+    while (max && table.children.length != activeData) {
         callFunction(data.next(clearTable && max == 40).value);
         max--;
     }
