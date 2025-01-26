@@ -40,13 +40,14 @@ const lazyLoad = (tab, clearTable=false) => {
         while (table.firstChild) {
             table.removeChild(table.firstChild);
         }
+        const tableClass = table.classList;
+        tableClass.replace(tableClass[0], tab);
     }
 
     const data = eval(`g${tab}`);
     const callFunction = eval(`render${tab}Table`);
     const SObs = document.querySelector('.SObs');
     const activeData = eval(`${tab}Data`).length;
-    const loaded = table.children.length;
     SObs ? SObs.classList = '' : null;
 
     let max = 40;
