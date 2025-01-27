@@ -57,7 +57,7 @@ const lazyLoad = (tab, clearTable=false) => {
         max--;
     }
     SObs ? SObs.classList = '' : null;
-    table.lastChild.classList = `SObs ${tab}`;
+    table.children[table.children.length - 5].classList = `SObs ${tab}`;
 }
 
 function renderAbilityTable(Ability) {
