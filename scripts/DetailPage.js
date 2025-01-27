@@ -270,7 +270,7 @@ function RenderLearnsetTable(SpeciesID, Name) {
     PreEvoTable.innerHTML = "";
     if (PreEvoMove[0] != "-") {
         for (let i = 0; i < PreEvoMove.length; i++) {
-            let row = CreateMoveRow(false, MovesData[PreEvoMove[i] - 50001]);
+            let row = CreateMoveRow(false, MoveData[PreEvoMove[i] - 50001]);
             PreEvoTable.appendChild(row)
         }
     } else {
@@ -280,7 +280,7 @@ function RenderLearnsetTable(SpeciesID, Name) {
     LevelupTable.innerHTML = "";
     if (LevelupLv[0] != "-") {
         for (let i = 0; i < LevelupLv.length; i++) {
-            let row = CreateMoveRow(LevelupLv[i], MovesData[LevelupMove[i] - 50001]);
+            let row = CreateMoveRow(LevelupLv[i], MoveData[LevelupMove[i] - 50001]);
             LevelupTable.appendChild(row)
         }
     } else {
@@ -290,7 +290,7 @@ function RenderLearnsetTable(SpeciesID, Name) {
     TMTable.innerHTML = "";
     if (TMMove[0] != "-") {
         for (let i = 0; i < TMMove.length; i++) {
-            let row = CreateMoveRow(false, MovesData[TMMove[i] - 50001]);
+            let row = CreateMoveRow(false, MoveData[TMMove[i] - 50001]);
             TMTable.appendChild(row)
         }
     } else {
@@ -300,7 +300,7 @@ function RenderLearnsetTable(SpeciesID, Name) {
     TutorTable.innerHTML = "";
     if (TutorMove[0] != "-") {
         for (let i = 0; i < TutorMove.length; i++) {
-            let row = CreateMoveRow(false, MovesData[TutorMove[i] - 50001]);
+            let row = CreateMoveRow(false, MoveData[TutorMove[i] - 50001]);
             TutorTable.appendChild(row)
         }
     } else {
@@ -310,7 +310,7 @@ function RenderLearnsetTable(SpeciesID, Name) {
     EggTable.innerHTML = "";
     if (EggMove[0] != "-") {
         for (let i = 0; i < EggMove.length; i++) {
-            let row = CreateMoveRow(false, MovesData[EggMove[i] - 50001]);
+            let row = CreateMoveRow(false, MoveData[EggMove[i] - 50001]);
             EggTable.appendChild(row)
         }
     } else {
@@ -320,7 +320,7 @@ function RenderLearnsetTable(SpeciesID, Name) {
     EventTable.innerHTML = "";
     if (EventMove[0] != "-") {
         for (let i = 0; i < EventMove.length; i++) {
-            let row = CreateMoveRow(false, MovesData[EventMove[i] - 50001]);
+            let row = CreateMoveRow(false, MoveData[EventMove[i] - 50001]);
             EventTable.appendChild(row)
         }
     } else {

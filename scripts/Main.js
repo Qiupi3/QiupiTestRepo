@@ -31,6 +31,8 @@ const updateHistoryURL = function (tab) {
 }
 
 window.onload = () => {
+    JSON.parse(localStorage.getItem("Ability")) ? loadingScreen.className = 'hide' : null;
+    main.classList.remove('hide');
     // renderTableHeader(currentTab);
     lazyLoad(currentTab);
 }
@@ -48,13 +50,13 @@ const lazyLoad = (tab, clearTable=false) => {
     const callFunction = eval(`render${tab}Table`);
     const SObs = document.querySelector('.SObs');
     const activeData = eval(`${tab}Data`).length;
-    SObs ? SObs.classList = '' : null;
 
     let max = 40;
     while (max && table.children.length != activeData) {
         callFunction(data.next(clearTable && max == 40).value);
         max--;
     }
+    SObs ? SObs.classList = '' : null;
     table.lastChild.classList = `SObs ${tab}`;
 }
 
@@ -151,76 +153,6 @@ function renderMoveTable(Move) {
     let MoveRow = CreateMoveRow(false, Move);
     table.appendChild(MoveRow);
 }
-
-// function LazyLoad(Tab, reset) {
-//     let Data, TabId;
-//     switch (Tab) {
-//         case Ability:
-//         Data = AbilityData;
-//         TabId = "Ability"
-//         break;
-//         case Species:
-//         Data = SpeciesData;
-//         TabId = "Species"
-//         break;
-//         case Location:
-//         Data = LocationData;
-//         TabId = "Location"
-//         break;
-//         case Trainer:
-//         Data = TrainerData;
-//         TabId = "Trainer"
-//         break;
-//         case Moves:
-//         Data = MovesData
-//         TabId = "Move"
-//         break;
-//         case Items:
-//         Data = ItemsData
-//         TabId = "Items"
-//         break;
-//         case Search:
-//         Data = SearchedData
-//         TabId = "Species"
-//         break;
-//     }
-    
-//     let table = document.querySelectorAll('.active');
-//     if (reset) {
-//         while (table[0].rows[0]) {
-//             table[0].removeChild(table[0].rows[0])
-//         }
-//         Data = Data.sort((a, b) => {
-//             return a.UID - b.UID;
-//         });
-//     }
-    
-//     let Max = 40;
-//     let renderer = "Render" + TabId + "Table";
-//     while (Max) {
-//         Max--;
-//         let tlen = document.getElementById(TabId + "TableBody").rows.length
-//         if (tlen > Data.length-1) {
-//             break;
-//         }
-//         let TData = Data.shift();
-//         Data.push(TData);
-//         if (TData) {
-//             let y = document.getElementsByClassName('SObs');
-//             if (y.length > 0) {
-//                 y = y[0].classList;
-//                 y.remove('SObs');
-//             }
-//             eval(renderer)(TData)
-//             if (Tab != Search) {
-//                 let x = document.getElementById(TData.UID);
-//                 x.classList.add('SObs');
-//             }
-//         }
-        
-        
-//     }
-// }
 
 function BackTop() {
     var currentPos = scrollY;

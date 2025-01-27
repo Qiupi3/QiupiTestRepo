@@ -27,16 +27,10 @@ const currentTab = url.split(/\?tab=/)[1].split('&')[0];
     }
 })();
 
-const start = () => {
-    JSON.parse(localStorage.getItem("Ability")) ?? requestData('Ability');
-    JSON.parse(localStorage.getItem("Species")) ?? requestData('Species');
-    JSON.parse(localStorage.getItem("Location")) ?? requestData('Location');
-    JSON.parse(localStorage.getItem("Trainer"));
-    JSON.parse(localStorage.getItem("Move")) ?? requestData('Move');
-    JSON.parse(localStorage.getItem("Item")) ?? requestData('Item');
-    JSON.parse(localStorage.getItem("Learnset")) ?? requestData('Learnset');
-    JSON.parse(localStorage.getItem("Ability")) ? loadingScreen.className = 'hide' : null;
-    main.classList.remove('hide');
-}
-
-start();
+JSON.parse(localStorage.getItem("Ability")) ?? requestData('Ability');
+JSON.parse(localStorage.getItem("Species")) ?? requestData('Species');
+JSON.parse(localStorage.getItem("Location")) ?? requestData('Location');
+JSON.parse(localStorage.getItem("Trainer"));
+JSON.parse(localStorage.getItem("Move")) ?? requestData('Move');
+JSON.parse(localStorage.getItem("Item")) ?? requestData('Item');
+JSON.parse(localStorage.getItem("Learnset")) ?? requestData('Learnset');
