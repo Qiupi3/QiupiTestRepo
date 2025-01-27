@@ -97,57 +97,57 @@ function renderSpeciesTable(Species) {
     table.appendChild(row);
 }
 
-function renderLocationTable(Loc) {
-    const LocationTable = document.getElementById("LocationTableBody");
-    const LocationRow = document.createElement("tr");
-    const LocationCell = document.createElement("td");
-    const Table = document.createElement("table");
-    const TableHeader = document.createElement("thead");
-    const TableHeaderRow = document.createElement("tr");
-    const LocationNameCell = document.createElement("td");
-    const LocationResCell = document.createElement("td");
+// function renderLocationTable(Loc) {
+//     const LocationTable = document.getElementById("LocationTableBody");
+//     const LocationRow = document.createElement("tr");
+//     const LocationCell = document.createElement("td");
+//     const Table = document.createElement("table");
+//     const TableHeader = document.createElement("thead");
+//     const TableHeaderRow = document.createElement("tr");
+//     const LocationNameCell = document.createElement("td");
+//     const LocationResCell = document.createElement("td");
     
-    LocationNameCell.innerText = Loc.Loc;
-    LocationNameCell.setAttribute('colspan', '2')
-    LocationResCell.innerText = Loc.Res;
-    LocationResCell.setAttribute('colspan', '2')
+//     LocationNameCell.innerText = Loc.Loc;
+//     LocationNameCell.setAttribute('colspan', '2')
+//     LocationResCell.innerText = Loc.Res;
+//     LocationResCell.setAttribute('colspan', '2')
     
-    TableHeaderRow.appendChild(LocationNameCell);
-    TableHeaderRow.appendChild(LocationResCell);
-    TableHeader.appendChild(TableHeaderRow);
+//     TableHeaderRow.appendChild(LocationNameCell);
+//     TableHeaderRow.appendChild(LocationResCell);
+//     TableHeader.appendChild(TableHeaderRow);
     
-    Table.appendChild(TableHeader);
+//     Table.appendChild(TableHeader);
     
-    const LocationSpeciesArr = splitFunc(Loc.SUID);
-    const LocationNameArr = splitFunc(Loc.Name);
-    const LocationLvArr = splitFunc(Loc.Lv);
-    const LocationERArr = splitFunc(Loc.ER);
-    for (let x = 0; x < LocationSpeciesArr.length; x++) {
-        let row = document.createElement("tr");
-        let SUIDCell = document.createElement("td");
-        let NameCell = document.createElement("td");
-        let LvCell = document.createElement("td");
-        let ERCell = document.createElement("td");
-        let Sprite = `<img src="Assets/Transparent/${LocationSpeciesArr[x]}.png">`;
-        SUIDCell.innerHTML += Sprite;
-        NameCell.innerText = LocationSpeciesArr[x];
-        LvCell.innerText = LocationLvArr[x];
-        ERCell.innerText = LocationERArr[x];
+//     const LocationSpeciesArr = splitFunc(Loc.SUID);
+//     const LocationNameArr = splitFunc(Loc.Name);
+//     const LocationLvArr = splitFunc(Loc.Lv);
+//     const LocationERArr = splitFunc(Loc.ER);
+//     for (let x = 0; x < LocationSpeciesArr.length; x++) {
+//         let row = document.createElement("tr");
+//         let SUIDCell = document.createElement("td");
+//         let NameCell = document.createElement("td");
+//         let LvCell = document.createElement("td");
+//         let ERCell = document.createElement("td");
+//         let Sprite = `<img src="Assets/Transparent/${LocationSpeciesArr[x]}.png">`;
+//         SUIDCell.innerHTML += Sprite;
+//         NameCell.innerText = LocationSpeciesArr[x];
+//         LvCell.innerText = LocationLvArr[x];
+//         ERCell.innerText = LocationERArr[x];
         
-        row.appendChild(SUIDCell);
-        row.appendChild(NameCell);
-        row.appendChild(LvCell);
-        row.appendChild(ERCell);
-        row.setAttribute("onclick", "OpenDetails(" + LocationSpeciesArr[x] + ")");
-        Table.appendChild(row);
-    }
-    LocationCell.setAttribute("colspan", "4");
-    LocationCell.appendChild(Table)
-    LocationRow.appendChild(LocationCell);
-    LocationRow.setAttribute("id", Loc.UID)
-    LocationRow.setAttribute("class", 'LocationRow')
-    LocationTable.appendChild(LocationRow);
-}
+//         row.appendChild(SUIDCell);
+//         row.appendChild(NameCell);
+//         row.appendChild(LvCell);
+//         row.appendChild(ERCell);
+//         row.setAttribute("onclick", "OpenDetails(" + LocationSpeciesArr[x] + ")");
+//         Table.appendChild(row);
+//     }
+//     LocationCell.setAttribute("colspan", "4");
+//     LocationCell.appendChild(Table)
+//     LocationRow.appendChild(LocationCell);
+//     LocationRow.setAttribute("id", Loc.UID)
+//     LocationRow.setAttribute("class", 'LocationRow')
+//     LocationTable.appendChild(LocationRow);
+// }
 
 function renderMoveTable(Move) {
     let MoveRow = CreateMoveRow(false, Move);
@@ -170,8 +170,7 @@ function BackTop() {
 }
 
 function AbilityBox(Ability, Desc) {
-    const AbilityData = JSON.parse(localStorage.getItem("Ability"));
-    let SpeciesAbility = splitFunc(Ability)
+    let SpeciesAbility = splitFunc(Ability);
     let AbilityCell = document.createElement("div");
     for (let x = 0; x < SpeciesAbility.length; x++) {
         let AbilityBox = document.createElement("div");
@@ -179,8 +178,8 @@ function AbilityBox(Ability, Desc) {
         if (Desc) {
             AbilityBox.innerText = "• " + AbilityData[SpeciesAbility[x] - 40001].Name;
         }
-        AbilityBox.setAttribute('class', 'AbilityBox')
-        let HA = splitAbility(Ability)
+        AbilityBox.setAttribute('class', 'AbilityBox');
+        let HA = Ability.toString().includes(';');
         if (HA && x == SpeciesAbility.length-1) {
             AbilityBox.setAttribute('class', 'HABox')
         }
@@ -189,7 +188,7 @@ function AbilityBox(Ability, Desc) {
             let AbilityDesc = AbilityData[SpeciesAbility[x] - 40001].Description;
             let DescBox = document.createElement("div");
             DescBox.innerText = AbilityDesc;
-            AbilityCell.appendChild(DescBox)
+            AbilityCell.appendChild(DescBox);
         }
     }
     return AbilityCell;
@@ -206,4 +205,3 @@ function TypeBox(Type) {
     }
     return TypeCell;
 }
-

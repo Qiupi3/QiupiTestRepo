@@ -6,22 +6,11 @@ function splitFunc(x) {
         const y = x.split(/, |; /);
         return y;
     } catch(err) {
-        return [x]
+        return [x];
     }
 }
 
-function splitAbility(x) {
-    try {
-        const y = x.split("; ");
-        if (y != x) {
-            return true
-        }
-    } catch(err) {
-        return false
-    }
-}
-
-const tabBtn = document.querySelectorAll('.ChoiceBtn')
+const tabBtn = document.querySelectorAll('.ChoiceBtn');
 for (let x = 0; x < tabBtn.length; x++) {
     const value = tabBtn[x].id;
     tabBtn[x].addEventListener('click', () => {
@@ -39,18 +28,18 @@ const updateChoiceBtn = function (btn) {
 }
 
 //Function to search Value from Search Bar
-function Search() {
-    let SearchBar = document.getElementById("SearchBar");
-    let SearchValue = SearchBar.value.toLowerCase();
-    if (SearchValue.length > 2) {
-        observer.disconnect();
-        SearchedData = SpeciesData.filter(item => item.Name.toLowerCase().indexOf(SearchValue) > -1);
-        LazyLoad(Search, true)
-    } else {
-        observer.observe(targetSpecies, config);
-        LazyLoad(Species, true);
-    }
-}
+// function Search() {
+//     let SearchBar = document.getElementById("SearchBar");
+//     let SearchValue = SearchBar.value.toLowerCase();
+//     if (SearchValue.length > 2) {
+//         observer.disconnect();
+//         SearchedData = SpeciesData.filter(item => item.Name.toLowerCase().indexOf(SearchValue) > -1);
+//         LazyLoad(Search, true);
+//     } else {
+//         observer.observe(targetSpecies, config);
+//         LazyLoad(Species, true);
+//     }
+// }
 
 /* Set the width of the side navigation to 200px */
 function openNav() {
