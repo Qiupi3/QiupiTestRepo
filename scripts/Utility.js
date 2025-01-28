@@ -14,7 +14,7 @@ const tabBtn = document.querySelectorAll('.ChoiceBtn');
 for (let x = 0; x < tabBtn.length; x++) {
     const value = tabBtn[x].id;
     tabBtn[x].addEventListener('click', () => {
-        // renderheader
+        renderTableHeader(value);
         lazyLoad(value, true);
         updateHistoryURL(value);
         updateChoiceBtn(tabBtn[x]);
@@ -95,7 +95,7 @@ window.onscroll = function() {
     }
 
     var BackTop = document.getElementById("BackTop");
-    if (Dex.top < -10000) {
+    if (Dex.top < -5000) {
         BackTop.style.display = "block";
     } else {
         BackTop.style.display = "none";

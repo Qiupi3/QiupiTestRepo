@@ -25,6 +25,8 @@ const gItem = gen(ItemData);
 const gLearnset = gen(LearnsetData);
 
 const table = document.querySelector(`.active`);
+const tableHeader = table.appendChild(document.createElement('thead'));
+const tableBody = table.appendChild(document.createElement('tbody'));
 
 const updateHistoryURL = function (tab) {
     history.pushState(null, '', window.location.origin + `/?tab=${tab}`);
@@ -33,14 +35,52 @@ const updateHistoryURL = function (tab) {
 window.onload = () => {
     JSON.parse(localStorage.getItem("Ability")) ? loadingScreen.className = 'hide' : null;
     main.classList.remove('hide');
-    // renderTableHeader(currentTab);
+    renderTableHeader(currentTab);
     lazyLoad(currentTab);
+}
+
+const renderTableHeader = (tab) => {
+    let th;
+    switch (tab) {
+        case 'Ability':
+            th =
+            `
+            <th>Name</th>
+            <th>Description</th>
+            `
+            break;
+        case 'Species':
+            th = 
+            `
+            <th>#</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Ability</th>
+            <th>BST</th>
+            <th>HP</th>
+            <th>Atk</th>
+            <th>Def</th>
+            <th>SpA</th>
+            <th>SpD</th>
+            <th>Spe</th>
+            `
+            break;
+        case 'Location':
+            break;
+        case 'Trainer':
+            break;
+        case 'Move':
+            break;
+        case 'Item':
+            break;
+    }
+    tableHeader.innerHTML = th;
 }
 
 const lazyLoad = (tab, clearTable=false) => {
     if (clearTable) {
-        while (table.firstChild) {
-            table.removeChild(table.firstChild);
+        while (tableBody.firstChild) {
+            tableBody.removeChild(tableBody.firstChild);
         }
         const tableClass = table.classList;
         tableClass.replace(tableClass[0], tab);
@@ -57,7 +97,7 @@ const lazyLoad = (tab, clearTable=false) => {
         max--;
     }
     SObs ? SObs.classList = '' : null;
-    table.children[table.children.length - 5].classList = `SObs ${tab}`;
+    tableBody.children[tableBody.children.length - 5].classList = `SObs ${tab}`;
 }
 
 function renderAbilityTable(Ability) {
@@ -71,7 +111,7 @@ function renderAbilityTable(Ability) {
     <td>${Ability.Description}</td>
     `
     row.setAttribute("id", Ability.UID);
-    table.appendChild(row);
+    tableBody.appendChild(row);
 }
 
 function renderSpeciesTable(Species) {
@@ -92,9 +132,8 @@ function renderSpeciesTable(Species) {
     <td>${Species.Spe}</td>
     `
     
-    row.setAttribute("id", Species.UID);
-    row.setAttribute("onclick", `OpenDetails(${Species.UID})`);
-    table.appendChild(row);
+    row.addEventListener('click', () => { OpenDetails(Species.UID) });
+    tableBody.appendChild(row);
 }
 
 // function renderLocationTable(Loc) {

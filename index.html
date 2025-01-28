@@ -20,19 +20,19 @@
         <p>loading dex...</p>
     </div>
     
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="#">About</a>
+        <a href="#" onclick="DarkMode()">DM</a>
+        <a href="#">???</a>
+        <a href="#">Credit</a>
+    </div>
+    
+    <div id="Nav" class="openNav">
+        <span onclick="openNav()">≡</span>
+    </div>
+
     <div id="main" class="hide">
-        <div id="mySidenav" class="sidenav">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <a href="#">About</a>
-            <a href="#" onclick="DarkMode()">DM</a>
-            <a href="#">???</a>
-            <a href="#">Credit</a>
-        </div>
-        
-        <div id="Nav" class="openNav">
-            <span onclick="openNav()">≡</span>
-        </div>
-        
         <div id="SpeciesDetail">
             <div class="SpeciesDetailHeadContainer">
                 <div id="CloseDetail" onclick="CloseDetails(true)">
@@ -225,8 +225,8 @@
                 <button id="Species" class="ChoiceBtn activeChoice">Species</button>
                 <button id="Location" class="ChoiceBtn">Location</button>
                 <button id="Trainer" class="ChoiceBtn">Trainer</button>
-                <button id="Move" class="ChoiceBtn">Moves</button>
-                <button id="Item" class="ChoiceBtn">Items</button>
+                <button id="Move" class="ChoiceBtn">Move</button>
+                <button id="Item" class="ChoiceBtn">Item</button>
             </div>
             
             <table id="table" class="Species active"></table>

@@ -117,7 +117,7 @@ function OpenDetails(SpeciesID) {
                 } else {
                     ConditionBox.innerText = "(Lv-Up with high Friendship)";
                 }
-            } else if (splitAbility(Condition)) {
+            } else if (Ability.toString().includes(';')) {
                 let x = Condition.split("; ");
                 let y = splitFunc(x[1]);
                 ConditionBox.innerText = "(Level " + x[0] + " or ";
