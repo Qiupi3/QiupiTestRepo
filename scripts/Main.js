@@ -92,7 +92,7 @@ const lazyLoad = (tab, clearTable=false) => {
     const activeData = eval(`${tab}Data`).length;
 
     let max = 40;
-    while (max && table.children.length != activeData) {
+    while (max && tableBody.children.length != activeData) {
         callFunction(data.next(clearTable && max == 40).value);
         max--;
     }
