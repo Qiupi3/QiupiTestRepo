@@ -55,7 +55,7 @@ var targetSpecies = document.querySelector('#mainTable');
 
 let config = {
     childList: true,
-    attributes: true,
+    subtree: true,
 }
 
 let callback = () => {
@@ -96,9 +96,9 @@ window.onscroll = function() {
 
     var backTop = document.getElementById("backTop");
     if (dex.top < -5000) {
-        backTop.style.display = "block";
+        backTop.classList.remove('hide');
     } else {
-        backTop.style.display = "none";
+        backTop.classList.add('hide');
     }
 
     var nav = document.getElementById("sideNavButton");
