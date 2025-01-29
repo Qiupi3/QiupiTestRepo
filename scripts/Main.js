@@ -24,7 +24,7 @@ const gMove = gen(MoveData);
 const gItem = gen(ItemData);
 const gLearnset = gen(LearnsetData);
 
-const table = document.querySelector(`.active`);
+const table = document.querySelector('#mainTable');
 const tableHeader = table.appendChild(document.createElement('thead'));
 const tableBody = table.appendChild(document.createElement('tbody'));
 
@@ -34,7 +34,7 @@ const updateHistoryURL = function (tab) {
 
 window.onload = () => {
     JSON.parse(localStorage.getItem("Ability")) ? loadingScreen.className = 'hide' : null;
-    main.classList.remove('hide');
+    mainContainer.classList.remove('hide');
     renderTableHeader(currentTab);
     lazyLoad(currentTab);
 }
@@ -82,8 +82,7 @@ const lazyLoad = (tab, clearTable=false) => {
         while (tableBody.firstChild) {
             tableBody.removeChild(tableBody.firstChild);
         }
-        const tableClass = table.classList;
-        tableClass.replace(tableClass[0], tab);
+        table.classList = tab;
     }
 
     const data = eval(`g${tab}`);

@@ -1,5 +1,5 @@
 const requestData = async (name) => {
-    loadingScreen.innerHTML += `Fetching ${name} data...\n`
+    loadingScreen.innerHTML += `<p>Fetching ${name} data...</p>`
     const resp = await fetch(`data/${name}.json`);
     const content = await resp.json();
     window.localStorage.setItem(name, JSON.stringify(content));
@@ -13,7 +13,7 @@ if (!window.location.href.includes('?tab=')) {
 }
 
 const url = window.location.href;
-const activeTable = document.getElementById('table').classList;
+const activeTable = document.getElementById('mainTable').classList;
 const activeChoice = document.querySelector('.activeChoice');
 const currentTab = url.split(/\?tab=/)[1].split('&')[0];
 
@@ -23,7 +23,7 @@ const currentTab = url.split(/\?tab=/)[1].split('&')[0];
     }
     if (activeChoice.id != currentTab) {
         activeChoice.classList.remove('activeChoice');
-        document.querySelector(`#${currentTab}`).classList.add('activeChoice');
+        document.querySelector(`.choiceButton[value='${currentTab}']`).classList.add('activeChoice');
     }
 })();
 

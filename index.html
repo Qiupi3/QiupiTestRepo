@@ -16,24 +16,27 @@
 </head>
 
 <body>
+    <h1>
+        Radical Red Dex
+    </h1>
+
     <div id="loadingScreen">
-        <p>loading dex...</p>
+        <p>Loading Dex...</p>
     </div>
     
-    <div id="mySidenav" class="sidenav">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="#">About</a>
-        <a href="#" onclick="DarkMode()">DM</a>
-        <a href="#">???</a>
-        <a href="#">Credit</a>
-    </div>
-    
-    <div id="Nav" class="openNav">
-        <span onclick="openNav()">≡</span>
+    <div id="sideNav" class="hide">
+        <a id="closeNav">&times;</a>
+        <a id="about" class="hide">About</a>
+        <a id="darkMode">Dark Mode</a>
+        <a id="credit" class="hide">Credit</a>
     </div>
 
-    <div id="main" class="hide">
-        <div id="SpeciesDetail">
+    <div id="mainContainer" class="hide">
+        <div id="sideNavButton">
+            <span>≡</span>
+        </div>
+
+        <div id="speciesDetail" class="hide">
             <div class="SpeciesDetailHeadContainer">
                 <div id="CloseDetail" onclick="CloseDetails(true)">
                     &times
@@ -211,28 +214,24 @@
             </div>
         </div>
         
-        <div class="main" id="Main">
-            <h1>
-                Radical Red Dex
-            </h1>
-            
+        <div id="main">
             <div class="SearchBarContainer">
                 <input type="text" placeholder="Search..." id="SearchBar" onkeyup="Search()">
             </div>
             
-            <div class="TabChoice">
-                <button id="Ability" class="ChoiceBtn">Abilities</button>
-                <button id="Species" class="ChoiceBtn activeChoice">Species</button>
-                <button id="Location" class="ChoiceBtn">Location</button>
-                <button id="Trainer" class="ChoiceBtn">Trainer</button>
-                <button id="Move" class="ChoiceBtn">Move</button>
-                <button id="Item" class="ChoiceBtn">Item</button>
+            <div class="tabChoice">
+                <button value="Ability" class="choiceButton">Abilities</button>
+                <button value="Species" class="choiceButton activeChoice">Species</button>
+                <button value="Location" class="choiceButton">Location</button>
+                <button value="Trainer" class="choiceButton">Trainer</button>
+                <button value="Move" class="choiceButton">Move</button>
+                <button value="Item" class="choiceButton">Item</button>
             </div>
             
-            <table id="table" class="Species active"></table>
+            <table id="mainTable" class="Species"></table>
         </div>
     </div>
-    <div id="BackTop" onclick="BackTop()">
+    <div id="backTop" class="hide">
         ↑
     </div>
     <script src="scripts/global.js"></script>

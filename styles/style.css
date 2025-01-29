@@ -3,16 +3,37 @@ body {
   width: 100%;
 }
 
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+#loadingScreen {
+  display: block;
+  text-align: center;
+}
+
+.hide {
+  display: none !important;
+}
+
+#main {
+  display: block;
+  width: 100%;
+
+  table {
+    width: 100%;
+  }
+
+}
+
 table {
   width: 100%;
   table-layout: fixed;
 }
 
-.hide {
-  display: none;
-}
-
-.main td, th {
+/* .main td, th {
   font-size: 1rem;
   text-align: center;
   padding: 1%;
@@ -40,7 +61,7 @@ table {
 
 .main td:nth-child(n+6), .main th:nth-child(n+6) {
   width: calc(100%/7);
-}
+} */
 
 /* .main tr {
   border-bottom: 1px solid;

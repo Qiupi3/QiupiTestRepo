@@ -10,9 +10,9 @@ function splitFunc(x) {
     }
 }
 
-const tabBtn = document.querySelectorAll('.ChoiceBtn');
+const tabBtn = document.querySelectorAll('.choiceButton');
 for (let x = 0; x < tabBtn.length; x++) {
-    const value = tabBtn[x].id;
+    const value = tabBtn[x].value;
     tabBtn[x].addEventListener('click', () => {
         renderTableHeader(value);
         lazyLoad(value, true);
@@ -51,14 +51,14 @@ function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
 }
 
-var targetSpecies = document.querySelector('.active');
+var targetSpecies = document.querySelector('#mainTable');
 
 let config = {
     childList: true,
     attributes: true,
 }
 
-let callback = (mutationList) => {
+let callback = () => {
     var llTarget = document.querySelector('.SObs');
     let options = {
         root: null,
@@ -66,7 +66,7 @@ let callback = (mutationList) => {
         threshold: 0,
     }
     
-    const llObserver = new IntersectionObserver(function (entries, self) {
+    const llObserver = new IntersectionObserver(function (entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 llObserver.disconnect();
@@ -86,23 +86,23 @@ function DarkMode() {
 }
 
 window.onscroll = function() {
-    var Dex = document.querySelector("#SearchBar").getBoundingClientRect();
-    var Detail = document.getElementById("SpeciesDetail").style.display;
-    if (Detail == "block") {
-        if (Dex.bottom <= 20) {
+    var dex = document.querySelector("#SearchBar").getBoundingClientRect();
+    var detail = document.getElementById("speciesDetail").style.display;
+    if (detail == "block") {
+        if (dex.bottom <= 20) {
             CloseDetails(false);
         }
     }
 
-    var BackTop = document.getElementById("BackTop");
-    if (Dex.top < -5000) {
-        BackTop.style.display = "block";
+    var backTop = document.getElementById("backTop");
+    if (dex.top < -5000) {
+        backTop.style.display = "block";
     } else {
-        BackTop.style.display = "none";
+        backTop.style.display = "none";
     }
 
-    var nav = document.getElementById("Nav");
-    if (Dex.bottom < -5 || Dex.top > 100) {
+    var nav = document.getElementById("sideNavButton");
+    if (dex.bottom < -5 || dex.top > 100) {
         nav.style.display = "none";
     } else {
         nav.style.display = "block";
