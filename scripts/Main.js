@@ -192,6 +192,7 @@ function renderMoveTable(Move) {
     table.appendChild(MoveRow);
 }
 
+backTop.addEventListener('click', BackTop);
 function BackTop() {
     var currentPos = scrollY;
     window.requestAnimationFrame(function step() {
