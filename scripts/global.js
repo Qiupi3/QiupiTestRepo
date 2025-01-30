@@ -11,8 +11,7 @@ const requestData = async (name) => {
 const tabOptions = ['Ability','Species','Location','Trainer','Move','Item']
 
 const validateTab = (tab) => {
-    tabOptions.includes(tab) ? null : tab = 'Species';
-    return tab;
+    return tabOptions.includes(tab) ? tab : 'Species';
 }
 
 if (!window.location.href.includes('?tab=')) {
