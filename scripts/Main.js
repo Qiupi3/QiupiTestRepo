@@ -39,7 +39,7 @@ window.onload = () => {
 &&JSON.parse(localStorage.getItem("Trainer"))
 &&JSON.parse(localStorage.getItem("Move"))
 &&JSON.parse(localStorage.getItem("Item"))
-&&JSON.parse(localStorage.getItem("Learnset"))) ? loadingScreen.className = 'hide' : window.location = window.location;
+&&JSON.parse(localStorage.getItem("Learnset"))) ? window.location = window.location : loadingScreen.className = 'hide';
     mainContainer.classList.remove('hide');
     renderTableHeader(currentTab);
     lazyLoad(currentTab);
