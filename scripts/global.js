@@ -8,6 +8,12 @@ const requestData = async (name) => {
     }
 }
 
+const tabOptions = ['Ability','Species','Location','Trainer','Move','Item']
+
+const validateTab = (tab) => {
+    tabOptions.includes(tab) ? return tab : return 'Species';
+}
+
 if (!window.location.href.includes('?tab=')) {
     history.pushState(null, '', window.location.origin + '/?tab=Species');
 }
@@ -19,11 +25,11 @@ const currentTab = url.split(/\?tab=/)[1].split('&')[0];
 
 (() => {
     if (activeTable != currentTab) {
-        activeTable.replace(activeTable[0], currentTab);
+        activeTable.replace(activeTable[0], validateTab(currentTab));
     }
     if (activeChoice.id != currentTab) {
         activeChoice.classList.remove('activeChoice');
-        document.querySelector(`.choiceButton[value='${currentTab}']`).classList.add('activeChoice');
+        document.querySelector(`.choiceButton[value='${validateTab(currentTab)}']`).classList.add('activeChoice');
     }
 })();
 
