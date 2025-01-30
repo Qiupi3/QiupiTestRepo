@@ -33,7 +33,13 @@ const updateHistoryURL = function (tab) {
 }
 
 window.onload = () => {
-    JSON.parse(localStorage.getItem("Ability")) ? loadingScreen.className = 'hide' : null;
+    (JSON.parse(localStorage.getItem("Ability"))
+&&JSON.parse(localStorage.getItem("Species"))
+&&JSON.parse(localStorage.getItem("Location"))
+&&JSON.parse(localStorage.getItem("Trainer"))
+&&JSON.parse(localStorage.getItem("Move"))
+&&JSON.parse(localStorage.getItem("Item"))
+&&JSON.parse(localStorage.getItem("Learnset"))) ? loadingScreen.className = 'hide' : window.location = window.location;
     mainContainer.classList.remove('hide');
     renderTableHeader(currentTab);
     lazyLoad(currentTab);
