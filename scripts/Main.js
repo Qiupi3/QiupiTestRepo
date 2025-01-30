@@ -196,7 +196,7 @@ function renderSpeciesTable(Species) {
 
 function renderMoveTable(Move) {
     let MoveRow = CreateMoveRow(false, Move);
-    table.appendChild(MoveRow);
+    tableBody.appendChild(MoveRow);
 }
 
 backTop.addEventListener('click', BackTop);
