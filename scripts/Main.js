@@ -85,6 +85,7 @@ const lazyLoad = (tab, clearTable=false) => {
         table.classList = tab;
     }
 
+    tab = validateTab(tab);
     const data = eval(`g${tab}`);
     const callFunction = eval(`render${tab}Table`);
     const SObs = document.querySelector('.SObs');
