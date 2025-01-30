@@ -24,6 +24,9 @@ const activeChoice = document.querySelector('.activeChoice');
 const currentTab = url.split(/\?tab=/)[1].split('&')[0];
 
 (() => {
+    if (currentTab != validateTab(currentTab)) {
+        history.pushState(null, '', window.location.origin + `/?tab=${validateTab(currentTab)}`);
+    }
     if (activeTable != currentTab) {
         activeTable.replace(activeTable[0], validateTab(currentTab));
     }
