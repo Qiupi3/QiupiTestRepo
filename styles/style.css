@@ -21,11 +21,44 @@ h1 {
 #main {
   display: block;
   width: 100%;
+}
 
-  table {
-    width: 100%;
+#mainTable {
+  display: table;
+  width: 90%;
+  margin: auto;
+  text-align: center;
+  table-layout: fixed;
+
+  td, th {
+    display: inline-block;
+    width: 25%;
+    vertical-align: middle;
   }
 
+  > thead > tr {
+    > th:nth-child(2) {
+      width: 50%;
+    }
+    > th:nth-child(4) {
+      width: 100%;
+    }
+    > th:nth-child(n+5) {
+      width: calc(100%/7);
+    }
+  }
+
+  > tbody > tr {
+    > td:nth-child(5) {
+      width: 100%;
+      display: flex;
+      justify-content: space-evenly;
+      background-color: aqua;
+    }
+    > td:nth-child(n+6) {
+      width: calc(100%/7);
+    }
+  }
 }
 
 #backTop {
@@ -38,10 +71,10 @@ h1 {
   border-radius: 30px;
 }
 
-table {
+/* table {
   width: 100%;
   table-layout: fixed;
-}
+} */
 
 /* .main td, th {
   font-size: 1rem;
