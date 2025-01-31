@@ -32,7 +32,7 @@ const updateHistoryURL = function (tab) {
     history.pushState(null, '', window.location.origin + `/?tab=${tab}`);
 }
 
-window.onload = () => {
+window.onload = function () {
     (JSON.parse(localStorage.getItem("Ability"))
     &&JSON.parse(localStorage.getItem("Species"))
     &&JSON.parse(localStorage.getItem("Location"))
@@ -46,7 +46,7 @@ window.onload = () => {
     lazyLoad(currentTab);
 }
 
-const renderTableHeader = (tab) => {
+const renderTableHeader = function (tab) {
     let th;
     switch (tab) {
         case 'Ability':
@@ -84,7 +84,7 @@ const renderTableHeader = (tab) => {
     tableHeader.innerHTML = th;
 }
 
-const lazyLoad = (tab, clearTable=false) => {
+const lazyLoad = function (tab, clearTable=false) {
     if (clearTable) {
         while (tableBody.firstChild) {
             tableBody.removeChild(tableBody.firstChild);

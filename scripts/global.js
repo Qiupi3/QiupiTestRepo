@@ -11,11 +11,15 @@ const requestData = async (name) => {
 const tabOptions = ['Ability','Species','Location','Trainer','Move','Item']
 
 const validateTab = (tab) => {
-    return tabOptions.includes(tab) ? tab : 'Species';
+    const bool = tabOptions.includes(tab);
+    if (!bool) {
+        updateHistoryURL('Species');
+    }
+    return bool ? tab : 'Species';
 }
 
 if (!window.location.href.includes('?tab=')) {
-    history.pushState(null, '', window.location.origin + '/?tab=Species');
+    history.pushState(null, '', window.location.origin + '/QiupiTestRepo/?tab=Species');
 }
 
 const url = window.location.href;
