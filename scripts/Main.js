@@ -25,8 +25,8 @@ const gItem = gen(ItemData);
 const gLearnset = gen(LearnsetData);
 
 const table = document.querySelector('#mainTable');
-const tableHeader = table.appendChild(document.createElement('thead'));
-const tableBody = table.appendChild(document.createElement('tbody'));
+const tableHeader = table.children[0];
+const tableBody = table.children[1];
 
 const updateHistoryURL = function (tab) {
     history.pushState(null, '', window.location.origin + `/?tab=${tab}`);

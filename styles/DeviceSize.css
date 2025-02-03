@@ -14,8 +14,13 @@
     
     .StatsHeader { display: none; } */
 
-    .main th {
-        font-size: 0.8rem;
+    #mainTable.Species td,
+    #mainTable.Species th {
+        font-size: 0.6rem;
+    }
+
+    .TypeBox {
+        font-size: 60% !important;
     }
 
 }
