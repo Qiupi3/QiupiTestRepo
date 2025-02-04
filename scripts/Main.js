@@ -77,6 +77,15 @@ const renderTableHeader = function (tab) {
         case 'Trainer':
             break;
         case 'Move':
+            th = 
+            `
+            <th>Name</th>
+            <th>Type</th>
+            <th>Cat.</th>
+            <th>PP</th>
+            <th>Power</th>
+            <th>Acc</th>
+            `
             break;
         case 'Item':
             break;

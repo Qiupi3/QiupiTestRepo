@@ -67,6 +67,10 @@ h1 {
   border-top: 1px solid blueviolet;
 }
 
+#mainTable th {
+  text-align: center;
+}
+
 #mainTable.Species td,
 #mainTable.Species th {
   display: inline-block;
