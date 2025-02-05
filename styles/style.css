@@ -69,6 +69,13 @@ h1 {
 
 #mainTable th {
   text-align: center;
+  border-bottom: 1px solid salmon;
+}
+
+#mainTable.Ability td,
+#mainTable.Ability th {
+  border-left: 1px solid khaki;
+  padding-left: 5%;
 }
 
 #mainTable.Species td,
