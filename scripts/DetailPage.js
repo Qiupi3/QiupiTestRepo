@@ -5,7 +5,8 @@ const N2 = "Bashful, Bold, Calm, Careful, Gentle, Lonely, Mild, Modest, Quiet, R
 
 function OpenDetails(SpeciesID) {
     //var timerStart = Date.now();
-    let tab = document.getElementById("SpeciesDetail");
+    let tab = document.getElementById("speciesDetail");
+    tab.classList = ""
     tab.style.display = "block";
     
     const SpeciesData = JSON.parse(localStorage.getItem("Species"));
@@ -223,29 +224,44 @@ function CreateEvoBox(Id) {
     const SpeciesData = JSON.parse(localStorage.getItem("Species"));
     const Species = SpeciesData[Id-1];
     let Container = document.createElement("div");
-    let EvoBox = document.createElement("div");
-    let DetailBox = document.createElement("div");
-    let SpriteBox = document.createElement("div");
-    SpriteBox.setAttribute("class", "EvoSpriteBox")
-    let NameBox = document.createElement("div");
-    NameBox.setAttribute("class", "EvoNameBox")
+    // let EvoBox = document.createElement("div");
+    // let DetailBox = document.createElement("div");
+    // let SpriteBox = document.createElement("div");
+    // SpriteBox.setAttribute("class", "EvoSpriteBox")
+    // let NameBox = document.createElement("div");
+    // NameBox.setAttribute("class", "EvoNameBox")
     
-    let Sprite = `<img src="Assets/Transparent/${Species.SUID}.png">`;
-    SpriteBox.innerHTML += Sprite;
-    NameBox.innerText = Species.Name;
-    let TypeCell = TypeBox(Species.Type);
-    TypeCell.setAttribute("class", "EvoTypeBox")
-    EvoBox.appendChild(SpriteBox);
-    DetailBox.appendChild(NameBox);
-    DetailBox.appendChild(TypeCell)
+    // let Sprite = `<img src="Assets/Transparent/${Species.SUID}.png">`;
+    // SpriteBox.innerHTML += Sprite;
+    // NameBox.innerText = Species.Name;
+    // let TypeCell = TypeBox(Species.Type);
+    // TypeCell.setAttribute("class", "EvoTypeBox")
+    // EvoBox.appendChild(SpriteBox);
+    // DetailBox.appendChild(NameBox);
+    // DetailBox.appendChild(TypeCell)
     
-    EvoBox.setAttribute("class", "EvolutionBox")
-    DetailBox.setAttribute("class", "DetailedBox")
+    // EvoBox.setAttribute("class", "EvolutionBox")
+    // DetailBox.setAttribute("class", "DetailedBox")
     
-    Container.setAttribute("class", "WrapperBox")
-    Container.appendChild(EvoBox);
-    Container.appendChild(DetailBox);
-    Container.setAttribute("onclick", `OpenDetails(${Id})`)
+    // Container.setAttribute("class", "WrapperBox")
+    // Container.appendChild(EvoBox);
+    // Container.appendChild(DetailBox);
+    // Container.setAttribute("onclick", `OpenDetails(${Id})`)
+    Container.innerHTML = 
+    `
+    <div class="wrapperBox">
+        <div class="evolutionBox">
+            <div class="evoSpriteBox">
+                <img src="Assets/Transparent/${Species.SUID}.png">
+            </div>
+        </div>
+        <div class="detailedBox">
+            <div class="evoNameBox">${Species.Name}</div>
+            <div class="evoTypeBox">${TypeBox(Species.Type).innerHTML}</div>
+        </div>
+    </div>
+    <div></div>
+    `
     return Container;
 }
 
