@@ -224,32 +224,9 @@ function CreateEvoBox(Id) {
     const SpeciesData = JSON.parse(localStorage.getItem("Species"));
     const Species = SpeciesData[Id-1];
     let Container = document.createElement("div");
-    // let EvoBox = document.createElement("div");
-    // let DetailBox = document.createElement("div");
-    // let SpriteBox = document.createElement("div");
-    // SpriteBox.setAttribute("class", "EvoSpriteBox")
-    // let NameBox = document.createElement("div");
-    // NameBox.setAttribute("class", "EvoNameBox")
-    
-    // let Sprite = `<img src="Assets/Transparent/${Species.SUID}.png">`;
-    // SpriteBox.innerHTML += Sprite;
-    // NameBox.innerText = Species.Name;
-    // let TypeCell = TypeBox(Species.Type);
-    // TypeCell.setAttribute("class", "EvoTypeBox")
-    // EvoBox.appendChild(SpriteBox);
-    // DetailBox.appendChild(NameBox);
-    // DetailBox.appendChild(TypeCell)
-    
-    // EvoBox.setAttribute("class", "EvolutionBox")
-    // DetailBox.setAttribute("class", "DetailedBox")
-    
-    // Container.setAttribute("class", "WrapperBox")
-    // Container.appendChild(EvoBox);
-    // Container.appendChild(DetailBox);
-    // Container.setAttribute("onclick", `OpenDetails(${Id})`)
     Container.innerHTML = 
     `
-    <div class="wrapperBox">
+    <div class="wrapperBox" onclick="OpenDetails(${Id})">
         <div class="evolutionBox">
             <div class="evoSpriteBox">
                 <img src="Assets/Transparent/${Species.SUID}.png">
