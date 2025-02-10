@@ -6,9 +6,8 @@ const N2 = "Bashful, Bold, Calm, Careful, Gentle, Lonely, Mild, Modest, Quiet, R
 function OpenDetails(SpeciesID) {
     //var timerStart = Date.now();
     let tab = document.getElementById("speciesDetail");
-    tab.classList = ""
-    tab.style.display = "block";
-    
+    tab.className = '';
+
     const SpeciesData = JSON.parse(localStorage.getItem("Species"));
     const Species = SpeciesData[SpeciesID-1];
     
@@ -194,8 +193,8 @@ function OpenDetails(SpeciesID) {
 }
 
 function CloseDetails(Ref) { 
-    let tab = document.getElementById("SpeciesDetail");
-    tab.style.display = "none";
+    let tab = document.getElementById("speciesDetail");
+    tab.className = 'hide';
     if (Ref) {
         const UID = document.getElementById("UIDDetail").innerText;
         //location.href = "#" + UID

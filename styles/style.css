@@ -9,6 +9,11 @@ h1 {
   text-align: center;
 }
 
+img {
+  display: block;
+  margin: auto 0;
+}
+
 #loadingScreen {
   display: block;
   text-align: center;
@@ -78,12 +83,17 @@ h1 {
   padding-left: 5%;
 }
 
+#mainTable.Species tr {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 #mainTable.Species td,
 #mainTable.Species th {
-  display: inline-block;
   width: 20%;
   text-align: center;
-  vertical-align: middle;
+  align-self: center;
+  justify-items: center;
 }
 
 #mainTable.Species th:nth-child(2) {
@@ -116,6 +126,13 @@ h1 {
   border-radius: 30px;
 }
 
+#speciesDetail {
+  display: block;
+}
+
+.HABox {
+  font-weight: 600;
+}
 /* table {
   width: 100%;
   table-layout: fixed;
