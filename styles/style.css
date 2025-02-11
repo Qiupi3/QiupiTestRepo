@@ -107,7 +107,7 @@ img {
 
 #sideNavButton {
   z-index: 1;
-  position: fixed;
+  position: absolute;
   font-size: 40px;
   background-color: red;
   display: block;
@@ -133,6 +133,37 @@ img {
 .HABox {
   font-weight: 600;
 }
+
+.speciesDetail {
+  display: block;
+}
+
+.speciesDetail > .headContainer {
+  display: block;
+}
+
+#closeDetail {
+  right: 5px;
+  top: 5px;
+}
+
+#prevDetail {
+  left: 15px;
+}
+
+#nextDetail {
+  right: 15px;
+}
+
+.headButton {
+  position: absolute;
+  font-size: 25px;
+  display: inline-block;
+  padding: 1px 10px;
+  border-radius: 15px;
+  background-color: red;
+}
+
 /* table {
   width: 100%;
   table-layout: fixed;
