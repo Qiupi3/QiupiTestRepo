@@ -33,6 +33,51 @@ function OpenDetails(SpeciesID) {
         <div>Type :${TypeBox(species.Type).innerHTML}</div>
         <div>Ability :${AbilityBox(species.Ability, true).innerHTML}</div>
     </div>
+    <div class="statsContainer">
+        <table id="statsTable">
+            <tr>
+                <th>BST</th>
+                <td class="statsNum">${species.BST}</td>
+                <td><div id="graph0">BST</div></td>
+            </tr>
+            <tr>
+                <th>HP</th>
+                <td class="statsNum">${species.HP}</td>
+                <td><div id="graph1">HP</div></td>
+            </tr>
+            <tr>
+                <th>Atk</th>
+                <td class="statsNum">${species.Atk}</td>
+                <td><div id="graph2">Atk</div></td>
+            </tr>
+            <tr>
+                <th>Def</th>
+                <td class="statsNum">${species.Def}</td>
+                <td><div id="graph3">Def</div></td>
+            </tr>
+            <tr>
+                <th>SpA</th>
+                <td class="statsNum">${species.SpA}</td>
+                <td><div id="graph4">SpA</div></td>
+            </tr>
+            <tr>
+                <th>SpD</th>
+                <td class="statsNum">${species.SpD}</td>
+                <td><div id="graph5">SpD</div></td>
+            </tr>
+            <tr>
+                <th>Spe</th>
+                <td class="statsNum">${species.Spe}</td>
+                <td><div id="graph6">Spe</div></td>
+            </tr>
+        </table>
+    </div>
+    <div class="otherContainer">
+        <div id="LocationDetail"></div>
+        <div id="HeldItemDetail"></div>
+        <div id="EggGroupDetail"></div>
+        <div id="EvoDetail"></div>
+    </div>
     `
     tab.innerHTML = container;
     // const UID = document.getElementById("UIDDetail");
