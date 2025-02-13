@@ -38,37 +38,51 @@ function OpenDetails(SpeciesID) {
             <tr>
                 <th>BST</th>
                 <td class="statsNum">${species.BST}</td>
-                <td><div id="graph0">BST</div></td>
+                <td><div class="statsGraph"
+                style="width:${5 + species.BST/8}%;
+                background-color:hsl(${species.BST/7}, 85%, 45%)">BST</div></td>
             </tr>
             <tr>
                 <th>HP</th>
                 <td class="statsNum">${species.HP}</td>
-                <td><div id="graph1">HP</div></td>
+                <td><div class="statsGraph"
+                style="width:${5 + species.HP/2}%;
+                background-color:hsl(${species.HP/1.7}, 85%, 45%)">BST</div></td>
             </tr>
             <tr>
                 <th>Atk</th>
                 <td class="statsNum">${species.Atk}</td>
-                <td><div id="graph2">Atk</div></td>
+                <td><div class="statsGraph"
+                style="width:${5 + species.Atk/2}%;
+                background-color:hsl(${species.Atk/1.7}, 85%, 45%)">BST</div></td>
             </tr>
             <tr>
                 <th>Def</th>
                 <td class="statsNum">${species.Def}</td>
-                <td><div id="graph3">Def</div></td>
+                <td><div class="statsGraph"
+                style="width:${5 + species.Def/2}%;
+                background-color:hsl(${species.Def/1.7}, 85%, 45%)">BST</div></td>
             </tr>
             <tr>
                 <th>SpA</th>
                 <td class="statsNum">${species.SpA}</td>
-                <td><div id="graph4">SpA</div></td>
+                <td><div class="statsGraph"
+                style="width:${5 + species.SpA/2}%;
+                background-color:hsl(${species.SpA/1.7}, 85%, 45%)">BST</div></td>
             </tr>
             <tr>
                 <th>SpD</th>
                 <td class="statsNum">${species.SpD}</td>
-                <td><div id="graph5">SpD</div></td>
+                <td><div class="statsGraph"
+                style="width:${5 + species.SpD/2}%;
+                background-color:hsl(${species.SpD/1.7}, 85%, 45%)">BST</div></td>
             </tr>
             <tr>
                 <th>Spe</th>
                 <td class="statsNum">${species.Spe}</td>
-                <td><div id="graph6">Spe</div></td>
+                <td><div class="statsGraph"
+                style="width:${5 + species.Spe/2}%;
+                background-color:hsl(${species.Spe/1.7}, 85%, 45%)">BST</div></td>
             </tr>
         </table>
     </div>
@@ -265,7 +279,7 @@ function CloseDetails(Ref) {
     let tab = document.getElementById("speciesDetail");
     tab.className = 'hide';
     if (Ref) {
-        const UID = document.getElementById("UIDDetail").innerText;
+        // const UID = document.getElementById("UIDDetail").innerText;
         //location.href = "#" + UID
     }
 }

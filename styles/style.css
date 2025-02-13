@@ -164,6 +164,27 @@ img {
   background-color: red;
 }
 
+#statsTable {
+  display: table;
+  width: 90%;
+  margin-left: 2%;
+}
+
+#statsTable th {
+  text-align: left;
+  width: 10%;
+}
+
+.statsNum {
+  text-align: right;
+  width: 15%;
+  padding: 3%;
+}
+
+.statsGraph {
+  color: transparent;
+}
+
 /* table {
   width: 100%;
   table-layout: fixed;
