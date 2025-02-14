@@ -285,14 +285,14 @@ function CloseDetails(Ref) {
 }
 
 function PrevDetails() {
-    var CurrentNum = document.getElementById("UIDDetail").innerText;
+    var CurrentNum = document.querySelector('.generalContainer').id // document.getElementById("UIDDetail").innerText;
     var PrevNum = Number(CurrentNum) - 1;
     try { OpenDetails(PrevNum) }
     catch(err) {}
 }
 
 function NextDetails() {
-    var CurrentNum = document.getElementById("UIDDetail").innerText;
+    var CurrentNum = document.querySelector('.generalContainer').id // document.getElementById("UIDDetail").innerText;
     var NextNum = Number(CurrentNum) + 1;
     try { OpenDetails(NextNum) }
     catch(err) {}
