@@ -279,8 +279,9 @@ function CloseDetails(Ref) {
     let tab = document.getElementById("speciesDetail");
     tab.className = 'hide';
     if (Ref) {
-        // const UID = document.getElementById("UIDDetail").innerText;
-        //location.href = "#" + UID
+        const UID = document.querySelector('.generalContainer').id;
+        const rowElement = tableBody.children[UID];
+        rowElement.scrollIntoView(false);
     }
 }
 
