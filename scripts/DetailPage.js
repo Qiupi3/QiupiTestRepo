@@ -281,7 +281,7 @@ function CloseDetails(Ref) {
     if (Ref) {
         const UID = document.querySelector('.generalContainer').id;
         const rowElement = tableBody.children[UID];
-        rowElement.scrollIntoView(false);
+        rowElement.scrollIntoView({behavior: "smooth", block: "center"});
     }
 }
 
