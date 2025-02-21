@@ -87,7 +87,7 @@ function OpenDetails(SpeciesID) {
         </table>
     </div>
     <div class="otherContainer">
-        <div id="LocationDetail"></div>
+        <div id="LocationDetail">${createLocation(species.Location)}</div>
         <div id="HeldItemDetail"></div>
         <div id="EggGroupDetail"></div>
         <div id="EvoDetail"></div>
@@ -286,14 +286,14 @@ function CloseDetails(Ref) {
 }
 
 function PrevDetails() {
-    var CurrentNum = document.querySelector('.generalContainer').id // document.getElementById("UIDDetail").innerText;
+    var CurrentNum = document.querySelector('.generalContainer').id
     var PrevNum = Number(CurrentNum) - 1;
     try { OpenDetails(PrevNum) }
     catch(err) {}
 }
 
 function NextDetails() {
-    var CurrentNum = document.querySelector('.generalContainer').id // document.getElementById("UIDDetail").innerText;
+    var CurrentNum = document.querySelector('.generalContainer').id
     var NextNum = Number(CurrentNum) + 1;
     try { OpenDetails(NextNum) }
     catch(err) {}
