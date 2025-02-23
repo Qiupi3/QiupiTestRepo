@@ -275,6 +275,16 @@ function OpenDetails(SpeciesID) {
     //console.log("Time until Detail Rendered: ", Date.now()-timerStart);
 }
 
+const createLocation = function (loc) {
+    let container = `Location :\n\n`;
+    if (loc != "-") {
+
+    } else {
+        container += `• Unknown`
+    }
+    return container;
+}
+
 function CloseDetails(Ref) { 
     let tab = document.getElementById("speciesDetail");
     tab.className = 'hide';
