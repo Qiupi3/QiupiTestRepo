@@ -47,3 +47,5 @@ JSON.parse(localStorage.getItem("Trainer"));
 JSON.parse(localStorage.getItem("Move")) ?? requestData('Move');
 JSON.parse(localStorage.getItem("Item")) ?? requestData('Item');
 JSON.parse(localStorage.getItem("Learnset")) ?? requestData('Learnset');
+
+// Testing Message 2
